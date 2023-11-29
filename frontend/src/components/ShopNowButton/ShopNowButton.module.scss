@@ -1,0 +1,16 @@
+.button {
+    display: block;
+    width: 15rem;
+    text-decoration: none;
+    margin-top: 2rem;
+    padding: 1.5rem 4rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: inherit;
+    transition: .2s;
+    cursor: pointer;
+
+    &:hover {
+        opacity: .6;
+    }
+}

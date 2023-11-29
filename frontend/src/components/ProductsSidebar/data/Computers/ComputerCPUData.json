@@ -1,0 +1,12 @@
+[
+    {
+        "type": "cpu",
+        "name": "AMD",
+        "value": "amd"
+    },
+    {
+        "type": "cpu",
+        "name": "Intel",
+        "value": "intel"
+    }
+]

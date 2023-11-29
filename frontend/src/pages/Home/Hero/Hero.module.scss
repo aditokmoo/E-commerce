@@ -1,0 +1,40 @@
+.header {
+    background: linear-gradient(91deg, #211C24 0%, #211C24 100%);
+    color: #fff;
+    max-height: 74.5rem;
+    
+    .heroSection {
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: 74.5rem;
+
+        .textContent {
+            h4 {
+                color: #888;
+            }
+
+            h1 {
+                margin: 1rem 0;
+                font-size: 7rem;
+
+                span {
+                    font-weight: 200;
+                    color: #ddd;
+                }
+            }
+
+            p {
+                margin: 1rem 0;
+                color: #888;
+                font-size: 1.4rem;
+            }
+        }
+
+        .imageContent {
+            position: absolute;
+            bottom: 0;
+            right: 18rem;
+        }
+    }
+}

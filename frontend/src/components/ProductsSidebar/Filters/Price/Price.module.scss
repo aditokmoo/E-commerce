@@ -1,0 +1,54 @@
+.price {
+
+    .priceFilter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+    
+        span {
+            font-weight: 600;
+        }
+
+        svg {
+            transform: rotate(0);
+            transition: .3s;
+
+            &.active {
+                transform: rotate(180deg);
+            }
+        }
+    }
+    
+    .priceForm {
+        margin: 1rem 0;
+
+        .formContainer {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            margin: 2rem 0;
+
+            label {
+                display: block;
+                margin: 1rem 0;
+                font-size: 1.3rem;
+                color: #A7A7A7;
+                
+                &.to {
+                    float: right;
+                }
+            }
+
+            input {
+                width: 100%;
+                padding: 1rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+        }
+    }
+}

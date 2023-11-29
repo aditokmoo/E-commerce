@@ -1,0 +1,22 @@
+[
+    {
+        "type": "memory",
+        "name": "120GB",
+        "value": "120gb"
+    },
+    {
+        "type": "memory",
+        "name": "250GB",
+        "value": "250gb"
+    },
+    {
+        "type": "memory",
+        "name": "500GB",
+        "value": "500gb"
+    },
+    {
+        "type": "memory",
+        "name": "1TB",
+        "value": "1tb"
+    }
+]

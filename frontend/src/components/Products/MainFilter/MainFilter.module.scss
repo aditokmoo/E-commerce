@@ -1,0 +1,23 @@
+.mainFilter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1.4rem;
+
+        span {
+            font-weight: 600;
+        }
+    }
+
+    select {
+        padding: 1rem;
+        border: 1px solid #ddd;
+        color: #000;
+        outline: none;
+    }
+}

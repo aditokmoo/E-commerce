@@ -1,0 +1,46 @@
+.subNav {
+    background-color: #2E2E2E;
+    padding: 2rem 0;
+
+    .subNavSection {
+        .subNavLinks {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            justify-content: space-between;
+    
+            li {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                color: rgb(184, 184, 184);
+                position: relative;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: -5.5rem;
+                    width: 1px;
+                    height: 2.3rem;
+                    background-color: #999;
+                }
+
+                &:last-child {
+                    &::after {
+                        display: none;
+                    }
+                }
+    
+                svg {
+                    font-size: 2rem;
+                }
+    
+                a {
+                    text-decoration: none;
+                    color: rgb(184, 184, 184);
+                }
+            }
+        }
+    }
+}

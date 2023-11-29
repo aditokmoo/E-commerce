@@ -1,0 +1,43 @@
+.productCard {
+    background-color: #F6F6F6;
+    width: 100%;
+    padding: 7rem 0 3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 6px;
+    position: relative;
+
+    .addFavorites {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        border: 0;
+        background-color: inherit;
+        font-size: 2rem;
+        color: #909090C4;
+        cursor: pointer;
+
+        &:hover {
+            opacity: .7;
+        }
+    }
+
+    .body {
+        height: 30rem;
+
+        h4 {
+            margin-top: 2rem;
+            font-size: 1.4rem;
+            padding: 0 2rem;
+            line-height: 1.6;
+            font-weight: 200;
+        }
+    
+        h3 {
+            margin: 2rem 0;
+        }
+    }
+}

@@ -1,0 +1,37 @@
+[
+    {
+        "type": "memory",
+        "name": "16GB",
+        "value": "16gb"
+    },
+    {
+        "type": "memory",
+        "name": "32GB",
+        "value": "32gb"
+    },
+    {
+        "type": "memory",
+        "name": "64GB",
+        "value": "64gb"
+    },
+    {
+        "type": "memory",
+        "name": "128GB",
+        "value": "128gb"
+    },
+    {
+        "type": "memory",
+        "name": "256GB",
+        "value": "256gb"
+    },
+    {
+        "type": "memory",
+        "name": "512GB",
+        "value": "512gb"
+    },
+    {
+        "type": "memory",
+        "name": "1TB",
+        "value": "1tb"
+    }
+]

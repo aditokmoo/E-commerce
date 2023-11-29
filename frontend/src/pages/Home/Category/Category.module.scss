@@ -1,0 +1,54 @@
+.categorySection {
+    background-color: #FAFAFA;
+    
+    .category {
+        padding: 5rem 0;
+        
+        .head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0;
+
+            .sliderArrows {
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+
+                svg {
+                    cursor: pointer;
+                    font-size: 2rem;
+                }
+            }
+        }
+
+        .categories {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 3rem;
+
+            .card {
+                background-color: #EDEDED;
+                height: 15rem;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                border-radius: 7px;
+
+                svg {
+                    font-size: 3rem;
+                }
+
+                span {
+                    font-size: 1.3rem;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}

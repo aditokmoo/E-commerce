@@ -1,0 +1,42 @@
+[
+    {
+        "type": "brand",
+        "name": "Apple",
+        "value": "apple"
+    },
+    {
+        "type": "brand",
+        "name": "Samsung",
+        "value": "samsung"
+    },
+    {
+        "type": "brand",
+        "name": "Xiaomi",
+        "value": "xiaomi"
+    },
+    {
+        "type": "brand",
+        "name": "Poco",
+        "value": "poco"
+    },
+    {
+        "type": "brand",
+        "name": "OPPO",
+        "value": "oppo"
+    },
+    {
+        "type": "brand",
+        "name": "Honor",
+        "value": "honor"
+    },
+    {
+        "type": "brand",
+        "name": "Motorola",
+        "value": "motorola"
+    },
+    {
+        "type": "brand",
+        "name": "Nokia",
+        "value": "nokia"
+    }
+]

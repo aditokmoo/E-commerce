@@ -1,0 +1,21 @@
+.filterName {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+
+    span {
+        font-weight: 600;
+    }
+
+    svg {
+        transform: rotate(0);
+        transition: .3s;
+
+        &.active {
+            transform: rotate(180deg);
+        }
+    }
+}

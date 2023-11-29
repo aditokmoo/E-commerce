@@ -1,0 +1,12 @@
+[
+    {
+        "type": "gpu",
+        "name": "AMD",
+        "value": "amd"
+    },
+    {
+        "type": "gpu",
+        "name": "NVidia",
+        "value": "nvidia"
+    }
+]

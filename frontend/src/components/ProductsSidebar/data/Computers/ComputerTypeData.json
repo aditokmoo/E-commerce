@@ -1,0 +1,12 @@
+[
+    {
+        "type": "type",
+        "name": "PC",
+        "value": "pc"
+    },
+    {
+        "type": "type",
+        "name": "Laptop",
+        "value": "laptop"
+    }
+]

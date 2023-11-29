@@ -1,0 +1,72 @@
+.specialProduct {
+    height: 65rem;
+    width: 100%;
+
+    &:nth-child(1) {
+        background-color: #fff;
+        
+        .image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    
+    &:nth-child(2) {
+        background-color: #F9F9F9;
+        .image {
+            position: relative;
+            
+            img {
+                position: absolute;
+                right: 0;
+            }
+        }
+    }
+    &:nth-child(3) {
+        background-color: #EAEAEA;
+        .image {
+            display: flex;
+            justify-content: center;
+        }
+    }
+    &:nth-child(4) {
+        background-color: #2C2C2C;
+        .image {
+            position: relative;
+            
+            img {
+                position: absolute;
+                right: 0;
+            }
+        }
+
+        .body {
+            h2 {
+                color: #fff;
+            }
+        }
+    }
+    
+    .image {
+        height: 40rem;
+    }
+    
+    .body {
+        display: flex;
+        flex-direction: column;
+        width: 45rem;
+        margin: 0 auto;
+        justify-content: flex-end;
+        padding: 1rem 4rem;
+
+        h2 {
+            font-weight: 200;
+        }
+        
+        p {
+            color: #909090;
+            margin: 3rem 0 2rem 0;
+        }
+    }
+}

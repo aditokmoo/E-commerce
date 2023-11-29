@@ -1,0 +1,47 @@
+[
+    {
+        "type": "brand",
+        "name": "Acer",
+        "value": "acer"
+    },
+    {
+        "type": "brand",
+        "name": "Asus",
+        "value": "asus"
+    },
+    {
+        "type": "brand",
+        "name": "HP",
+        "value": "hp"
+    },
+    {
+        "type": "brand",
+        "name": "Macbook",
+        "value": "macbook"
+    },
+    {
+        "type": "brand",
+        "name": "Lenovo",
+        "value": "lenovo"
+    },
+    {
+        "type": "brand",
+        "name": "Samsung",
+        "value": "samsung"
+    },
+    {
+        "type": "brand",
+        "name": "DELL",
+        "value": "dell"
+    },
+    {
+        "type": "brand",
+        "name": "Toshiba",
+        "value": "toshiba"
+    },
+    {
+        "type": "brand",
+        "name": "MSI",
+        "value": "msi"
+    }
+]

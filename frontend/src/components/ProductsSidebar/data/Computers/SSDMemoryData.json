@@ -1,0 +1,32 @@
+[
+    {
+        "type": "ssd",
+        "name": "120GB",
+        "value": "120gb"
+    },
+    {
+        "type": "ssd",
+        "name": "240GB",
+        "value": "240gb"
+    },
+    {
+        "type": "ssd",
+        "name": "256GB",
+        "value": "256gb"
+    },
+    {
+        "type": "ssd",
+        "name": "500GB",
+        "value": "500gb"
+    },
+    {
+        "type": "ssd",
+        "name": "512GB",
+        "value": "512gb"
+    },
+    {
+        "type": "ssd",
+        "name": "1TB",
+        "value": "1tb"
+    }
+]

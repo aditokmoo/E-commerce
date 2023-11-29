@@ -1,0 +1,32 @@
+.form {
+	.formContainer {
+		.inputContainer {
+			margin: 1rem 0;
+			position: relative;
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+
+			svg {
+				position: absolute;
+				left: 1rem;
+				top: 1rem;
+				color: #999;
+			}
+
+			label {
+				font-weight: 600;
+				font-size: 1.4rem;
+			}
+
+			.searchInput {
+				padding: 1rem 0 1rem 3.5rem;
+				width: 100%;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+				color: #000;
+				background-color: #f5f5f5;
+			}
+		}
+	}
+}
