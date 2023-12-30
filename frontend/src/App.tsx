@@ -10,7 +10,7 @@ import { ActiveCatalogFilterContextProvider } from './context/ActiveCatalogFilte
 // SCSS
 import './App.scss'
 import Computers from './pages/Catalog/Computers/Computers'
-import Login from './pages/Login/Login'
+import Login from './pages/Register/Register'
 
 function App() {
   return (

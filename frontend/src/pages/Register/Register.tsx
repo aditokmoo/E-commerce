@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 // Images
-import loginImage from '../../assets/auth-image.png';
+import manShoppingImage from '../../assets/auth-image.png';
 // SCSS
-import styles from './Login.module.scss';
+import styles from './Register.module.scss';
 
-export default function Login() {
+export default function Register() {
     return (
         <div className={styles.login}>          
             <div className={styles.leftSection}>
@@ -70,7 +70,7 @@ export default function Login() {
             </div>
 
             <div className={styles.rightSection}>
-                <img src={loginImage} alt="" />
+                <img src={manShoppingImage} alt="" />
             </div>
         </div>
     )
