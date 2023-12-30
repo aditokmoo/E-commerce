@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Poppins&family=Roboto:wght@500&display=swap');
+
 .login {
 	display: flex;
 	width: 100%;
@@ -7,6 +9,57 @@
 		width: 60%;
         padding: 5rem;
         position: relative;
+
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+        }
+
+        p {
+            color: #666;
+            margin-top: 5px;
+            font-size: 1.4rem;
+        }
+
+        .imageContainer {
+            margin-top: 2rem;
+
+            label {
+                background-image: url('../../assets/no-profile.png');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                width: 10rem;
+                height: 10rem;
+                display: block;
+                border-radius: 50%;
+                position: relative;
+                
+                .overlay {
+                    background-color: rgba(17,17,17, 0.3);
+                    position: absolute;
+                    width: 10rem;
+                    height: 10rem;
+                    border-radius: 50%;
+                    opacity: 0;
+                    transition: .2s;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    color: #fff;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            input {
+                display: none;
+            }
+        }
         
         .formContainer {
             display: grid;
@@ -44,6 +97,7 @@
             align-items: center;
             gap: 2rem;
             border-top: 1px solid #8AADE1;
+            z-index: 3;
 
             button {
                 background-color: #6F83B6;
@@ -74,5 +128,13 @@
 	.rightSection {
 		width: 40%;
 		background-color: #DCE4EE;
+        position: relative;
+
+        img {
+            position: absolute;
+            bottom: 5.8rem;
+            right: 10rem;
+            width: 60rem;
+        }
 	}
 }
