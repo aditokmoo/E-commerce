@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -58,13 +59,27 @@ const userSchema = new mongoose.Schema({
     postalCode: {
         type: String,
         required: [true, 'Please provide postal code'],
-        validate: {
-            validator: function() {
-                return isPostalCode(this.postalCode, 'any')
-            },
-            message: 'Please provide valid postal code'
-        }
+    },
+    role: {
+        type: String,
+        default: 'user',
+        enum: ['user', 'admin']
+    },
+    confirmed: {
+        type: Boolean,
+        default: false,
+    },
+    confirmToken: {
+        type: String,
     }
-});
+}, { timestamps: true });
+
+// Hash password before saving
+userSchema.pre('save', async function(next) {
+    if(!this.isModified('password')) return next();
+    this.password = await bcrypt.hash(this.password, 12);
+    this.passwordConfirm = undefined;
+    next();
+})
 
 module.exports = mongoose.model('User', userSchema);

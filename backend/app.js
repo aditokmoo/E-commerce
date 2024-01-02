@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/AppError');
+const authRouter = require('./routes/authRoute');
 
 // Middlewares
 if(process.env.NODE_ENV === 'dev') {
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Routes
+app.use('/api/auth', authRouter)
 
 // Handle unhadled routes
 app.all('*', (req, res, next) => {
