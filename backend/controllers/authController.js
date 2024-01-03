@@ -28,7 +28,27 @@ exports.signup = asyncHandler(async (req, res, next) => {
 });
 
 // VERIFY ACCOUNT
-exports.verify = asyncHandler(async (req, res, next) => {});
+exports.verify = asyncHandler(async (req, res, next) => {
+    const { confirmToken } = req.params;
+    // Check if confirm token exist
+    if(!confirmToken) return next(new AppError('Invalid token', 401));
+    // Hash confirm token
+    const hashConfirmToken = crypto.createHash("sha256").update(confirmToken).digest("hex");
+    // Find user
+    const user = await User.findOne({
+        confirmToken: hashConfirmToken,
+        confirmed: false
+    });
+    // Check if that user exist
+    if(!user) return next(new AppError('Invalid token', 401));
+    // verify user data
+    user.confirmed = true;
+    user.confirmToken = undefined;
+    // Save user
+    await user.save({ validateBeforeSave: false });
+    // Send response
+    return res.status(200).json({ status: 'success', message: `${user.username} account has been verified` })
+});
 
 // LOGIN
 exports.login = asyncHandler(async (req, res, next) => {});
