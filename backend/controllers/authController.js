@@ -3,6 +3,8 @@ const asyncHandler = require('express-async-handler');
 const crypto = require('crypto');
 const sendEmail = require('../utils/sendEmail');
 const AppError = require('../utils/AppError');
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 // SIGN UP
 exports.signup = asyncHandler(async (req, res, next) => {
@@ -51,10 +53,89 @@ exports.verify = asyncHandler(async (req, res, next) => {
 });
 
 // LOGIN
-exports.login = asyncHandler(async (req, res, next) => {});
+exports.login = asyncHandler(async (req, res, next) => {
+    const { email, password } = req.body;
+    // Check if email and password exist
+    if(!email || !password) return next(new AppError('All fields are required', 400));
+    // Find user
+    const user = await User.findOne({ email }).exec();
+    // Check if that user exist
+    if(!user) return next(new AppError('Unauthorized', 401));
+    // Check if user is verified
+    if(!user.confirmed) return next(new AppError('You need to verify first. Verification link is on your email'));
+    // Match passwords
+    const match = await bcrypt.compare(password, user.password);
+    // Check if dosnt match
+    if(!match) return next(new AppError("Password dosn't match", 401));
+    // Create access token
+    const accessToken = jwt.sign(
+        {
+            UserInfo: {
+                username: user.username,
+                role: user.role
+            }
+        },
+        process.env.ACCESS_TOKEN,
+        { expiresIn: '20s' }
+    )
+    // Create refresh token
+    const refreshToken = jwt.sign(
+        { username: user.username },
+        process.env.REFRESH_TOKEN,
+        { expiresIn: '1d' }
+    )
+    // Create secure cookie with refresh token
+    res.cookie('jwt', refreshToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'None',
+        maxAge: 7 * 24 * 60 * 60 * 1000
+    });
+    // Send response
+    res.status(200).json({ accessToken })
+});
 
 // REFRESH
-exports.refresh = asyncHandler(async (req, res, next) => {});
+exports.refresh = asyncHandler(async (req, res, next) => {
+    const cookies = req.cookies;
+    // Check if cookies jwt exist
+    if(!cookies?.jwt) return next(new AppError('Unauthorized', 401));
+
+    const refreshToken = cookies.jwt;
+
+    jwt.verify(refreshToken, process.env.REFRESH_TOKEN, asyncHandler(async (err, decode) => {
+        if(err) return next(new AppError('Forbbiden', 403));
+        // Find user
+        const user = await User.findOne({ username: decode.username });
+        // Check if user exist
+        if(!user) return next(new AppError('Unauthorized', 401));
+        // Create access token
+        const accessToken = jwt.sign(
+            {
+                UserInfo: {
+                    username: user.username,
+                    role: user.role
+                }
+            },
+            process.env.ACCESS_TOKEN,
+            { expiresIn: '20s' }
+        );
+        // Send response
+        res.status(200).json({ accessToken });
+    }))
+});
 
 // LOGOUT
-exports.logout = asyncHandler(async (req, res, next) => {});
+exports.logout = asyncHandler(async (req, res, next) => {
+    const cookies = req.cookies;
+    // Check if cookies jwt dosnt exist
+    if(!cookies?.jwt) return res.sendStatus(204);
+    // Clear cookie
+    res.clearCookie('jwt', {
+        httpOnly: true,
+        sameSite: 'None',
+        secure: true,
+    });
+    // Send response
+    res.status(200).json({ status: 'success', message: 'Cookie cleared' })
+});
