@@ -10,7 +10,8 @@ import { ActiveCatalogFilterContextProvider } from './context/ActiveCatalogFilte
 // SCSS
 import './App.scss'
 import Computers from './pages/Catalog/Computers/Computers'
-import Login from './pages/Register/Register'
+import Register from './pages/Register/Register'
+import Login from './pages/Login/Login'
 
 function App() {
   return (
@@ -38,7 +39,8 @@ function App() {
           <Footer />
         </ActiveCatalogFilterContextProvider>
       } />
-      <Route path='/register' element={<Login />} />
+      <Route path='/register' element={<Register />} />
+      <Route path='/login' element={<Login />} />
     </Routes> 
   )
 }
