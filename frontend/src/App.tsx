@@ -12,6 +12,7 @@ import './App.scss'
 import Computers from './pages/Catalog/Computers/Computers'
 import Register from './pages/Register/Register'
 import Login from './pages/Login/Login'
+import VerifyPage from './pages/VerifyPage/VerifyPage'
 
 function App() {
   return (
@@ -39,8 +40,9 @@ function App() {
           <Footer />
         </ActiveCatalogFilterContextProvider>
       } />
-      <Route path='/register' element={<Register />} />
-      <Route path='/login' element={<Login />} />
+      <Route path='/user/register' element={<Register />} />
+      <Route path='/user/login' element={<Login />} />
+      <Route path='/user/verify' element={<VerifyPage />} />
     </Routes> 
   )
 }

@@ -28,7 +28,11 @@ export default function Nav() {
                     <div className={styles.options}>
                         <span className={styles.icon}><RiHeartLine /></span>
                         <span className={styles.icon}><BsCart2 /></span>
-                        <span className={styles.icon}><AiOutlineUser /></span>
+                        {true ? (
+                            <Link to='/user/login' className={styles.loginBtn}>Login</Link>
+                        ):(
+                            <span className={styles.icon}><AiOutlineUser /></span>
+                        )}
                     </div>
                 </div>
             </div>

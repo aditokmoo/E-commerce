@@ -1,11 +1,11 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 // Custom hooks
 import { useSignup } from '../../hooks/useAuth';
-// Images
-import manShoppingImage from '../../assets/auth-image.png';
+// React icons
+import { MdOutlineArrowBack } from "react-icons/md";
 // SCSS
 import styles from './Register.module.scss';
-import { useState } from 'react';
 
 export default function Register() {
     const { mutate, isPending } = useSignup();
@@ -27,7 +27,8 @@ export default function Register() {
     if(isPending) return <h2>Loading...</h2>
 
     return (
-        <div className={styles.register}>          
+        <div className={styles.register}>      
+            <Link to='/' className={styles.backBtn}><MdOutlineArrowBack /></Link>
             <div className={styles.leftSection}>
                 <h2>Create account</h2>
                 <p>Welcome to the best web shop</p>  
@@ -88,14 +89,12 @@ export default function Register() {
 
                     <div className={styles.formFooter}>
                         <button>Create account</button>
-                        <p>You already have account? <Link to='/login'>Login</Link></p>
+                        <p>You already have account? <Link to='/user/login'>Login</Link></p>
                     </div>
                 </form>
             </div>
 
-            <div className={styles.rightSection}>
-                <img src={manShoppingImage} alt="" />
-            </div>
+            <div className={styles.rightSection}></div>
         </div>
     )
 }

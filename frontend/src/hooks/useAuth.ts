@@ -9,7 +9,7 @@ export function useSignup() {
         mutationFn: (credentials: any) => register(credentials),
         onSuccess: (res) => {
             if(res.response?.data?.status === 'fail' || res.response?.data?.status === 'error') return toast.error(res.response.data.message) 
-            navigate('/login');
+            navigate('/user/verify');
         },
         onError: (err) => {
             toast.error(err.message)

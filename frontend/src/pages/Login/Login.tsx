@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
-// Images
-import manShoppingImage from '../../assets/auth-image.png';
+// React icons
+import { MdOutlineArrowBack } from "react-icons/md";
 // SCSS
 import styles from './Login.module.scss';
 
 export default function Login() {
     return (
-        <div className={styles.login}>          
+        <div className={styles.login}>
+            <Link to='/' className={styles.backBtn}><MdOutlineArrowBack /></Link>
             <div className={styles.leftSection}>
                 <h2>Sign In</h2>
                 <p>Welcome to the best web shop</p>  
@@ -24,14 +25,12 @@ export default function Login() {
 
                     <div className={styles.formFooter}>
                         <button>Sign In</button>
-                        <p>You already have account? <Link to='/register'>Create account</Link></p>
+                        <p>You already have account? <Link to='/user/register'>Create account</Link></p>
                     </div>
                 </form>
             </div>
 
-            <div className={styles.rightSection}>
-                <img src={manShoppingImage} alt="" />
-            </div>
+            <div className={styles.rightSection}></div>
         </div>
     )
 }
