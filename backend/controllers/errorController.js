@@ -17,7 +17,7 @@ module.exports = (err, req, res, next) => {
         if(err.name === 'ValidationError') {
             const errors = Object.values(err.errors).map(el => el.message);
             const message = `Invalid input data. ${errors.join('. ')}`
-            return res.status(400).json({ status: 'success', message})
+            return res.status(400).json({ status: 'fail', message})
         }
 
         if(err.isOperational) {

@@ -9,6 +9,7 @@ const jwt = require('jsonwebtoken')
 // SIGN UP
 exports.signup = asyncHandler(async (req, res, next) => {
     const { username, firstName, lastName, email, password, confirmPassword, phoneNumber, country, city, postalCode } = req.body;
+    
     // Find user with same credentials
     const user = await User.findOne({ email });
     // If that user is found send error

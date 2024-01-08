@@ -5,11 +5,13 @@ const morgan = require('morgan');
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/AppError');
 const authRouter = require('./routes/authRoute');
+const cors = require('cors');
 
 // Middlewares
 if(process.env.NODE_ENV === 'dev') {
     app.use(morgan('dev'))
 }
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 

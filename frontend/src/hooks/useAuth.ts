@@ -8,7 +8,7 @@ export function useSignup() {
     const { mutate, isPending } = useMutation({
         mutationFn: (credentials: any) => register(credentials),
         onSuccess: (res) => {
-            console.log(res)
+            if(res.response?.data?.status === 'fail' || res.response?.data?.status === 'error') return toast.error(res.response.data.message) 
             navigate('/login');
         },
         onError: (err) => {
