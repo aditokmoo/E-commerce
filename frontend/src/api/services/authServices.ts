@@ -50,7 +50,6 @@ export async function refreshToken() {
         const res = await axios.get('/api/auth/refresh', {
             withCredentials: true
         });
-        console.log(res.data)
         return res.data;
     } catch (error) {
         console.log(error);
@@ -63,8 +62,6 @@ export async function getUser(axiosPrivate: AxiosInstance) {
         const res = await axiosPrivate.get('/api/auth/user', {
             withCredentials: true
         });
-        console.log(res.data)
-        console.log(123)
         return res.data;
     } catch (error) {
         console.log(error)

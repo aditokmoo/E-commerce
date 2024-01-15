@@ -8,8 +8,6 @@ export default function UserProfile() {
 
     if(isLoading) return <h2>Loading...</h2>
 
-    console.log(data)
-
     return (
         <>
             <Link to='/'>Back</Link>
