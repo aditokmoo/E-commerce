@@ -27,7 +27,6 @@ export default function Nav() {
                         <li><Link to='/about'>About</Link></li>
                         <li><Link to='/contact'>Contact Us</Link></li>
                         <li><Link to='/blog'>Blog</Link></li>
-                        <li><Link to='/blog'>Profile</Link></li>
                     </ul>
                     <div className={styles.options}>
                         <span className={styles.icon}><RiHeartLine /></span>

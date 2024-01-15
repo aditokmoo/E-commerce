@@ -1,6 +1,5 @@
 import { AxiosInstance } from 'axios';
 import axios from '../http.ts';
-import { useLocation, useNavigate } from 'react-router';
 
 type createUserType = {
     username: string,
@@ -52,7 +51,7 @@ export async function refreshToken() {
             withCredentials: true
         });
         console.log(res.data)
-        return res.data.accessToken;
+        return res.data;
     } catch (error) {
         console.log(error);
         return error;

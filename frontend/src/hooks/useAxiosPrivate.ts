@@ -5,7 +5,7 @@ import { useAuthContext } from "../context/authContext";
 import { useEffect } from "react";
 
 export default function useAxiosPrivate() {
-    const { currentUser, setCurrentUser } = useAuthContext();
+    const { currentUser, setCurrentUser, setUserRole } = useAuthContext();
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -21,9 +21,10 @@ export default function useAxiosPrivate() {
             const prevReq = error?.config;
             if(error?.response?.status === 403 && !prevReq?.sent) {
                 prevReq.sent = true;
-                const newAccessToken = await refreshToken();
-                prevReq.headers['Authorization'] = `Barear ${newAccessToken}`;
-                setCurrentUser(newAccessToken)
+                const newUserAccess = await refreshToken();
+                prevReq.headers['Authorization'] = `Barear ${newUserAccess.accessToken}`;
+                setCurrentUser(newUserAccess.accessToken)
+                setUserRole(newUserAccess.role)
                 return axiosPrivate(prevReq)
             }
             navigate('/user/login', { state: { from: location }, replace: true })
