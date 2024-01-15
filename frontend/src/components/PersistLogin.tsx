@@ -23,11 +23,6 @@ export default function PersistLogin() {
         !currentUser ? verifyRefreshToken() : setLoading(false);
     }, []);
 
-    useEffect(() => {
-        console.log(`isLoading: ${isLoading}`);
-        console.log(`authToken: ${currentUser}`);
-    }, [isLoading])
-
     return (
         <>
             {isLoading ? <h2>Loading...</h2> : <Outlet />}
