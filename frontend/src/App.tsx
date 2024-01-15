@@ -13,6 +13,9 @@ import Computers from './pages/Catalog/Computers/Computers'
 import Register from './pages/Register/Register'
 import Login from './pages/Login/Login'
 import VerifyPage from './pages/VerifyPage/VerifyPage'
+import RequireAuth from './components/RequireAuth'
+import UserProfile from './pages/UserProfile/UserProfile'
+import AdminProfile from './pages/AdminProfile/AdminProfile'
 
 function App() {
   return (
@@ -43,6 +46,12 @@ function App() {
       <Route path='/user/register' element={<Register />} />
       <Route path='/user/login' element={<Login />} />
       <Route path='/user/verify' element={<VerifyPage />} />
+      <Route element={<RequireAuth allowedRole='user' />}>
+        <Route path='/user/profile' element={<UserProfile />} />
+      </Route>
+      <Route element={<RequireAuth allowedRole='admin' />}>
+        <Route path='/admin' element={<AdminProfile />} />
+      </Route>
     </Routes> 
   )
 }

@@ -77,13 +77,13 @@ exports.login = asyncHandler(async (req, res, next) => {
             }
         },
         process.env.ACCESS_TOKEN,
-        { expiresIn: '20s' }
+        { expiresIn: '10s' }
     )
     // Create refresh token
     const refreshToken = jwt.sign(
         { username: user.username },
         process.env.REFRESH_TOKEN,
-        { expiresIn: '1d' }
+        { expiresIn: '20s' }
     )
     // Create secure cookie with refresh token
     res.cookie('jwt', refreshToken, {
@@ -93,7 +93,7 @@ exports.login = asyncHandler(async (req, res, next) => {
         maxAge: 7 * 24 * 60 * 60 * 1000
     });
     // Send response
-    res.status(200).json({ accessToken })
+    res.status(200).json({ role: user.role, accessToken })
 });
 
 // REFRESH
@@ -122,9 +122,27 @@ exports.refresh = asyncHandler(async (req, res, next) => {
             { expiresIn: '20s' }
         );
         // Send response
-        res.status(200).json({ accessToken });
+        res.status(200).json({ role: user.role, accessToken })
     }))
 });
+
+// GET USER
+exports.getUser = asyncHandler(async (req, res, next) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    console.log(token)
+    // Check if token exist
+    if (!token) return next(new AppError('Unauthorized', 401));
+    // Verify token
+    await jwt.verify(token, process.env.ACCESS_TOKEN, async (err, decode) => {
+        if(err) return next(new AppError('Invalid token, login again', 403));
+        // Get user
+        const user = await User.findOne({ username: decode.UserInfo.username }).select('-password');
+        // Check if user exist
+        if (!user) return next(new AppError('User does no longer exist. Please register', 401));
+        // Send response
+        res.status(200).json(user)
+    })
+})
 
 // LOGOUT
 exports.logout = asyncHandler(async (req, res, next) => {

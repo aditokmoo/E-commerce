@@ -8,8 +8,11 @@ import { AiOutlineUser } from "react-icons/ai";
 import Logo from '../../../assets/logo.png';
 // SCSS
 import styles from './Nav.module.scss';
+import { useAuthContext } from "../../../context/authContext";
 
 export default function Nav() {
+    const { currentUser, userRole } = useAuthContext();
+
     return (
         <div className={styles.nav}>
             <div className="container">
@@ -24,14 +27,17 @@ export default function Nav() {
                         <li><Link to='/about'>About</Link></li>
                         <li><Link to='/contact'>Contact Us</Link></li>
                         <li><Link to='/blog'>Blog</Link></li>
+                        <li><Link to='/blog'>Profile</Link></li>
                     </ul>
                     <div className={styles.options}>
                         <span className={styles.icon}><RiHeartLine /></span>
                         <span className={styles.icon}><BsCart2 /></span>
-                        {true ? (
+                        {!currentUser ? (
                             <Link to='/user/login' className={styles.loginBtn}>Login</Link>
-                        ):(
-                            <span className={styles.icon}><AiOutlineUser /></span>
+                        ): userRole === 'user' ? (
+                            <Link to='/user/profile' className={styles.icon}><AiOutlineUser /></Link>
+                        ) : (
+                            <Link to='/admin' className={styles.icon}><AiOutlineUser /></Link>
                         )}
                     </div>
                 </div>

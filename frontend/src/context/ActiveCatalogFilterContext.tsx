@@ -39,6 +39,6 @@ export function ActiveCatalogFilterContextProvider({ children } : ContextPropsTy
 
 export function useActiveCatalogFilterContext() {
     const context = useContext(activeCatalogFilterContext)
-    if(!context) throw Error('Cant you context here!')
+    if(!context) throw Error('Cant use context here!')
     return context;
 }
