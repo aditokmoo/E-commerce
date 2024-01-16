@@ -5,9 +5,10 @@ import { useAuthContext } from "../context/authContext";
 
 export default function PersistLogin() {
     const [ isLoading, setLoading ] = useState(true);
-    const { currentUser, setCurrentUser, setUserRole } = useAuthContext();
+    const { currentUser, setCurrentUser, setUserRole, persist } = useAuthContext();
 
     useEffect(() => {
+        let isMounted = true;
         const verifyRefreshToken = async () => {
             try {
                 const newUserAccess = await refreshToken();
@@ -16,16 +17,20 @@ export default function PersistLogin() {
             } catch (error) {
                 console.log(error)
             } finally {
-                setLoading(false)
+                isMounted && setLoading(false)
             }
         }
 
         !currentUser ? verifyRefreshToken() : setLoading(false);
+
+        return () => {
+            isMounted = false;
+        }
     }, []);
 
     return (
         <>
-            {isLoading ? <h2>Loading...</h2> : <Outlet />}
+            {!persist ? <Outlet /> : isLoading ? <h2>Loading...</h2> : <Outlet />}
         </>
     )
 }
