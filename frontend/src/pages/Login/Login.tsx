@@ -41,6 +41,10 @@ export default function Login() {
 							<label htmlFor="password">Password *</label>
 							<input type="password" id="password" className="password" autoComplete='off' onChange={(e) => handleInputChange(e.target.value, e.target.id)} />
 						</div>
+					<div className={styles.checkboxContainer}>
+						<input type="checkbox" id='remember_me' />
+						<label htmlFor="remember_me">Remember me</label>
+					</div>
 					</div>
 
 					<div className={styles.formFooter}>
