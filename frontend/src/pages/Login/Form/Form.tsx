@@ -6,24 +6,21 @@ import InputField from './InputField/InputField';
 import CheckboxField from './CheckboxField/CheckboxField';
 // SCSS
 import styles from './Form.module.scss';
-import useHandleInputChange from './hooks/useHandleInputChange';
+import { useForm } from 'react-hook-form';
 
 export default function Form() {
+    const { register, handleSubmit } = useForm();
     const { mutate } = useLogin();
-    const { email, password, handleInputChange } = useHandleInputChange();
 
     return (
-        <form onSubmit={(e) => {
-            e.preventDefault();
-            mutate({email, password})
-        }}>
+        <form onSubmit={handleSubmit((data: any) => mutate(data))}>
             <div className={styles.formContainer}>
                 {/* Email Field */}
-                <InputField value='Email' id='email' type='email' className='email' autoComplete='off' handleChange={handleInputChange} />
+                <InputField register={register} value='Email' id='email' type='email' className='email' autoComplete='off' />
                 {/* Password Field */}
-                <InputField value='Password' id='password' type='password' className='password' autoComplete='off' handleChange={handleInputChange} />
+                <InputField register={register} value='Password' id='password' type='password' className='password' autoComplete='off' />
                 {/* Remember me Field */}
-                <CheckboxField />
+                <CheckboxField register={register} />
             </div>
 
             <div className={styles.formFooter}>

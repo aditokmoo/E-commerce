@@ -65,7 +65,7 @@ export const inputFieldData = [
         }
     },
     {
-        type: 'confirmPassword',
+        type: 'password',
         label: 'Confirm password',
         name: 'confirmPassword',
         id: 'confirmPassword',
@@ -78,7 +78,7 @@ export const inputFieldData = [
         }
     },
     {
-        type: 'phoneNumber',
+        type: 'text',
         label: 'Phone Number',
         name: 'phoneNumber',
         id: 'phoneNumber',
@@ -91,7 +91,7 @@ export const inputFieldData = [
         }
     },
     {
-        type: 'country',
+        type: 'text',
         label: 'Country',
         name: 'country',
         id: 'country',
@@ -104,7 +104,7 @@ export const inputFieldData = [
         }
     },
     {
-        type: 'city',
+        type: 'text',
         label: 'City',
         name: 'city',
         id: 'city',
@@ -117,7 +117,7 @@ export const inputFieldData = [
         }
     },
     {
-        type: 'postalCode',
+        type: 'text',
         label: 'Postal Code',
         name: 'postalCode',
         id: 'postalCode',

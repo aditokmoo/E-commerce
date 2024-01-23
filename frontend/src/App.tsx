@@ -5,10 +5,6 @@ import Smartphones from './pages/Catalog/Smartphones/Smartphones'
 // Components
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
-// Context Provider
-import { ActiveCatalogFilterContextProvider } from './context/ActiveCatalogFilterContext'
-// SCSS
-import './App.scss'
 import Computers from './pages/Catalog/Computers/Computers'
 import Register from './pages/Register/Register'
 import Login from './pages/Login/Login'
@@ -17,6 +13,10 @@ import RequireAuth from './components/RequireAuth'
 import UserProfile from './pages/UserProfile/UserProfile'
 import AdminProfile from './pages/AdminProfile/AdminProfile'
 import PersistLogin from './components/PersistLogin'
+// Context Provider
+import { ActiveCatalogFilterContextProvider } from './context/ActiveCatalogFilterContext'
+// SCSS
+import './App.scss'
 
 function App() {
   return (
