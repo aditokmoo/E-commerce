@@ -77,13 +77,13 @@ exports.login = asyncHandler(async (req, res, next) => {
             }
         },
         process.env.ACCESS_TOKEN,
-        { expiresIn: '10s' }
+        { expiresIn: '30m' }
     )
     // Create refresh token
     const refreshToken = jwt.sign(
         { username: user.username },
         process.env.REFRESH_TOKEN,
-        { expiresIn: '20s' }
+        { expiresIn: '1d' }
     )
     // Create secure cookie with refresh token
     res.cookie('jwt', refreshToken, {
@@ -119,7 +119,7 @@ exports.refresh = asyncHandler(async (req, res, next) => {
                 }
             },
             process.env.ACCESS_TOKEN,
-            { expiresIn: '20s' }
+            { expiresIn: '1d' }
         );
         // Send response
         res.status(200).json({ role: user.role, accessToken })

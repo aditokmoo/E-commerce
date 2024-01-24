@@ -9,8 +9,9 @@ import styles from './Form.module.scss';
 import { useForm } from 'react-hook-form';
 
 export default function Form() {
-    const { register, handleSubmit } = useForm();
-    const { mutate } = useLogin();
+    const { register, handleSubmit, watch } = useForm();
+    const { mutate} = useLogin();
+    const rememberMe = watch('remember_me')
 
     return (
         <form onSubmit={handleSubmit((data: any) => mutate(data))}>
@@ -20,7 +21,7 @@ export default function Form() {
                 {/* Password Field */}
                 <InputField register={register} value='Password' id='password' type='password' className='password' autoComplete='off' />
                 {/* Remember me Field */}
-                <CheckboxField register={register} />
+                <CheckboxField rememberMe={rememberMe} register={register} />
             </div>
 
             <div className={styles.formFooter}>
