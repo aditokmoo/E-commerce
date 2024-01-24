@@ -62,9 +62,16 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
+                        flex-direction: column;
+                        gap: 1.5rem;
                         border-radius: 4px;
                         cursor: pointer;
                         transition: .3s;
+
+                        .icon {
+                            font-size: 4rem;
+                            color: #777;
+                        }
 
                         h3 {
                             color: #333;
