@@ -32,9 +32,9 @@ export default function Nav() {
                         <span className={styles.icon}><RiHeartLine /></span>
                         <span className={styles.icon}><BsCart2 /></span>
                         {!currentUser ? (
-                            <Link to='/user/login' className={styles.loginBtn}>Login</Link>
+                            <Link to='/user/login' className={styles.icon}><AiOutlineUser /></Link>
                         ): userRole === 'user' ? (
-                            <Link to='/user/profile' className={styles.icon}><AiOutlineUser /></Link>
+                            <Link to='/user/profile/dashboard' className={styles.icon}><AiOutlineUser /></Link>
                         ) : (
                             <Link to='/admin' className={styles.icon}><AiOutlineUser /></Link>
                         )}

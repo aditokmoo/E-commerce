@@ -17,6 +17,11 @@ import PersistLogin from './components/PersistLogin'
 import { ActiveCatalogFilterContextProvider } from './context/ActiveCatalogFilterContext'
 // SCSS
 import './App.scss'
+import Dashboard from './pages/UserProfile/components/Dashboard/Dashboard'
+import Orders from './pages/UserProfile/components/Orders/Orders'
+import Address from './pages/UserProfile/components/Address/Address'
+import Wishlist from './pages/UserProfile/components/Wishlist/Wishlist'
+import Details from './pages/UserProfile/components/Details/Details'
 
 function App() {
   return (
@@ -53,7 +58,13 @@ function App() {
       
       <Route element={<PersistLogin />}>
         <Route element={<RequireAuth allowedRole='user' />}>
-          <Route path='/user/profile' element={<UserProfile />} />
+          <Route path='/user/profile' element={<UserProfile />}>
+            <Route path='/user/profile/dashboard' element={<Dashboard />} />
+            <Route path='/user/profile/orders' element={<Orders />} />
+            <Route path='/user/profile/address' element={<Address />} />
+            <Route path='/user/profile/wishlist' element={<Wishlist />} />
+            <Route path='/user/profile/details' element={<Details />} />
+          </Route>
         </Route>
         <Route element={<RequireAuth allowedRole='admin' />}>
           <Route path='/admin' element={<AdminProfile />} />
