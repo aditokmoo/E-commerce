@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useLocation, useNavigate } from "react-router";
-import { getUser, login, refreshToken, register } from "../api/services/authServices";
+import { getUser, login, logout, refreshToken, register } from "../api/services/authServices";
 import toast from "react-hot-toast";
 import { useAuthContext } from "../context/authContext";
 import useAxiosPrivate from "./useAxiosPrivate";
@@ -68,4 +68,14 @@ export function useGetUser() {
     });
 
     return { data, isLoading, isError }
+}
+
+export function useLogout() {
+    const axiosPrivate = useAxiosPrivate();
+    const { mutate, isPending } = useMutation({
+        mutationFn: () => logout(axiosPrivate),
+        mutationKey: ["logout"]
+    });
+
+    return { mutate, isPending }
 }

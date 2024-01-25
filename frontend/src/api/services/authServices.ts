@@ -68,3 +68,13 @@ export async function getUser(axiosPrivate: AxiosInstance) {
         return error;
     }
 }
+
+export async function logout(axiosPrivate: AxiosInstance) {
+    try {
+        const res = await axiosPrivate.post('/api/auth/logout');
+        return res.data;
+    } catch (error) {
+        console.log(error)
+        return error
+    }
+}

@@ -9,13 +9,13 @@
             border-bottom: 1px solid #ddd;
             cursor: pointer;
 
-            &.active {
-                color: #999;
-            }
-
             a {
                 text-decoration: none;
                 color: #000;
+
+                &.active {
+                    color: #999;
+                }
             }
 
             &:last-child {

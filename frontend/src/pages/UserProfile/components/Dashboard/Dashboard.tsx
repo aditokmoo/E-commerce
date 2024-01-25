@@ -5,13 +5,17 @@ import { FaRegUser, FaRegHeart  } from "react-icons/fa6";
 import { CiLogout } from "react-icons/ci";
 // SCSS
 import styles from './Dashboard.module.scss';
-import { useGetUser } from "../../../../hooks/useAuth";
-import { Link } from "react-router-dom";
+import { useGetUser, useLogout } from "../../../../hooks/useAuth";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../../../context/authContext";
 
 export default function Dashboard() {
     const { data, isLoading } = useGetUser()
+    const { mutate, isPending } = useLogout();
+    const { setCurrentUser, setUserRole, setPersist } = useAuthContext();
+    const navigate = useNavigate();
 
-    if (isLoading) return <h2>Loading...</h2>
+    if (isLoading || isPending) return <h2>Loading...</h2>
 
     return (
         <div className={styles.dashboard}>
@@ -38,10 +42,16 @@ export default function Dashboard() {
                   <FaRegUser className={styles.icon}/>
                   <h3>Account details</h3>
                 </Link>
-                <Link to='/user/profile/dashboard' className={styles.option}>
+                <div className={styles.option} onClick={() => {
+                  mutate();
+                  setCurrentUser(null);
+                  setUserRole(null);
+                  setPersist(false);
+                  navigate('/')
+                }}>
                   <CiLogout className={styles.icon}/>
                   <h3>Logout</h3>
-                </Link>
+                </div>
               </div>
             </div>
     )
