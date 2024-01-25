@@ -1,18 +1,6 @@
 import { AxiosInstance } from 'axios';
 import axios from '../http.ts';
-
-type createUserType = {
-    username: string,
-    firstName: string,
-    lastName: string,
-    email: string,
-    password: string,
-    confirmPassword: string,
-    phoneNumber: string,
-    country: string,
-    city: string,
-    postalCode: string
-}
+import { createUserType, loginUserType } from '../../shared/Types/types.ts';
 
 export async function register(credentials: createUserType) {
     try {
@@ -30,9 +18,9 @@ export async function register(credentials: createUserType) {
     }
 }
 
-export async function login(email: string, password: string) {
+export async function login(credentials: loginUserType) {
     try {
-        const res = await axios.post('/api/auth/login', JSON.stringify({ email, password }), {
+        const res = await axios.post('/api/auth/login', JSON.stringify(credentials), {
             headers: {
                 'Content-Type': 'application/json',
             },

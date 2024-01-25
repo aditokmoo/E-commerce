@@ -4,16 +4,12 @@ import { getUser, login, logout, refreshToken, register } from "../api/services/
 import toast from "react-hot-toast";
 import { useAuthContext } from "../context/authContext";
 import useAxiosPrivate from "./useAxiosPrivate";
-
-type loginDataType = {
-    email: string,
-    password: string
-}
+import { createUserType, loginUserType } from "../shared/Types/types";
 
 export function useSignup() {
     const navigate = useNavigate();
     const { mutate, isPending } = useMutation({
-        mutationFn: (credentials: any) => register(credentials),
+        mutationFn: (credentials: createUserType) => register(credentials),
         onSuccess: (res) => {
             if(res.response?.data?.status === 'fail' || res.response?.data?.status === 'error') return toast.error(res.response.data.message) 
             navigate('/user/verify');
@@ -33,7 +29,7 @@ export function useLogin() {
     // Last location before coming to login
     const from = location.state?.from?.pathname || '/'
     const { mutate, isPending } = useMutation({
-        mutationFn: ({email, password}: loginDataType) => login(email, password),
+        mutationFn: (credentials: loginUserType) => login(credentials),
         onSuccess: (res) => {
             if(res.response?.data?.status === 'fail' || res.response?.data?.status === 'error') return toast.error(res.response.data.message)
             // If its okey save token in state

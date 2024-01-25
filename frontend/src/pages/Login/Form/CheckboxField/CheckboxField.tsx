@@ -2,8 +2,12 @@ import { useEffect } from 'react';
 // SCSS
 import styles from './CheckboxField.module.scss';
 
-export default function CheckboxField({ register, rememberMe }: any) {
+type propTypes = { 
+    register: Function, 
+    rememberMe: boolean | undefined 
+}
 
+export default function CheckboxField({ register, rememberMe }: propTypes) {
     useEffect(() => {
         if (rememberMe !== undefined) {
             localStorage.setItem('persist', JSON.stringify(rememberMe));

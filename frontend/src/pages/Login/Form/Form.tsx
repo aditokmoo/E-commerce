@@ -7,14 +7,15 @@ import CheckboxField from './CheckboxField/CheckboxField';
 // SCSS
 import styles from './Form.module.scss';
 import { useForm } from 'react-hook-form';
+import { loginUserType } from '../../../shared/Types/types';
 
 export default function Form() {
-    const { register, handleSubmit, watch } = useForm();
+    const { register, handleSubmit, watch } = useForm<loginUserType>();
     const { mutate} = useLogin();
     const rememberMe = watch('remember_me')
 
     return (
-        <form onSubmit={handleSubmit((data: any) => mutate(data))}>
+        <form onSubmit={handleSubmit((data: loginUserType) => mutate(data))}>
             <div className={styles.formContainer}>
                 {/* Email Field */}
                 <InputField register={register} value='Email' id='email' type='email' className='email' autoComplete='off' />

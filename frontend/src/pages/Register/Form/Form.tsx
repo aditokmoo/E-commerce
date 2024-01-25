@@ -2,22 +2,23 @@ import { Link } from 'react-router-dom';
 import { inputFieldData } from './InputFieldData/InputFieldData';
 // Custom hooks
 import { useSignup } from '../../../hooks/useAuth';
-// React icons
-import { FaInfoCircle } from "react-icons/fa";
 // SCSS
 import styles from './Form.module.scss';
 import { useForm } from 'react-hook-form';
-
 import { DevTool } from '@hookform/devtools';
+import { createUserType, inputFieldDataTypes } from '../../../shared/Types/types';
+
+type inputType = "email" | "password" | "username" | "firstName" | "lastName" | "confirmPassword" | "phoneNumber" | "country" | "city" | "postalCode"
+
 
 export default function Form() {
-	const { register, handleSubmit, control } = useForm();
+	const { register, handleSubmit, control } = useForm<createUserType>();
 	const { mutate } = useSignup();
 
 	return (
-		<form onSubmit={handleSubmit((data) => mutate(data))} noValidate>
+		<form onSubmit={handleSubmit((data: createUserType) => mutate(data))} noValidate>
 			<div className={styles.formContainer}>
-				{inputFieldData.map((inputData: any, index: number) => (
+				{inputFieldData.map((inputData: inputFieldDataTypes, index: number) => (
 					<div className={styles.inputContainer} key={index}>
 						<label htmlFor={inputData.id}>{inputData.label} *</label>
 						
@@ -25,10 +26,10 @@ export default function Form() {
 							type={inputData.type}
 							id={inputData.id}
 							value={inputData.value}
-							className={inputData.className}
+							className={inputData.name}
 							autoComplete="off"
 							required
-							{...register(inputData.id)}
+							{...register(inputData.id as inputType)}
 						/>
 					</div>
 				))}

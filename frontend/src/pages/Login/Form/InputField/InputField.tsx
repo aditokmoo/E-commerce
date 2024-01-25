@@ -1,16 +1,16 @@
 // SCSS
 import styles from './InputField.module.scss';
 
-type InputFieldType = {
+type propTypes = {
     value: string,
     type: string,
     id: string,
     className: string,
     autoComplete: string,
-    register: any
+    register: Function
 }
 
-export default function InputField({ value, type, id, className, autoComplete, register } : InputFieldType) {
+export default function InputField({ value, type, id, className, autoComplete, register } : propTypes) {
     return (
         <div className={styles.inputContainer}>
             <label htmlFor={id}>{value} *</label>
