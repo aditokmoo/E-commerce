@@ -20,7 +20,6 @@ export type loginUserType = {
 export type inputFieldDataTypes = {
     type: string,
     id: string,
-    value: string,
     name: string,
     label: string
 }

@@ -25,7 +25,6 @@ export default function Form() {
 						<input
 							type={inputData.type}
 							id={inputData.id}
-							value={inputData.value}
 							className={inputData.name}
 							autoComplete="off"
 							required

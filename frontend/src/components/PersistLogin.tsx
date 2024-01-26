@@ -21,7 +21,7 @@ export default function PersistLogin() {
             }
         }
 
-        !currentUser ? verifyRefreshToken() : setLoading(false);
+        !currentUser && persist ? verifyRefreshToken() : setLoading(false);
 
         return () => {
             isMounted = false;

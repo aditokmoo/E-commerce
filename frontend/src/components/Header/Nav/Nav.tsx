@@ -36,7 +36,7 @@ export default function Nav() {
                         ): userRole === 'user' ? (
                             <Link to='/user/profile/dashboard' className={styles.icon}><AiOutlineUser /></Link>
                         ) : (
-                            <Link to='/admin' className={styles.icon}><AiOutlineUser /></Link>
+                            <Link to='/admin/dashboard' className={styles.icon}><AiOutlineUser /></Link>
                         )}
                     </div>
                 </div>

@@ -1,0 +1,63 @@
+.productFilter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+
+    h2 {
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .productQuantity {
+            color: #888;
+            font-size: 1.4rem;
+        }
+    }
+
+    .options {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .addProduct {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: inherit;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 1.5rem;
+            color: #333;
+            text-decoration: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: .2s;
+
+            &:hover {
+                opacity: .6;
+            }
+
+            svg {
+                font-size: 2rem;
+                color: #333;
+            }
+        }
+
+        .searchIcon {
+            position: relative;
+            left: 3rem;
+            top: .3rem;
+            color: #666;
+        }
+
+        .searchInput {
+            padding: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 1rem;
+            width: 40rem;
+            padding-left: 4rem;
+        }
+    }
+}

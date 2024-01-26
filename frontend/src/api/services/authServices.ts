@@ -28,8 +28,7 @@ export async function login(credentials: loginUserType) {
         });
         return res?.data;
     } catch (error) {
-        console.log(error);
-        return error;
+        return error
     }
 }
 

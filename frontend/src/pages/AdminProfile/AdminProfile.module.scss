@@ -1,0 +1,15 @@
+.adminSection {
+    padding: 2rem;
+
+    .container {
+        margin: 0 auto;
+        max-width: 130rem;
+    
+        .profile {
+            display: flex;
+            justify-content: space-between;
+            margin: 4rem 0;
+            gap: 6rem;
+        }
+    }
+}

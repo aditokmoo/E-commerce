@@ -27,7 +27,7 @@ export function useLogin() {
     const navigate = useNavigate();
     const location = useLocation();
     // Last location before coming to login
-    const from = location.state?.from?.pathname || '/'
+    const from = location.state?.from?.pathname || '/user/profile/dashboard'
     const { mutate, isPending } = useMutation({
         mutationFn: (credentials: loginUserType) => login(credentials),
         onSuccess: (res) => {

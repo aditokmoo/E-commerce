@@ -1,0 +1,103 @@
+.product {
+    .productImage {
+        border: 1px solid #ddd;
+        background-color: #f2f2f2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3rem 0;
+        position: relative;
+        border-radius: 5px;
+
+        .deleteIcon {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            cursor: pointer;
+            font-size: 1.8rem;
+            transition: .2s;
+
+            &:hover {
+                color: red;
+            }
+        }
+
+        h3 {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: red;
+            font-size: 1.4rem;
+            color: #fff;
+            padding: 1.8rem 1rem;
+            border-radius: 50%;
+        }
+    }
+
+    .productData {
+        padding: 1rem 0;
+
+        h4 {
+            font-size: 1.6rem;
+            width: 30rem;
+            line-height: 1.8;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .icons {
+            display: flex;
+            gap: .7rem;
+            margin: 1rem 0;
+
+            .starIcon {
+                color: #ebb434;
+                font-size: 2rem;
+            }
+
+            .reviewNum {
+                color: #777;
+                font-size: 1.5rem;
+            }
+        }
+
+        .price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: 'Poppins', sans-serif;
+
+            .newPrice {
+                font-weight: 900;
+            }
+
+            .originalPrice {
+                font-size: 1.4rem;
+                color: #999;
+                text-decoration: line-through;
+            }
+        }
+
+        .editBtn {
+            width: 100%;
+            padding: 1.3rem;
+            text-align: center;
+            background-color: inherit;
+            border: 1px solid #ddd;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2rem;
+            border-radius: 1rem;
+            color: #555;
+            font-size: 1.3rem;
+            gap: 1rem;
+            transition: .2s;
+
+            &:hover {
+                opacity: .6;
+            }
+        }
+    }
+}

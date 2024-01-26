@@ -1,15 +1,15 @@
-// React icons
-import { LiaBoxOpenSolid } from "react-icons/lia";
-import { IoLocationOutline } from "react-icons/io5";
-import { FaRegUser, FaRegHeart  } from "react-icons/fa6";
-import { CiLogout } from "react-icons/ci";
-// SCSS
-import styles from './Dashboard.module.scss';
 import { useGetUser, useLogout } from "../../../../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../../../context/authContext";
+// React icons
+import { LiaBoxOpenSolid } from "react-icons/lia";
+import { FaRegUser } from "react-icons/fa6";
+import { PiComputerTowerLight } from "react-icons/pi";
+import { CiLogout } from "react-icons/ci";
+// SCSS
+import styles from './AdminDashboard.module.scss';
 
-export default function Dashboard() {
+export default function AdminDashboard() {
     const { data, isLoading } = useGetUser()
     const { mutate, isPending } = useLogout();
     const { setCurrentUser, setUserRole, setPersist } = useAuthContext();
@@ -26,19 +26,15 @@ export default function Dashboard() {
                 account details.
               </p>
               <div className={styles.dashboardOptions}>
-                <Link to='/user/profile/orders' className={styles.option}>
+                <Link to='/admin/products' className={styles.option}>
+                  <PiComputerTowerLight className={styles.icon}/>
+                  <h3>Products</h3>
+                </Link>
+                <Link to='/admin/orders' className={styles.option}>
                   <LiaBoxOpenSolid className={styles.icon}/>
                   <h3>Orders</h3>
                 </Link>
-                <Link to='/user/profile/address' className={styles.option}>
-                  <IoLocationOutline className={styles.icon}/>
-                  <h3>Address</h3>
-                </Link>
-                <Link to='/user/profile/wishlist' className={styles.option}>
-                  <FaRegHeart className={styles.icon}/>
-                  <h3>Wishlist</h3>
-                </Link>
-                <Link to='/user/profile/details' className={styles.option}>
+                <Link to='/admin/details' className={styles.option}>
                   <FaRegUser className={styles.icon}/>
                   <h3>Account details</h3>
                 </Link>
