@@ -44,3 +44,15 @@ exports.getAllProducts = asyncHandler(async (req, res, next) => {
 	// Send response
 	res.status(200).json({ status: 'success', products });
 });
+
+
+exports.getSingleProduct = asyncHandler(async (req, res, next) => {
+	// Get product id from params
+	const { productId } = req.params;
+	// Get single product
+	const product = await Product.findById(productId);
+	// Check if product dosnt exist
+	if(!product) return next(new AppError('Product not found', 400))
+	// Send response
+	res.status(200).json({ status: 'success', product })
+})
