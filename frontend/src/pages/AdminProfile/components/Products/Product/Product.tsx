@@ -11,10 +11,10 @@ export default function Product({ data }: any) {
             <div className={styles.productImage}>
                 <span className={styles.deleteIcon}><FaRegTrashAlt /></span>
                 <h3>-25%</h3>
-                <img src={data.productImage} alt="" />
+                <img src={`http://localhost:8000/${data.image}`} alt="" />
             </div>
             <div className={styles.productData}>
-                <h4>{data.productName}</h4>
+                <h4>{data.name}</h4>
                 <div className={styles.icons}>
                     <span className={styles.starIcon}><FaStar /></span>
                     <span className={styles.starIcon}><FaStar /></span>
@@ -24,8 +24,8 @@ export default function Product({ data }: any) {
                     <span className={styles.reviewNum}>(56)</span>
                 </div>
                 <div className={styles.price}>
-                    <span className={styles.newPrice}>{data.price}</span>
-                    <span className={styles.originalPrice}>{data.originalPrice}</span>
+                    <span className={styles.newPrice}>${data.discountPrice}</span>
+                    <span className={styles.originalPrice}>${data.price}</span>
                 </div>
                 <Link to='/' className={styles.editBtn}><FaRegEdit />Edit Product</Link>
             </div>

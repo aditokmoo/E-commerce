@@ -1,4 +1,6 @@
 .product {
+    width: 29.3rem;
+
     .productImage {
         border: 1px solid #ddd;
         background-color: #f2f2f2;
@@ -8,6 +10,8 @@
         padding: 3rem 0;
         position: relative;
         border-radius: 5px;
+        width: 100%;
+        height: 25rem;
 
         .deleteIcon {
             position: absolute;
@@ -24,13 +28,19 @@
 
         h3 {
             position: absolute;
-            top: 1rem;
+            top: 0;
             left: 1rem;
             background-color: red;
+            height: 7rem;
             font-size: 1.4rem;
             color: #fff;
             padding: 1.8rem 1rem;
-            border-radius: 50%;
+            --mask:
+    radial-gradient(17.93px at 50% calc(100% - 25.20px),#000 99%,#0000 101%) calc(50% - 28px) 0/56px 100%,
+    radial-gradient(17.93px at 50% calc(100% + 11.20px),#0000 99%,#000 101%) 50% calc(100% - 14px)/56px 100% repeat-x;
+  -webkit-mask: var(--mask);
+          mask: var(--mask);
+            
         }
     }
 
