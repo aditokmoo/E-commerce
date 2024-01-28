@@ -5,6 +5,8 @@ const morgan = require('morgan');
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/AppError');
 const authRouter = require('./routes/authRoute');
+const productRouter = require('./routes/productRoute');
+const path = require('path');
 const cors = require('cors');
 
 // Middlewares
@@ -17,9 +19,11 @@ app.use(cors({
   }));
 app.use(express.json());
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
-app.use('/api/auth', authRouter)
+app.use('/api/auth', authRouter);
+app.use('/api/product', productRouter);
 
 // Handle unhadled routes
 app.all('*', (req, res, next) => {
