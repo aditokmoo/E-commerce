@@ -38,10 +38,7 @@ exports.createNewProduct = asyncHandler(async (req, res, next) => {
 
 exports.getAllProducts = asyncHandler(async (req, res, next) => {
 	// Get products
-	const products = await Product.find().populate({
-		path: 'reviews',
-		populate: { path: 'user', select: 'username' }
-	});
+	const products = await Product.find();
 	// Check if products exist
 	if (products.length === 0) return next(new AppError("No products found."));
 	// Send response
