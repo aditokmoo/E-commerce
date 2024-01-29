@@ -12,7 +12,9 @@ type ActiveCatalogFilterContextType = {
         ssd: string,
         cpu: string,
         gpu: string
-    }>>
+    }>>,
+    activeProduct: string,
+    setActiveProduct: React.Dispatch<React.SetStateAction<string>>
 }
 
 const activeCatalogFilterContext = createContext<ActiveCatalogFilterContextType | null>(null);
@@ -31,8 +33,9 @@ export function ActiveCatalogFilterContextProvider({ children } : ContextPropsTy
         cpu: '',
         gpu: '',
     });
+    const [ activeProduct, setActiveProduct ] = useState('new')
 
-    return <activeCatalogFilterContext.Provider value={{activeFilter, setActiveFilter}}>
+    return <activeCatalogFilterContext.Provider value={{activeFilter, setActiveFilter, activeProduct, setActiveProduct}}>
         {children}
     </activeCatalogFilterContext.Provider>
 }

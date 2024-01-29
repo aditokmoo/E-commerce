@@ -16,7 +16,7 @@ export default function MainSection({ products } : MainSectionType) {
         <div className={styles.mainSection}>
             <div className={styles.products}>
                 {products?.map((product, index) => (
-                    <ProductCard key={index} image={product.productImage} productTitle={product.productName} price={product.price}  />
+                    <ProductCard key={index} productData={product}  />
                 ))}
             </div>
         </div>

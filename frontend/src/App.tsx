@@ -32,14 +32,14 @@ function App() {
     <Routes>
       <Route element={<PersistLogin />}>
         <Route path='/' element={
-          <>
+          <ActiveCatalogFilterContextProvider>
             <Header />
               <Home />
             <Footer />
-          </>
+          </ActiveCatalogFilterContextProvider>
         } />
 
-      <Route path='/catalog/smartphones' element={
+      <Route path='/catalog/smartphone' element={
         <ActiveCatalogFilterContextProvider>
           <Header />
             <Smartphones />
@@ -47,7 +47,7 @@ function App() {
         </ActiveCatalogFilterContextProvider>
       } />
 
-      <Route path='/catalog/computers' element={
+      <Route path='/catalog/computer' element={
         <ActiveCatalogFilterContextProvider>
           <Header />
             <Computers />
@@ -73,7 +73,10 @@ function App() {
         <Route element={<RequireAuth allowedRole='admin' />}>
           <Route path='/admin' element={<AdminProfile />}>
             <Route path='/admin/dashboard' element={<AdminDashboard />} /> 
-            <Route path='/admin/products' element={<Products />} /> 
+            <Route path='/admin/products' element={
+            <ActiveCatalogFilterContextProvider>
+              <Products />
+            </ActiveCatalogFilterContextProvider>} /> 
           </Route>
         </Route>
       </Route>

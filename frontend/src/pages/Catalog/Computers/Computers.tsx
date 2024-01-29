@@ -25,7 +25,7 @@ export default function Computers() {
                     <Procesors />
                     <GraphicCards />
                 </ProductsSidebar>
-                <Products />
+                <Products products={[]} />
             </div>
         </div>
     )

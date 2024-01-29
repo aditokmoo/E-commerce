@@ -4,11 +4,15 @@ import Brand from "../../../components/ProductsSidebar/Filters/Brand/Brand";
 import Memory from "../../../components/ProductsSidebar/Filters/Memory/Memory";
 import Price from "../../../components/ProductsSidebar/Filters/Price/Price";
 import ProductsSidebar from "../../../components/ProductsSidebar/ProductsSidebar";
-import { products } from "../../../utils/data";
+import { useGetAllProducts } from "../../../hooks/useProduct";
 // SCSS
 import styles from './Smartphones.module.scss';
 
 export default function Smartphones() {
+    const { data: products, isLoading } = useGetAllProducts();
+
+    if(isLoading) return <h2>Loading...</h2>
+
     return (
         <div className="container">
             <FilterNav />
