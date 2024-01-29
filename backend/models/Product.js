@@ -17,6 +17,14 @@ const productSchema = new mongoose.Schema({
             "gaming"
         ]
     },
+    type: {
+        type: String,
+        default: 'new',
+        enum: [
+            "new",
+            "bestseller"
+        ]
+    },
     price: {
         type: Number,
         required: [true, 'Provide price for product']
@@ -37,7 +45,7 @@ const productSchema = new mongoose.Schema({
         type: [String],
         required: [true, 'Provide colors for product'],
         enum: [
-            "yellow",
+            "gold",
             "green",
             "purple",
             "black",

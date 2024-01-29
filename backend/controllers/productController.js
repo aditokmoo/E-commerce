@@ -37,12 +37,35 @@ exports.createNewProduct = asyncHandler(async (req, res, next) => {
 });
 
 exports.getAllProducts = asyncHandler(async (req, res, next) => {
-	// Get products
-	const products = await Product.find();
-	// Check if products exist
-	if (products.length === 0) return next(new AppError("No products found."));
+	// Get category and type
+	const productCategory = req.query.category;
+	const productType = req.query.type;
+	// Check if product category exist
+	if(productCategory) {
+		// Get products
+		const products = await Product.find({ category: productCategory });
+		// Check if products exist
+		if (products.length === 0) return next(new AppError("No products found for specified category."));
+		// Send response
+		return res.status(200).json({ status: 'success', products })
+	}
+
+	// Check if product type exist
+	if(productType) {
+		// Get products
+		const products = await Product.find({ type: productType });
+		// Check if product exist
+		if(products.length === 0) return next(new AppError("No products found for specified type"));
+		// Send response
+		return res.status(200).json({ status: 'success', products })
+	}
+
+	// Get all products
+	const allProducts = await Product.find();
+	// Check if all products dosn't exist
+	if(allProducts.length === 0) return next(new AppError('No products found'))
 	// Send response
-	res.status(200).json({ status: 'success', products });
+	res.status(200).json({ status: 'success', products: allProducts })
 });
 
 
