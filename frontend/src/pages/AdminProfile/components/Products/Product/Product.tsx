@@ -1,8 +1,8 @@
+import { Link } from "react-router-dom";
 // React icons
 import { FaRegTrashAlt, FaStar, FaRegEdit } from "react-icons/fa";
 // SCSS
 import styles from './Product.module.scss';
-import { Link } from "react-router-dom";
 
 export default function Product({ data }: any) {
     console.log(data)
@@ -10,7 +10,9 @@ export default function Product({ data }: any) {
         <div className={styles.product}>
             <div className={styles.productImage}>
                 <span className={styles.deleteIcon}><FaRegTrashAlt /></span>
-                <h3>-25%</h3>
+                {data.discount ? (
+                    <h3>-{data.discount}%</h3>
+                ) : null}
                 <img src={`http://localhost:8000/${data.image}`} alt="" />
             </div>
             <div className={styles.productData}>
@@ -21,11 +23,11 @@ export default function Product({ data }: any) {
                     <span className={styles.starIcon}><FaStar /></span>
                     <span className={styles.starIcon}><FaStar /></span>
                     <span className={styles.starIcon}><FaStar /></span>
-                    <span className={styles.reviewNum}>(56)</span>
+                    <span className={styles.reviewNum}>({data.reviews.length})</span>
                 </div>
                 <div className={styles.price}>
                     <span className={styles.newPrice}>${data.discountPrice}</span>
-                    <span className={styles.originalPrice}>${data.price}</span>
+                    {data.discountPrice !== data.price && <span className={styles.originalPrice}>${data.price}</span>}
                 </div>
                 <Link to='/' className={styles.editBtn}><FaRegEdit />Edit Product</Link>
             </div>
