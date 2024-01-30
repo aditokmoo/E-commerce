@@ -40,6 +40,7 @@ exports.getAllProducts = asyncHandler(async (req, res, next) => {
 	// Get category and type
 	const productCategory = req.query.category;
 	const productType = req.query.type;
+	const productDiscount = req.query.discount
 	// Check if product category exist
 	if(productCategory) {
 		// Get products
@@ -51,13 +52,29 @@ exports.getAllProducts = asyncHandler(async (req, res, next) => {
 	}
 
 	// Check if product type exist
-	if(productType) {
-		// Get products
-		const products = await Product.find({ type: productType });
-		// Check if product exist
-		if(products.length === 0) return next(new AppError("No products found for specified type"));
-		// Send response
-		return res.status(200).json({ status: 'success', products })
+	if (productType || productDiscount >= 50) {
+		const query = {};
+	
+		if (productType) {
+			query.$or = [{ type: productType }];
+		}
+	
+		if (productDiscount >= 50) {
+			query.$or = query.$or || [];
+			query.$or.push({ discount: { $gte: 50 } });
+		}
+	
+		// Get products based on query
+		const products = await Product.find(query);
+	
+		// Check if products exist
+		if (products.length === 0) {
+			// No products found, send an error response
+			return next(new AppError("No products found for specified criteria"));
+		}
+	
+		// Send success response with the found products
+		return res.status(200).json({ status: 'success', products });
 	}
 
 	// Get all products
