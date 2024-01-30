@@ -26,6 +26,7 @@ import Details from './pages/UserProfile/components/Details/Details'
 // ADMIN PROFILE COMPONENTS
 import AdminDashboard from './pages/AdminProfile/components/Dashboard/AdminDashboard'
 import Products from './pages/AdminProfile/components/Products/Products'
+import AddProduct from './pages/AdminProfile/components/AddProduct/AddProduct'
 
 function App() {
   return (
@@ -74,10 +75,11 @@ function App() {
           <Route path='/admin' element={<AdminProfile />}>
             <Route path='/admin/dashboard' element={<AdminDashboard />} /> 
             <Route path='/admin/products' element={
-            <ActiveCatalogFilterContextProvider>
+              <ActiveCatalogFilterContextProvider>
               <Products />
             </ActiveCatalogFilterContextProvider>} /> 
           </Route>
+          <Route path='/admin/products/add' element={<AddProduct />} /> 
         </Route>
       </Route>
     </Routes> 
