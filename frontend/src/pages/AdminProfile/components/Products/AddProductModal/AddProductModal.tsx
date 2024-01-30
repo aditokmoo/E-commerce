@@ -2,6 +2,7 @@
 import { MdBookmarkAdd } from "react-icons/md";
 // SCSS
 import styles from './AddProductModal.module.scss';
+import BasicInfo from "./BasicInfo/BasicInfo";
 
 export default function AddProductModal({ setShowModal }: any) {
     return (
@@ -25,7 +26,7 @@ export default function AddProductModal({ setShowModal }: any) {
                         </div>
                     </div>
                     {/* BASIC INFO */}
-
+                    <BasicInfo />
                     {/* CATEGORY INFO */}
 
                     {/* IMAGES */}

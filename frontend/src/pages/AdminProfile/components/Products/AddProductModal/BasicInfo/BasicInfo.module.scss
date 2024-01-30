@@ -1,0 +1,41 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 2rem 0;
+    height: 30rem;
+    overflow-y: scroll;
+    padding-right: 2rem;
+    padding-bottom: 3rem;
+
+    .inputContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        
+        label {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        input, select, textarea {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        textarea {
+            resize: none;
+            height: 20rem;
+        }
+    }
+
+    .gridContainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        width: 100%;
+        margin: 3rem 0;
+    }
+}
