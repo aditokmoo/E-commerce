@@ -9,12 +9,12 @@ export function useGetAllProducts() {
     const admin = location.pathname;
     const { activeProduct } = useActiveCatalogFilterContext();
 
-    const { data, isLoading, refetch } = useQuery({
+    const { data, isLoading } = useQuery({
         queryKey: ["products", category, admin, activeProduct],
         queryFn: () => getAllProducts(category, admin, activeProduct)
     });
 
-    return { data, isLoading, refetch }
+    return { data, isLoading }
 }
 
 export function useGetSingleProduct() {

@@ -2,7 +2,7 @@ import axios from '../http';
 
 export async function getAllProducts(category: string, adminUrl: string, productType: string) {
 	const url: string =
-		category === 'computer' || category === 'smartphone' ? `/api/product?category=${category}` : adminUrl === '/admin/products' ? `/api/product` : `/api/product?type=${productType}`
+		category === 'computer' || category === 'smartphone' ? `/api/product?category=${category}` : adminUrl === '/admin/products' ? `/api/product` : `/api/product?type=${productType}&discount=50`
 
 	try {
 		const response = await axios.get(url);
