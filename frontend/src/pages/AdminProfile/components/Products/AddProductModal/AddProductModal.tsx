@@ -1,13 +1,14 @@
+import { useForm } from "react-hook-form";
+import { useCreateProduct } from "../../../../../hooks/useProduct";
 import CategoryInfo from "./CategoryInfo/CategoryInfo";
 import ImagesInfo from "./ImagesInfo/ImagesInfo";
 import { useAddProductContext } from "../../../../../context/AddProductModalContext";
 import BasicInfo from "./BasicInfo/BasicInfo";
+import { motion } from "framer-motion"
 // React icons
 import { MdBookmarkAdd } from "react-icons/md";
 // SCSS
 import styles from './AddProductModal.module.scss';
-import { useForm } from "react-hook-form";
-import { useCreateProduct } from "../../../../../hooks/useProduct";
 
 export default function AddProductModal({ setShowModal }: any) {
     const { state, dispatch } = useAddProductContext();
@@ -31,8 +32,8 @@ export default function AddProductModal({ setShowModal }: any) {
 
     return (
             <>
-                <div className={styles.overlay}></div>
-                <div className={styles.modal}>
+                <motion.div animate={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 0 }} transition={{ delay: 0.1 }} exit={{ opacity: 0, y: 0}} className={styles.overlay}></motion.div>
+                <motion.div animate={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 200 }} transition={{ delay: 0.3 }} exit={{ opacity: 0, y: 0}} className={styles.modal}>
                     <h2><MdBookmarkAdd /> Add Product</h2>
                     {/* PROGRESS BAR */}
                     <div className={styles.progress}>
@@ -73,7 +74,7 @@ export default function AddProductModal({ setShowModal }: any) {
                             )}
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </>
     )
 }
