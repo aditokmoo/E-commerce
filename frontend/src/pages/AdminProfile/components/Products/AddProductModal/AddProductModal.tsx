@@ -10,7 +10,11 @@ import { MdBookmarkAdd } from "react-icons/md";
 // SCSS
 import styles from './AddProductModal.module.scss';
 
-export default function AddProductModal({ setShowModal }: any) {
+type propTypes = {
+    setShowModal: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export default function AddProductModal({ setShowModal }: propTypes) {
     const { state, dispatch } = useAddProductContext();
     const { register, handleSubmit } = useForm();
     const { mutate, isPending } = useCreateProduct();
@@ -18,7 +22,7 @@ export default function AddProductModal({ setShowModal }: any) {
     if(isPending) return <h2>Loading...</h2>
 
     function onSubmit(data: any) {
-        const formData = new FormData();
+        const formData: any = new FormData();
         const fieldNames = ['name', 'category', 'type', 'colors', 'price', 'discount', 'desc']
         formData.append('image', data.image[0])
         fieldNames.forEach(name => {

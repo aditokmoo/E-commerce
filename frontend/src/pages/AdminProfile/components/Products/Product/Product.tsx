@@ -4,8 +4,19 @@ import { FaRegTrashAlt, FaStar, FaRegEdit } from "react-icons/fa";
 // SCSS
 import styles from './Product.module.scss';
 
-export default function Product({ data }: any) {
-    console.log(data)
+type propsType = {
+    data: {
+        discount: number,
+        image: string,
+        name: string,
+        discountPrice: number,
+        originalPrice: number,
+        price: number
+        reviews: []
+    }
+}
+
+export default function Product({ data }: propsType) {
     return (
         <div className={styles.product}>
             <div className={styles.productImage}>

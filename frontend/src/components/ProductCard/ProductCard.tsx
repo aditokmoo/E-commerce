@@ -5,7 +5,15 @@ import { FaRegHeart } from "react-icons/fa";
 // SCSS
 import styles from './ProductCard.module.scss';
 
-export default function ProductCard({ productData } : any) {
+type propTypes = {
+    productData: {
+        name: string,
+        price: number,
+        image: string
+    }
+}
+
+export default function ProductCard({ productData } : propTypes) {
     return (
         <div className={styles.productCard}>
             <button className={styles.addFavorites}><FaRegHeart /></button>

@@ -1,23 +1,27 @@
 import { createContext, useContext, useReducer } from "react";
-
+// Types
 type contextType = {
-    state: any,
-    dispatch: any
+    state: State;
+    dispatch: React.Dispatch<Action>;
 }
-
-type propTypes = {
-    children: React.ReactNode
+type State = {
+    pageCount: number,
+    pageName: string
 }
+type Action = { type: 'next' } | { type: 'prev' } | { type: 'default' };
+type propTypes = { children: React.ReactNode }
 
+// Context
 const addProductModalContext = createContext<contextType | null>(null);
-
+// Initial data
 const modalPages = ['basic', 'category', 'images'];
 const initialState = {
     pageCount: 0,
     pageName: modalPages[0]
 }
 
-function reducer(state: any, action: any) {
+// Reducer
+function reducer(state: State, action: Action) {
     switch(action.type) {
         case 'next':
             return {

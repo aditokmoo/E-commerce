@@ -1,7 +1,12 @@
+import { UseFormRegister } from 'react-hook-form';
 // SCSS
 import styles from './ImagesInfo.module.scss';
 
-export default function ImagesInfo({ register }: any) {
+type propTypes = {
+    register: UseFormRegister<Record<string, number>>
+}
+
+export default function ImagesInfo({ register }: propTypes) {
     return (
         <div className={styles.formContainer}>
             <div className={styles.inputContainer}>

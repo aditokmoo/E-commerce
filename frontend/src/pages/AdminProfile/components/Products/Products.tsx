@@ -1,7 +1,8 @@
-// SCSS
 import { useGetAllProducts } from '../../../../hooks/useProduct';
+import { createProductType } from '../../../../shared/Types/types';
 import Product from './Product/Product';
 import ProductFilter from './ProductFilter/ProductFilter';
+// SCSS
 import styles from './Products.module.scss';
 
 export default function Products() {
@@ -13,7 +14,7 @@ export default function Products() {
         <div className={styles.productSection}>
             <ProductFilter />
             <div className={styles.products}>
-                {products?.map((productData: any, index: number) => (
+                {products?.map((productData: createProductType, index: number) => (
                     <Product key={index} data={productData} />
                 ))}
                 {!products && <h2>No Products</h2>}

@@ -23,3 +23,14 @@ export type inputFieldDataTypes = {
     name: string,
     label: string
 }
+
+// products && createProduct && useCreateProduct types
+export type createProductType = {
+    discount: number,
+    image: string,
+    name: string,
+    discountPrice: number,
+    originalPrice: number,
+    price: number
+    reviews: []
+}

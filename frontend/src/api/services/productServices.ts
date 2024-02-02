@@ -1,3 +1,4 @@
+import { createProductType } from '../../shared/Types/types';
 import axios from '../http';
 
 export async function getAllProducts(category: string, adminUrl: string, productType: string) {
@@ -24,7 +25,7 @@ export async function getSingleProduct(productId: string | undefined) {
 	}
 }
 
-export async function createProduct(productData: any) {
+export async function createProduct(productData: createProductType) {
 	try {
 		const response = await axios.post('/api/product', productData);
 		const data = await response.data;

@@ -5,6 +5,12 @@ import ProductCard from '../../../components/ProductCard/ProductCard';
 // SCSS
 import styles from './Products.module.scss';
 
+type dataTypes = {
+    name: string,
+    price: number,
+    image: string
+}
+
 export default function Products() {
     const { data: products, isLoading } = useGetAllProducts();
     const { activeProduct, setActiveProduct } = useActiveCatalogFilterContext();
@@ -23,7 +29,7 @@ export default function Products() {
                     }}>Best seller</li>
                 </ul>
                 <div className={styles.products}>
-                    {products.filter(({ type }: any) => type === activeProduct).map((data: any, index: number) => (
+                    {products.filter(({ type }: string & object) => type === activeProduct).map((data: dataTypes, index: number) => (
                         <ProductCard productData={data} key={index} />
                     ))}
                 </div>
