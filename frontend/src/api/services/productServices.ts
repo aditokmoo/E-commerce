@@ -23,3 +23,13 @@ export async function getSingleProduct(productId: string | undefined) {
 		console.log(error);
 	}
 }
+
+export async function createProduct(productData: any) {
+	try {
+		const response = await axios.post('/api/product', productData);
+		const data = await response.data;
+		return data.product
+	} catch (error) {
+		console.log(error)
+	}
+}

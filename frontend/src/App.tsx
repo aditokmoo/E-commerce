@@ -27,6 +27,7 @@ import Details from './pages/UserProfile/components/Details/Details'
 import AdminDashboard from './pages/AdminProfile/components/Dashboard/AdminDashboard'
 import Products from './pages/AdminProfile/components/Products/Products'
 import AddProduct from './pages/AdminProfile/components/AddProduct/AddProduct'
+import { AddProductModalContextProvider } from './context/AddProductModalContext'
 
 function App() {
   return (
@@ -76,7 +77,9 @@ function App() {
             <Route path='/admin/dashboard' element={<AdminDashboard />} /> 
             <Route path='/admin/products' element={
               <ActiveCatalogFilterContextProvider>
-              <Products />
+                <AddProductModalContextProvider>
+                  <Products />
+                </AddProductModalContextProvider>
             </ActiveCatalogFilterContextProvider>} /> 
           </Route>
           <Route path='/admin/products/add' element={<AddProduct />} /> 
