@@ -28,6 +28,7 @@ import AdminDashboard from './pages/AdminProfile/components/Dashboard/AdminDashb
 import Products from './pages/AdminProfile/components/Products/Products'
 import AddProduct from './pages/AdminProfile/components/AddProduct/AddProduct'
 import { AddProductModalContextProvider } from './context/AddProductModalContext'
+import ProductDetails from './pages/ProductDetails/ProductDetails'
 
 function App() {
   return (
@@ -57,6 +58,9 @@ function App() {
         </ActiveCatalogFilterContextProvider>
       } />
       </Route>
+
+      <Route path='/catalog/computer/:productId' element={<ProductDetails />} />
+      <Route path='/catalog/smartphone/:productId' element={<ProductDetails />} />
       
       <Route path='/user/register' element={<Register />} />
       <Route path='/user/login' element={<Login />} />

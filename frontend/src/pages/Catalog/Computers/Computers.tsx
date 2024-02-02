@@ -8,10 +8,15 @@ import Procesors from "../../../components/ProductsSidebar/Filters/Procesors/Pro
 import SSDMemory from "../../../components/ProductsSidebar/Filters/SSDMemory/SSDMemory";
 import Type from "../../../components/ProductsSidebar/Filters/Type/Type";
 import ProductsSidebar from "../../../components/ProductsSidebar/ProductsSidebar";
+import { useGetAllProducts } from "../../../hooks/useProduct";
 // SCSS
 import styles from './Computers.module.scss';
 
 export default function Computers() {
+    const { data: products, isLoading } = useGetAllProducts();
+
+    if(isLoading) return <h2>Loading...</h2>
+
     return (
         <div className="container">
             <FilterNav />
@@ -25,7 +30,7 @@ export default function Computers() {
                     <Procesors />
                     <GraphicCards />
                 </ProductsSidebar>
-                <Products products={[]} />
+                <Products products={products} />
             </div>
         </div>
     )

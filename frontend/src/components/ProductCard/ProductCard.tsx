@@ -10,10 +10,13 @@ type propTypes = {
         name: string,
         price: number,
         image: string
+        _id: string,
+        category: string
     }
 }
 
 export default function ProductCard({ productData } : propTypes) {
+    console.log(productData._id)
     return (
         <div className={styles.productCard}>
             <button className={styles.addFavorites}><FaRegHeart /></button>
@@ -22,7 +25,7 @@ export default function ProductCard({ productData } : propTypes) {
                 <h4>{productData?.name}</h4>
                 <h3>${productData?.price}</h3>
             </div>
-            <DarkButton>Buy Now</DarkButton>
+            <DarkButton productId={productData._id} productCategory={productData.category}>Buy Now</DarkButton>
         </div>
     )
 }

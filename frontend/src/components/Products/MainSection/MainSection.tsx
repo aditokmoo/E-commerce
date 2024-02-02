@@ -7,7 +7,7 @@ type MainSectionType = {
     products: {
         productImage: string,
         productName: string,
-        price: string
+        price: string,
     }[]
 }
 

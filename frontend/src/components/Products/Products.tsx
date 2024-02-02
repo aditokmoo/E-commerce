@@ -6,9 +6,9 @@ import styles from './Products.module.scss';
 
 type ProductsType = {
     products: {
-        productImage: string,
-        productName: string,
-        price: string
+        productImage: string;
+        productName: string;
+        price: string;
     }[]
 }
 
