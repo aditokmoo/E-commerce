@@ -24,7 +24,9 @@ export default function AddProductModal({ setShowModal }: propTypes) {
     function onSubmit(data: any) {
         const formData: any = new FormData();
         const fieldNames = ['name', 'category', 'type', 'colors', 'price', 'discount', 'desc']
-        formData.append('image', data.image[0])
+        const imagesArr: File[] = Array.from(data.images);
+        
+        imagesArr.forEach((image: File) => formData.append('images', image))
         fieldNames.forEach(name => {
             formData.append(name, data[name]);
         });

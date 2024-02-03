@@ -9,7 +9,7 @@ type propTypes = {
     productData: {
         name: string,
         price: number,
-        image: string
+        images: string
         _id: string,
         category: string
     }
@@ -21,7 +21,7 @@ export default function ProductCard({ productData } : propTypes) {
         <div className={styles.productCard}>
             <button className={styles.addFavorites}><FaRegHeart /></button>
             <div className={styles.body}>
-                <img src={`http://localhost:8000/${productData?.image}`} alt="" />
+                <img src={`http://localhost:8000/${productData?.images[0]}`} alt="" />
                 <h4>{productData?.name}</h4>
                 <h3>${productData?.price}</h3>
             </div>

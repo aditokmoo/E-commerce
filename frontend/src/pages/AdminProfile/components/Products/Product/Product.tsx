@@ -7,7 +7,7 @@ import styles from './Product.module.scss';
 type propsType = {
     data: {
         discount: number,
-        image: string,
+        images: string,
         name: string,
         discountPrice: number,
         originalPrice: number,
@@ -24,7 +24,7 @@ export default function Product({ data }: propsType) {
                 {data.discount ? (
                     <h3>-{data.discount}%</h3>
                 ) : null}
-                <img src={`http://localhost:8000/${data.image}`} alt="" />
+                <img src={`http://localhost:8000/${data.images[0]}`} alt="" />
             </div>
             <div className={styles.productData}>
                 <h4>{data.name}</h4>

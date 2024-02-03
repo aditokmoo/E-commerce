@@ -10,8 +10,8 @@ export default function ImagesInfo({ register }: propTypes) {
     return (
         <div className={styles.formContainer}>
             <div className={styles.inputContainer}>
-                <label htmlFor="image">Product image</label>
-                <input type="file" id='image' {...register('image')} />
+                <label htmlFor="images">Product image</label>
+                <input type="file" id='images' {...register('images')} multiple/>
             </div>
         </div>
     )

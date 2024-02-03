@@ -5,18 +5,19 @@ import styles from './MainDetails.module.scss';
 
 type propTypes = {
     data: {
-        image: string,
+        images: string,
         name: string,
         discountPrice: number,
         price: number,
-        desc: string
+        desc: string,
+        colors: []
     }
 }
 
 export default function MainDetails({ data }: propTypes) {
     return (
         <div className={styles.mainDetails}>
-            <Slider image={data?.image} />
+            <Slider images={data?.images} />
             <Details data={data} />
         </div>
     )

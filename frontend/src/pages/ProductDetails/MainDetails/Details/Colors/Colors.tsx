@@ -1,15 +1,17 @@
 // SCSS
 import styles from './Colors.module.scss';
 
-export default function Colors() {
+type propTypes = {
+    colors: []
+}
+
+export default function Colors({ colors }: propTypes) {
     return (
         <div className={styles.colors}>
             Select color:
-            <div className={`${styles.box} ${styles.black}`}></div>
-            <div className={`${styles.box} ${styles.purple}`}></div>
-            <div className={`${styles.box} ${styles.red}`}></div>
-            <div className={`${styles.box} ${styles.yellow}`}></div>
-            <div className={`${styles.box} ${styles.white}`}></div>
+            {colors.map(color => (
+                <div className={`${styles.box} ${styles[color]}`}></div>
+            ))}
         </div>
     )
 }
