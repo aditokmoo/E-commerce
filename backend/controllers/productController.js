@@ -5,11 +5,13 @@ const sharp = require('sharp');
 const Product = require('../models/Product');
 
 exports.createNewProduct = asyncHandler(async (req, res, next) => {
-	const { name, category, price, discount, colors, desc, details, image, reviews } = req.body;
+	const { name, category, price, discount, colors, desc, details, images, reviews, categoryDetails } = req.body;
 	// Check if image file dosn't and if isn't valid
-	if (!req.file || !req.file.mimetype.startsWith('image')) return next(new AppError('Provide valid image', 400));
+	req.files.forEach(file => {
+		if (!file || !file.mimetype.startsWith('image')) return next(new AppError('Provide valid image', 400));
+	})
 	// Generate unique random image name
-	const imageName = uuidv4();
+	const imagesName = req.files.map(() => uuidv4())
 	// Check price so it dosnt be zero
 	if (price === 0) return next(new AppError("Price can't be 0"));
 	// Calculate price and discount to get new price
@@ -25,12 +27,15 @@ exports.createNewProduct = asyncHandler(async (req, res, next) => {
 		colors,
 		desc,
 		details,
-		image: `${imageName}.png`,
-		reviews
+		images: imagesName.map((name) => `${name}.png`),
+		reviews,
+		categoryDetails
 	});
 
-	// Save image in public folder
-	await sharp(req.file.buffer).resize(160, 160).png({ quality: 90, force: true }).toFile(`public/${imageName}.png`);
+	// Save each image in the public folder
+    await Promise.all(req.files.map(async (file, index) => {
+        await sharp(file.buffer).png({ quality: 90, force: true }).toFile(`public/${imagesName[index]}.png`);
+    }));
 
 	// Send response
 	res.status(200).json({ status: 'success', message: 'Product created successfully', product });

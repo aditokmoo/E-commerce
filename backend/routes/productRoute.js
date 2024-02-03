@@ -4,7 +4,7 @@ const multer = require("multer");
 const upload = multer({ storage: multer.memoryStorage() });
 const router = express.Router();
 
-router.route('/').get(getAllProducts).post(upload.single('image'), createNewProduct)
+router.route('/').get(getAllProducts).post(upload.array('images'), createNewProduct)
 router.route('/:productId').get(getSingleProduct)
 
 module.exports = router;
