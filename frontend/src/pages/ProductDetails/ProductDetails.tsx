@@ -1,5 +1,6 @@
 import Header from '../../components/Header/Header';
 import { useGetSingleProduct } from '../../hooks/useProduct';
+import MainDetails from './MainDetails/MainDetails';
 // SCSS
 import styles from './ProductDetails.module.scss';
 
@@ -14,8 +15,8 @@ export default function ProductDetails() {
         <section className={styles.productDetails}>
             <Header />
             <div className={styles.container}>
-                <div className={styles.details}>
-                    <h2>{data.name}</h2>
+                <div className={styles.detailsSection}>
+                    <MainDetails data={data} />
                 </div>
             </div> 
         </section>
