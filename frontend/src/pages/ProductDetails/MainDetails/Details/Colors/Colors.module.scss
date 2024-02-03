@@ -1,0 +1,19 @@
+.colors {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.4rem;
+
+    .box {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        cursor: pointer;
+        
+        &.black { background-color: #000 }
+        &.purple { background-color: purple }
+        &.red { background-color: red }
+        &.yellow { background-color: rgb(197, 180, 21) }
+        &.white { background-color: #ddd }
+    }
+}

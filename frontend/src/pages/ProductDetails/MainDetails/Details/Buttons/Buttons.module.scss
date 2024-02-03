@@ -1,0 +1,20 @@
+.btns {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+
+    button {
+        padding: 2rem;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #111;
+        background-color: inherit;
+        font-weight: 600;
+        
+        &.buy {
+            background-color: #111;
+            color: #fff;
+        }
+    }
+}

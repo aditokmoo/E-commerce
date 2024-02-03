@@ -17,7 +17,7 @@ export default function MainDetails({ data }: propTypes) {
     return (
         <div className={styles.mainDetails}>
             <Slider image={data?.image} />
-            <Details />
+            <Details data={data} />
         </div>
     )
 }

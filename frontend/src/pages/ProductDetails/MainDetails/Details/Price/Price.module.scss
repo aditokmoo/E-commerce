@@ -1,0 +1,17 @@
+.price {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0;
+
+    .new {
+        font-size: 2.5rem;
+        color: #000;
+    }
+
+    .old {
+        font-size: 2rem;
+        text-decoration: line-through;
+        color: #999;
+    }
+}
