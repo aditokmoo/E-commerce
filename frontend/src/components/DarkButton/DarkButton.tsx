@@ -1,5 +1,5 @@
-// SCSS
 import { Link, useLocation } from 'react-router-dom';
+// SCSS
 import styles from './DarkButton.module.scss';
 
 type DarkButtonType = {
