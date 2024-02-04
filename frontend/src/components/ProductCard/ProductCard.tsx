@@ -11,7 +11,7 @@ type propTypes = {
         price: number,
         images: string
         _id: string,
-        category: string
+        category: string,
     }
 }
 

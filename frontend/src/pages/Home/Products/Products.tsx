@@ -8,7 +8,9 @@ import styles from './Products.module.scss';
 type dataTypes = {
     name: string,
     price: number,
-    image: string
+    images: string,
+    _id: string,
+    category: string,
 }
 
 export default function Products() {
