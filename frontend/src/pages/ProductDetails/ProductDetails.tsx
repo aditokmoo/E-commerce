@@ -9,14 +9,12 @@ export default function ProductDetails() {
 
     if(isLoading) return <h2>Loading...</h2>
 
-    console.log(data)
-
     return (
         <section className={styles.productDetails}>
             <Header />
             <div className={styles.container}>
                 <div className={styles.detailsSection}>
-                    <MainDetails data={data} />
+                    <MainDetails data={data.product} products={data.products} />
                 </div>
             </div> 
         </section>

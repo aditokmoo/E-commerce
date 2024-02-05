@@ -11,7 +11,13 @@
         border: 1px solid #111;
         background-color: inherit;
         font-weight: 600;
-        
+        cursor: pointer;
+        transition: .2s;
+
+        &:hover {
+            opacity: .8;
+        }
+
         &.buy {
             background-color: #111;
             color: #fff;

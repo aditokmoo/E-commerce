@@ -19,7 +19,7 @@ export async function getSingleProduct(productId: string | undefined) {
 	try {
 		const response = await axios.get(`/api/product/${productId}`);
 		const data = response.data;
-		return data.product;
+		return data;
 	} catch (error) {
 		console.log(error);
 	}

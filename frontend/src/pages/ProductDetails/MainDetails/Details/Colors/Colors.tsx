@@ -1,16 +1,22 @@
+import { Link, useLocation, useParams } from 'react-router-dom';
 // SCSS
 import styles from './Colors.module.scss';
 
 type propTypes = {
-    colors: []
+    products: [{
+        color: string,
+        id: string
+    }]
 }
 
-export default function Colors({ colors }: propTypes) {
+export default function Colors({ products }: propTypes) {
+    const location = useLocation();
+    const { productId }: any = useParams();
     return (
         <div className={styles.colors}>
             Select color:
-            {colors.map(color => (
-                <div className={`${styles.box} ${styles[color]}`}></div>
+            {products.map(({color, id}, index: number) => (
+                <Link to={`${location.pathname.replace(productId, id)}`} className={`${styles.box} ${styles[color]}`} key={index}></Link>
             ))}
         </div>
     )

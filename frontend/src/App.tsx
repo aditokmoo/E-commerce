@@ -41,25 +41,25 @@ function App() {
           </ActiveCatalogFilterContextProvider>
         } />
 
-      <Route path='/catalog/smartphone' element={
-        <ActiveCatalogFilterContextProvider>
-          <Header />
-            <Smartphones />
-          <Footer />
-        </ActiveCatalogFilterContextProvider>
-      } />
+        <Route path='/catalog/smartphone' element={
+          <ActiveCatalogFilterContextProvider>
+            <Header />
+              <Smartphones />
+            <Footer />
+          </ActiveCatalogFilterContextProvider>
+        } />
 
-      <Route path='/catalog/computer' element={
-        <ActiveCatalogFilterContextProvider>
-          <Header />
-            <Computers />
-          <Footer />
-        </ActiveCatalogFilterContextProvider>
-      } />
+        <Route path='/catalog/computer' element={
+          <ActiveCatalogFilterContextProvider>
+            <Header />
+              <Computers />
+            <Footer />
+          </ActiveCatalogFilterContextProvider>
+        } />
+
+        <Route path='/catalog/computer/:productId' element={<ProductDetails />} />
+        <Route path='/catalog/smartphone/:productId' element={<ProductDetails />} />
       </Route>
-
-      <Route path='/catalog/computer/:productId' element={<ProductDetails />} />
-      <Route path='/catalog/smartphone/:productId' element={<ProductDetails />} />
       
       <Route path='/user/register' element={<Register />} />
       <Route path='/user/login' element={<Login />} />

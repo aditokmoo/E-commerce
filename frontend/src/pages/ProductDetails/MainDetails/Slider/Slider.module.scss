@@ -6,10 +6,13 @@
     height: 60rem;
     position: relative;
 
-    .mainImage {
-        width: 100%;
-        object-fit: contain;
-        padding-left: 10rem;
+    .main {
+
+        .mainImage {
+            width: 100%;
+            object-fit: contain;
+            padding-left: 10rem;
+        }
     }
     
     .sliderImages {

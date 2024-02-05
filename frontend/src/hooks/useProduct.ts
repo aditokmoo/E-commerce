@@ -22,7 +22,7 @@ export function useGetSingleProduct() {
     const { productId } = useParams();
 
     const { data, isLoading } = useQuery({
-        queryKey: ["product"],
+        queryKey: ["product", productId],
         queryFn: () => getSingleProduct(productId)
     });
 

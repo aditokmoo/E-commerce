@@ -21,6 +21,15 @@ export default function BasicInfo({ register }: propTypes) {
                     <option value="computer">Computer</option>
                 </select>
             </div>
+            <div className={styles.inputContainer}>
+                <label htmlFor="model">Product model *</label>
+                <select id="model" {...register('model')}>
+                    <option value="">Please select model</option>
+                    <option value="Iphone 14 Pro Max">Iphone 14 Pro Max</option>
+                    <option value="Iphone 14 Pro">Iphone 14 Pro</option>
+                    <option value="Iphone 14">Iphone 14</option>
+                </select>
+            </div>
             <div className={styles.gridContainer}>
                 <div className={styles.inputContainer}>
                     <label htmlFor="type">Type *</label>
@@ -31,11 +40,13 @@ export default function BasicInfo({ register }: propTypes) {
                     </select>
                 </div>
                 <div className={styles.inputContainer}>
-                    <label htmlFor="colors">Colors *</label>
-                    <select id="colors" {...register('colors')}>
+                    <label htmlFor="color">Color *</label>
+                    <select id="color" {...register('color')}>
                         <option value="">Please select colors</option>
                         <option value="black">Black</option>
                         <option value="white">White</option>
+                        <option value="gold">Gold</option>
+                        <option value="purple">Purple</option>
                     </select>
                 </div>
                 <div className={styles.inputContainer}>

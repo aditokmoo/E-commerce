@@ -9,11 +9,15 @@
         height: 3rem;
         border-radius: 50%;
         cursor: pointer;
+
+        &:hover {
+            opacity: .7;
+        }
         
         &.black { background-color: #000 }
-        &.purple { background-color: purple }
+        &.purple { background-color: #40366e }
         &.red { background-color: red }
-        &.yellow { background-color: rgb(197, 180, 21) }
+        &.gold { background-color: #dbbb44 }
         &.white { background-color: #ddd }
     }
 }

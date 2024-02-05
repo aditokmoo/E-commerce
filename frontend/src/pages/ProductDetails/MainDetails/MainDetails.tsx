@@ -5,20 +5,23 @@ import styles from './MainDetails.module.scss';
 
 type propTypes = {
     data: {
-        images: string,
+        images: [string],
         name: string,
         discountPrice: number,
         price: number,
         desc: string,
-        colors: []
-    }
+    },
+    products: [{
+        color: string,
+        id: string
+    }]
 }
 
-export default function MainDetails({ data }: propTypes) {
+export default function MainDetails({ data, products }: propTypes) {
     return (
         <div className={styles.mainDetails}>
             <Slider images={data?.images} />
-            <Details data={data} />
+            <Details data={data} products={products} />
         </div>
     )
 }
