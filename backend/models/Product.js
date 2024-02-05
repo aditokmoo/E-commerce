@@ -17,6 +17,24 @@ const productSchema = new mongoose.Schema({
             "gaming"
         ]
     },
+    model: {
+        type: String,
+        required: [true, 'Provide product model'],
+        enum: [
+            "Iphone 14 Pro Max",
+            "Iphone 14 Pro",
+            "Iphone 14",
+            "Iphone 13 Pro Max",
+            "Iphone 13 Pro",
+            "Iphone 13",
+            "Iphone 12 Pro Max",
+            "Iphone 12 Pro",
+            "Iphone 12",
+            "Iphone 11 Pro Max",
+            "Iphone 11 Pro",
+            "Iphone 11",
+        ]
+    },
     type: {
         type: String,
         default: 'new',
@@ -41,9 +59,9 @@ const productSchema = new mongoose.Schema({
     discountPrice: {
         type: Number
     },
-    colors: {
-        type: [String],
-        required: [true, 'Provide colors for product'],
+    color: {
+        type: String,
+        required: [true, 'Provide color for product'],
         enum: [
             "gold",
             "green",

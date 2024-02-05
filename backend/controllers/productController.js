@@ -5,11 +5,14 @@ const sharp = require('sharp');
 const Product = require('../models/Product');
 
 exports.createNewProduct = asyncHandler(async (req, res, next) => {
-	const { name, category, price, discount, colors, desc, details, images, reviews, categoryDetails } = req.body;
+	const { name, category, price, discount, color, desc, model, details, reviews, categoryDetails } = req.body;
 	// Check if image file dosn't and if isn't valid
 	req.files.forEach(file => {
 		if (!file || !file.mimetype.startsWith('image')) return next(new AppError('Provide valid image', 400));
 	})
+	// Check if name is unique
+	const existingProducts = await Product.findOne({ model, color });
+	if(existingProducts) return next(new AppError('Product already exist', 400))
 	// Generate unique random image name
 	const imagesName = req.files.map(() => uuidv4())
 	// Check price so it dosnt be zero
@@ -24,9 +27,10 @@ exports.createNewProduct = asyncHandler(async (req, res, next) => {
 		price,
 		discount,
 		discountPrice: newPrice,
-		colors,
+		color,
 		desc,
 		details,
+		model,
 		images: imagesName.map((name) => `${name}.png`),
 		reviews,
 		categoryDetails
@@ -34,7 +38,7 @@ exports.createNewProduct = asyncHandler(async (req, res, next) => {
 
 	// Save each image in the public folder
     await Promise.all(req.files.map(async (file, index) => {
-        await sharp(file.buffer).png({ quality: 90, force: true }).toFile(`public/${imagesName[index]}.png`);
+        await sharp(file.buffer).resize(600, 600, { fit: 'inside' }).png({ quality: 90, force: true }).toFile(`public/${imagesName[index]}.png`);
     }));
 
 	// Send response
@@ -96,8 +100,10 @@ exports.getSingleProduct = asyncHandler(async (req, res, next) => {
 	const { productId } = req.params;
 	// Get single product
 	const product = await Product.findById(productId);
+	const sameProducts = await Product.find({ model: product.model })
+	const products = sameProducts.map(product => ({color: product.color, id: product._id}));
 	// Check if product dosnt exist
 	if(!product) return next(new AppError('Product not found', 400))
 	// Send response
-	res.status(200).json({ status: 'success', product })
+	res.status(200).json({ status: 'success', products, product })
 })
