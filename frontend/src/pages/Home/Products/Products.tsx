@@ -8,6 +8,7 @@ import styles from './Products.module.scss';
 type dataTypes = {
     name: string,
     price: number,
+    discountPrice: number,
     images: string,
     _id: string,
     category: string,
@@ -18,7 +19,7 @@ export default function Products() {
     const { activeProduct, setActiveProduct } = useActiveCatalogFilterContext();
     
     if(isLoading) return <h2>Loading...</h2>
-    
+
     return (
         <section className={styles.productsSection}>
             <div className="container">

@@ -1,7 +1,3 @@
-// React icons
-import { FaChevronLeft } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
-
 import { PiHeadphones } from "react-icons/pi";
 import { MdOutlineCameraAlt } from "react-icons/md";
 import { HiOutlineComputerDesktop } from "react-icons/hi2";
@@ -17,10 +13,6 @@ export default function Category() {
                 <div className={styles.category}>
                     <div className={styles.head}>
                         <h3>Browse By Category</h3>
-                        <div className={styles.sliderArrows}>
-                            <span><FaChevronLeft /></span>
-                            <span><FaChevronRight /></span>
-                        </div>
                     </div>
                     <div className={styles.categories}>
                         <div className={styles.card}>

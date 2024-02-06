@@ -1,27 +1,33 @@
 .slider {
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
     height: 60rem;
     position: relative;
 
     .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+        height: 60rem;
+        margin-left: 4rem;
 
         .mainImage {
             width: 100%;
+            height: 100%;
             object-fit: contain;
-            padding-left: 10rem;
         }
     }
     
     .sliderImages {
+        width: 20%;
         display: flex;
         flex-direction: column;
         gap: 1rem;
         position: absolute;
         top: 5rem;
-        left: 0;
+        left: -8rem;
 
         .image {
             width: 15rem;

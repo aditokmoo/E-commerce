@@ -9,6 +9,7 @@ type propTypes = {
     productData: {
         name: string,
         price: number,
+        discountPrice: number,
         images: string
         _id: string,
         category: string,
@@ -16,14 +17,15 @@ type propTypes = {
 }
 
 export default function ProductCard({ productData } : propTypes) {
-    console.log(productData._id)
+    console.log(productData)
     return (
         <div className={styles.productCard}>
             <button className={styles.addFavorites}><FaRegHeart /></button>
             <div className={styles.body}>
                 <img src={`http://localhost:8000/${productData?.images[0]}`} alt="" />
                 <h4>{productData?.name}</h4>
-                <h3>${productData?.price}</h3>
+                <h3>${productData?.discountPrice}</h3>
+                <span>{productData?.price}</span>
             </div>
             <DarkButton productId={productData._id} productCategory={productData.category}>Buy Now</DarkButton>
         </div>
