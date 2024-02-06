@@ -7,7 +7,9 @@ import styles from './Discounts.module.scss';
 type dataTypes = {
     name: string,
     price: number,
-    image: string
+    images: string
+    _id: string,
+    category: string,
 }
 
 export default function Discounts() {
@@ -21,7 +23,7 @@ export default function Discounts() {
                 <div className={styles.discountWrapper}>
                     <h2>Discount up to -50%</h2>
                     <div className={styles.discounts}>
-                        {products.filter(({ discount }: number & object) => discount >= 50).map((data: dataTypes, index: number) => (
+                        {products.filter(({ discount }: number & object) => discount >= 50).reverse().slice(0, 4).map((data: dataTypes, index: number) => (
                             <ProductCard productData={data} key={index} />
                         ))}
                     </div>

@@ -31,7 +31,7 @@ export default function Products() {
                     }}>Best seller</li>
                 </ul>
                 <div className={styles.products}>
-                    {products.filter(({ type }: string & object) => type === activeProduct).map((data: dataTypes, index: number) => (
+                    {products.filter(({ type }: string & object) => type === activeProduct).reverse().slice(0, 4).map((data: dataTypes, index: number) => (
                         <ProductCard productData={data} key={index} />
                     ))}
                 </div>
