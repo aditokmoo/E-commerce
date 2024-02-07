@@ -1,5 +1,5 @@
-// SCSS
 import { useState } from 'react';
+// SCSS
 import styles from './Slider.module.scss';
 
 type propTypes = {

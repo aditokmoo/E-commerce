@@ -31,6 +31,8 @@ export default function BasicInfo({ register }: propTypes) {
                     <option value="Samsung Galaxy S23 Ultra">Samsung Galaxy S23 Ultra</option>
                     <option value="Xiaomi MI 11 Ultra">Xiaomi MI 11 Ultra</option>
                     <option value="Macbook Pro M3">Macbook Pro M3</option>
+                    <option value="Imtec Game Intel Core I7 12700 + Nvidia Geforce RTX 4070 12GB">Imtec Game Intel Core I7 12700 + Nvidia Geforce RTX 4070 12GB</option>
+                    <option value="Laptop Lenovo Ideapad 3 15ITL6">Laptop Lenovo Ideapad 3 15ITL6</option>
                 </select>
             </div>
             <div className={styles.gridContainer}>

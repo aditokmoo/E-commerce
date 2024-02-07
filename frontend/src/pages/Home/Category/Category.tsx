@@ -15,10 +15,10 @@ export default function Category() {
                         <h3>Browse By Category</h3>
                     </div>
                     <div className={styles.categories}>
-                        <div className={styles.card}>
+                        <a href='/catalog/smartphone' className={styles.card}>
                             <IoIosPhonePortrait />
                             <span>Phones</span>
-                        </div>
+                        </a>
                         <div className={styles.card}>
                             <LuGamepad />
                             <span>Smart Watches</span>
@@ -31,10 +31,10 @@ export default function Category() {
                             <PiHeadphones />
                             <span>Headphones</span>
                         </div>
-                        <div className={styles.card}>
+                        <a href='/catalog/computer' className={styles.card}>
                             <HiOutlineComputerDesktop />
                             <span>Computers</span>
-                        </div>
+                        </a>
                         <div className={styles.card}>
                             <LuGamepad />
                             <span>Gaming</span>
