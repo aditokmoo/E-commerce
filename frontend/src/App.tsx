@@ -67,7 +67,12 @@ function App() {
       
       <Route element={<PersistLogin />}>
         <Route element={<RequireAuth allowedRole='user' />}>
-          <Route path='/user/profile' element={<UserProfile />}>
+          <Route path='/user/profile' element={
+            <>
+                <Header />
+                <UserProfile />
+              </>
+            }>
             <Route path='/user/profile/dashboard' element={<UserDashboard />} />
             <Route path='/user/profile/orders' element={<Orders />} />
             <Route path='/user/profile/address' element={<Address />} />
@@ -76,7 +81,12 @@ function App() {
           </Route>
         </Route>
         <Route element={<RequireAuth allowedRole='admin' />}>
-          <Route path='/admin' element={<AdminProfile />}>
+          <Route path='/admin' element={
+              <>
+                <Header />
+                <AdminProfile />
+              </>
+            }>
             <Route path='/admin/dashboard' element={<AdminDashboard />} /> 
             <Route path='/admin/products' element={
               <ActiveCatalogFilterContextProvider>

@@ -8,6 +8,7 @@ import { PiComputerTowerLight } from "react-icons/pi";
 import { CiLogout } from "react-icons/ci";
 // SCSS
 import styles from './AdminDashboard.module.scss';
+import { MoonLoader } from "react-spinners";
 
 export default function AdminDashboard() {
     const { data, isLoading } = useGetUser()
@@ -15,7 +16,7 @@ export default function AdminDashboard() {
     const { setCurrentUser, setUserRole, setPersist } = useAuthContext();
     const navigate = useNavigate();
 
-    if (isLoading || isPending) return <h2>Loading...</h2>
+    if (isLoading || isPending) return <MoonLoader color="#171717" className="loader" />
 
     return (
         <div className={styles.dashboard}>

@@ -27,7 +27,7 @@ export type inputFieldDataTypes = {
 // products && createProduct && useCreateProduct types
 export type createProductType = {
     discount: number,
-    image: string,
+    images: string,
     name: string,
     discountPrice: number,
     originalPrice: number,

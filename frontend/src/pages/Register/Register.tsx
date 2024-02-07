@@ -7,11 +7,12 @@ import { MdOutlineArrowBack } from 'react-icons/md';
 import styles from './Register.module.scss';
 import Form from './Form/Form';
 import { useForm } from 'react-hook-form';
+import { MoonLoader } from 'react-spinners';
 
 export default function Register() {
 	const { isPending } = useSignup();
 
-	if (isPending) return <h2>Loading...</h2>;
+	if (isPending) return <MoonLoader color="#171717" className="loader" />
 
 	return (
 		<div className={styles.register}>

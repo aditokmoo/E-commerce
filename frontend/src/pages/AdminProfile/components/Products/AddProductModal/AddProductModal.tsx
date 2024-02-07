@@ -9,6 +9,7 @@ import { motion } from "framer-motion"
 import { MdBookmarkAdd } from "react-icons/md";
 // SCSS
 import styles from './AddProductModal.module.scss';
+import { MoonLoader } from "react-spinners";
 
 type propTypes = {
     setShowModal: React.Dispatch<React.SetStateAction<boolean>>
@@ -19,7 +20,7 @@ export default function AddProductModal({ setShowModal }: propTypes) {
     const { register, handleSubmit } = useForm();
     const { mutate, isPending } = useCreateProduct();
 
-    if(isPending) return <h2>Loading...</h2>
+    if(isPending) return <MoonLoader color="#171717" className="loader" />
 
     function onSubmit(data: any) {
         const formData: any = new FormData();

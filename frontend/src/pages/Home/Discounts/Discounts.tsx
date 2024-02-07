@@ -3,10 +3,12 @@ import { useGetAllProducts } from '../../../hooks/useProduct';
 import ProductCard from '../../../components/ProductCard/ProductCard';
 // SCSS
 import styles from './Discounts.module.scss';
+import { MoonLoader } from 'react-spinners';
 
 type dataTypes = {
     name: string,
     price: number,
+    discountPrice: number,
     images: string
     _id: string,
     category: string,
@@ -15,7 +17,7 @@ type dataTypes = {
 export default function Discounts() {
     const { data: products, isLoading } = useGetAllProducts();
 
-    if(isLoading) return <h2>Loading...</h2>
+    if(isLoading) return <MoonLoader color="#171717" className="loader" />
 
     return (
         <section className={styles.discountSection}>

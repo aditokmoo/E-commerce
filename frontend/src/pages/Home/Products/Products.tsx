@@ -4,6 +4,7 @@ import { useActiveCatalogFilterContext } from '../../../context/ActiveCatalogFil
 import ProductCard from '../../../components/ProductCard/ProductCard';
 // SCSS
 import styles from './Products.module.scss';
+import { MoonLoader } from 'react-spinners';
 
 type dataTypes = {
     name: string,
@@ -18,7 +19,7 @@ export default function Products() {
     const { data: products, isLoading } = useGetAllProducts();
     const { activeProduct, setActiveProduct } = useActiveCatalogFilterContext();
     
-    if(isLoading) return <h2>Loading...</h2>
+    if(isLoading) return <MoonLoader color="#171717" size={20} className={styles.loader} />
 
     return (
         <section className={styles.productsSection}>

@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styles from './SideBar.module.scss';
 import { useLogout } from '../../../hooks/useAuth';
 import { useAuthContext } from '../../../context/authContext';
+import { MoonLoader } from 'react-spinners';
 
 export default function SideBar() {
 	const { mutate, isPending } = useLogout();
@@ -11,7 +12,7 @@ export default function SideBar() {
 	const location = useLocation();
 	const pathname = location.pathname.split('/')[2];
 
-	if(isPending) return <h2>Loading...</h2>
+	if(isPending) return <MoonLoader color="#171717" className="loader" />
 
 	return (
 		<aside className={styles.sideBar}>

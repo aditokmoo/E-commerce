@@ -1,3 +1,4 @@
+import { MoonLoader } from 'react-spinners';
 import { useGetAllProducts } from '../../../../hooks/useProduct';
 import { createProductType } from '../../../../shared/Types/types';
 import Product from './Product/Product';
@@ -8,7 +9,7 @@ import styles from './Products.module.scss';
 export default function Products() {
     const { data: products, isLoading } = useGetAllProducts();
 
-    if(isLoading) return <h2>Loading...</h2>
+    if(isLoading) return <MoonLoader color="#171717" className="loader" />
 
     return (
         <div className={styles.productSection}>

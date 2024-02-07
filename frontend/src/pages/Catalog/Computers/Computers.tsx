@@ -1,3 +1,4 @@
+import { MoonLoader } from "react-spinners";
 import FilterNav from "../../../components/FilterNav/FilterNav";
 import Products from "../../../components/Products/Products";
 import Brand from "../../../components/ProductsSidebar/Filters/Brand/Brand";
@@ -15,7 +16,7 @@ import styles from './Computers.module.scss';
 export default function Computers() {
     const { data: products, isLoading } = useGetAllProducts();
 
-    if(isLoading) return <h2>Loading...</h2>
+    if(isLoading) return <MoonLoader color="#171717" className="loader" />
 
     return (
         <div className="container">

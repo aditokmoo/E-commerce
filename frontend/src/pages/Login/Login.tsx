@@ -7,11 +7,12 @@ import Form from './Form/Form';
 import { MdOutlineArrowBack } from 'react-icons/md';
 // SCSS
 import styles from './Login.module.scss';
+import { MoonLoader } from 'react-spinners';
 
 export default function Login() {
 	const { isPending } = useLogin();
 
-	if(isPending) return <h2>Loading...</h2>
+	if(isPending) return <MoonLoader color="#171717" className="loader" />
 
 	return (
 		<div className={styles.login}>
