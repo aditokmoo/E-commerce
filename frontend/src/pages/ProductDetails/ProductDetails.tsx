@@ -1,5 +1,4 @@
 import { MoonLoader } from 'react-spinners';
-import Header from '../../components/Header/Header';
 import { useGetSingleProduct } from '../../hooks/useProduct';
 import MainDetails from './MainDetails/MainDetails';
 // SCSS
@@ -12,7 +11,6 @@ export default function ProductDetails() {
 
     return (
         <section className={styles.productDetails}>
-            <Header />
             <div className={styles.container}>
                 <div className={styles.detailsSection}>
                     <MainDetails data={data.product} products={data.products} />

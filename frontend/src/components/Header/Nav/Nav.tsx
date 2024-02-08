@@ -30,7 +30,7 @@ export default function Nav() {
                     </ul>
                     <div className={styles.options}>
                         <span className={styles.icon}><RiHeartLine /></span>
-                        <span className={styles.icon}><BsCart2 /></span>
+                        <Link to='/user/cart' className={styles.icon}><BsCart2 /></Link>
                         {!currentUser ? (
                             <Link to='/user/login' className={styles.icon}><AiOutlineUser /></Link>
                         ): userRole === 'user' ? (

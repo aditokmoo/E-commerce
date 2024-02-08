@@ -21,6 +21,11 @@
         &.buy {
             background-color: #111;
             color: #fff;
+
+            &.disabled {
+                opacity: .3;
+                pointer-events: none;
+            }
         }
     }
 }

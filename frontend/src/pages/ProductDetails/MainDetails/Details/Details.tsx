@@ -13,6 +13,7 @@ type propTypes = {
         discountPrice: number,
         price: number,
         desc: string,
+        _id: string
     },
     products: [{
         color: string,
@@ -29,7 +30,7 @@ export default function Details({ data, products }: propTypes) {
             <Memory />
             <CategoryDetails />
             <Description desc={data.desc} />
-            <Buttons />
+            <Buttons data={data} />
         </div>
     )
 }

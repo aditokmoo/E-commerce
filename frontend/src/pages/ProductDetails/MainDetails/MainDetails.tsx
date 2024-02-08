@@ -10,6 +10,7 @@ type propTypes = {
         discountPrice: number,
         price: number,
         desc: string,
+        _id: string
     },
     products: [{
         color: string,
