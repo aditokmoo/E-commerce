@@ -29,6 +29,7 @@ import Products from './pages/AdminProfile/components/Products/Products'
 import { AddProductModalContextProvider } from './context/AddProductModalContext'
 import ProductDetails from './pages/ProductDetails/ProductDetails'
 import ShoppingCart from './pages/ShoppingCart/ShoppingCart'
+import ShoppingCartContextProvider from './context/ShoppingCartContext'
 
 function App() {
   return (
@@ -72,11 +73,11 @@ function App() {
         } />
         
         <Route path='/user/cart' element={
-          <>
+          <ShoppingCartContextProvider>
             <Header />
             <ShoppingCart />
             <Footer />
-          </>
+          </ShoppingCartContextProvider>
         } />
       </Route>
       

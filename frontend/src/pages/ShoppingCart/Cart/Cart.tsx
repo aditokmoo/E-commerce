@@ -1,18 +1,16 @@
 import CartItem from './CartItem/CartItem';
 // SCSS
 import styles from './Cart.module.scss';
+import { useShoppingCartContext } from '../../../context/ShoppingCartContext';
 
-type propTypes = {
-    cartData: any
-}
+export default function Cart() {
+    const { cartItems  } = useShoppingCartContext();
 
-export default function Cart({ cartData }: propTypes) {
-    console.log(cartData)
     return (
         <div className={styles.cart}>
             <h1>Shopping Cart</h1>
             <div className={styles.cartItems}>
-                {cartData.map((data: any, index: number) => (
+                {cartItems.map((data: any, index: number) => (
                     <CartItem key={index} data={data} />
                 ))}
             </div>
