@@ -38,8 +38,11 @@ exports.createNewProduct = asyncHandler(async (req, res, next) => {
 
 	// Save each image in the public folder
     await Promise.all(req.files.map(async (file, index) => {
-        await sharp(file.buffer).resize(600, 600, { fit: 'inside' }).png({ quality: 90, force: true }).toFile(`public/${imagesName[index]}.png`);
-    }));
+		await sharp(file.buffer)
+			.resize({ width: 400, height: 400, fit: 'inside' })
+			.png({ quality: 90, force: true })
+			.toFile(`public/${imagesName[index]}.png`);
+	}));
 
 	// Send response
 	res.status(200).json({ status: 'success', message: 'Product created successfully', product });

@@ -13,7 +13,7 @@ const productSchema = new mongoose.Schema({
             "computer",
             "watch",
             "camera",
-            "headphones",
+            "tv",
             "gaming"
         ]
     },
@@ -33,6 +33,11 @@ const productSchema = new mongoose.Schema({
             "Iphone 11 Pro Max",
             "Iphone 11 Pro",
             "Iphone 11",
+            "Samsung Galaxy S23 Ultra",
+            "Xiaomi MI 11 Ultra",
+            "Macbook Pro M3",
+            "Imtec Game Intel Core I7 12700 + Nvidia Geforce RTX 4070 12GB",
+            "Laptop Lenovo Ideapad 3 15ITL6"
         ]
     },
     type: {
