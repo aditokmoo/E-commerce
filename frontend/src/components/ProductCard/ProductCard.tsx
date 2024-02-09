@@ -17,7 +17,6 @@ type propTypes = {
 }
 
 export default function ProductCard({ productData } : propTypes) {
-    console.log(productData)
     return (
         <div className={styles.productCard}>
             <button className={styles.addFavorites}><FaRegHeart /></button>

@@ -1,9 +1,11 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 type contextType = {
     cartItems: any,
     setCartItems: any,
-    handleRemoveCartItem: any
+    handleRemoveCartItem: any,
+    subTotalPrice: any,
+    setSubTotalPrice: any
 }
 
 type propTypes = {
@@ -12,11 +14,18 @@ type propTypes = {
 
 const shoppingCartContext = createContext<contextType | null>(null);
 
-
 export default function ShoppingCartContextProvider({ children }: propTypes) {
     const dataFromLS = localStorage.getItem('cart');
     const cartData = dataFromLS ? JSON.parse(dataFromLS) : [];  
     const [ cartItems, setCartItems ] = useState(cartData)
+    const [ subTotalPrice, setSubTotalPrice ] = useState(0);
+    const [ allSubTotalPrices, setAllSubTotalPrices ] = useState([])
+
+    // Get price from all cartItems
+    useEffect(() => {
+    }, [cartItems])
+    // Get total price from all cartItems
+    
  
     const handleRemoveCartItem = (data: any) => {
         setCartItems((prevCartItems: any) => {
@@ -27,7 +36,7 @@ export default function ShoppingCartContextProvider({ children }: propTypes) {
     }
 
     return (
-        <shoppingCartContext.Provider value={{cartItems, setCartItems, handleRemoveCartItem}}>
+        <shoppingCartContext.Provider value={{cartItems, setCartItems, handleRemoveCartItem, subTotalPrice, setSubTotalPrice}}>
             {children}
         </shoppingCartContext.Provider>
     )

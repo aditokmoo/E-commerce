@@ -8,7 +8,7 @@ export default function Cart() {
 
     return (
         <div className={styles.cart}>
-            <h1>Shopping Cart</h1>
+            <h1>Shopping Cart ({cartItems.length})</h1>
             <div className={styles.cartItems}>
                 {cartItems.map((data: any, index: number) => (
                     <CartItem key={index} data={data} />

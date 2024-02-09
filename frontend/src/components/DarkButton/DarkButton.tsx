@@ -11,6 +11,5 @@ type DarkButtonType = {
 export default function DarkButton({ children, productId, productCategory } : DarkButtonType) {
     const location = useLocation();
     const pathname = location.pathname === '/' ? `/catalog/${productCategory}/${productId}` : `${location.pathname}/${productId}`
-    console.log(pathname)
     return <Link to={pathname} className={styles.button}>{children}</Link>
 }

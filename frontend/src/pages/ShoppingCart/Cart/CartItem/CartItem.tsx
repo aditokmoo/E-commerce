@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useShoppingCartContext } from "../../../../context/ShoppingCartContext";
 // React icons
 import { FaTimes } from 'react-icons/fa';
@@ -12,16 +12,25 @@ type propTypes = {
 }
 
 export default function CartItem({ data }: propTypes) {
-    const { handleRemoveCartItem } = useShoppingCartContext();
+    const { handleRemoveCartItem, setSubTotalPrice, subTotalPrice } = useShoppingCartContext();
     const [ quantity, setQuantity ] = useState(1);
+    const price = data.discountPrice ? data.discountPrice * quantity : data.price * quantity
+    const arr: any = []
+
+    useEffect(() => {
+        console.log(`${price} * ${quantity}`)
+        console.log(quantity)
+    }, [quantity])
+    
+    console.log(subTotalPrice)
 
     return (
         <div className={styles.cartItem}>
             <img src={`http://localhost:8000/${data.images[0]}`} className={styles.image} alt="" />
             <h3 className={styles.name}>{data.name}</h3>
             <div className={styles.counter}>
-                <button 
-                    className={styles.btnDown} 
+                <button
+                    className={styles.btnDown}
                     onClick={() => setQuantity((prevState: any) => prevState >= 2 ? prevState - 1 : 1)}
                 >
                     <TiMinus />
