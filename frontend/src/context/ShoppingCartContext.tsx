@@ -4,8 +4,8 @@ type contextType = {
     cartItems: any,
     setCartItems: any,
     handleRemoveCartItem: any,
-    subTotalPrice: any,
-    setSubTotalPrice: any
+    cartInitial: any,
+    setQuantity: any
 }
 
 type propTypes = {
@@ -18,13 +18,29 @@ export default function ShoppingCartContextProvider({ children }: propTypes) {
     const dataFromLS = localStorage.getItem('cart');
     const cartData = dataFromLS ? JSON.parse(dataFromLS) : [];  
     const [ cartItems, setCartItems ] = useState(cartData)
-    const [ subTotalPrice, setSubTotalPrice ] = useState(0);
-    const [ allSubTotalPrices, setAllSubTotalPrices ] = useState([])
-
-    // Get price from all cartItems
+    const [ cartInitial, setCartInitial ] = useState();
+    const [ quantity, setQuantity ] = useState(1);
+    
     useEffect(() => {
-    }, [cartItems])
-    // Get total price from all cartItems
+        function getInitialState() {
+            let obj: any = {};
+            for(let i = 0; i < cartData.length; i++) {
+                obj[cartData[i]._id] = quantity;
+            }
+    
+            setCartInitial(obj)
+        }
+        getInitialState();
+    }, []);
+    
+    const addQuantity = (dataID: any) => {
+        setCartInitial((prevState: any) => {
+            return {
+                ...prevState,
+                [dataID]: 
+            }
+        })
+    }
     
  
     const handleRemoveCartItem = (data: any) => {
@@ -36,7 +52,7 @@ export default function ShoppingCartContextProvider({ children }: propTypes) {
     }
 
     return (
-        <shoppingCartContext.Provider value={{cartItems, setCartItems, handleRemoveCartItem, subTotalPrice, setSubTotalPrice}}>
+        <shoppingCartContext.Provider value={{cartItems, setCartItems, handleRemoveCartItem, cartInitial, setQuantity }}>
             {children}
         </shoppingCartContext.Provider>
     )
