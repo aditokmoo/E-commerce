@@ -11,7 +11,7 @@ type propTypes = {
 }
 
 export default function CartItem({ data }: propTypes) {
-    const { handleRemoveCartItem, addQuantity, cartItemsQuantity } = useShoppingCartContext();
+    const { handleRemoveCartItem, addQuantity, removeQuantity, cartItemsQuantity } = useShoppingCartContext();
     const price = data.discountPrice ? data.discountPrice * cartItemsQuantity[data._id] : data.price * cartItemsQuantity[data._id]
 
     return (
@@ -21,6 +21,7 @@ export default function CartItem({ data }: propTypes) {
             <div className={styles.counter}>
                 <button
                     className={styles.btnDown}
+                    onClick={() => removeQuantity(data._id)}
                 >
                     <TiMinus />
                 </button>

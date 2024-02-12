@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 type contextType = {
-    cartItems: any,
+    cartItems: [],
     setCartItems: any,
     handleRemoveCartItem: any,
     cartItemsQuantity: any,
-    addQuantity: any,
     subTotalPrice: number,
+    addQuantity: any,
+    removeQuantity: any
 }
 
 type propTypes = {
@@ -43,7 +44,7 @@ export default function ShoppingCartContextProvider({ children }: propTypes) {
     useEffect(() => {
         function getSubTotalPrice() {
             // Get total from cartItemsPrice
-            const subTotalVal = Object.values(cartItemsPrice).map((val) => val).reduce((x: any,y:any) => x+y, 0);
+            const subTotalVal: any = Object.values(cartItemsPrice).map((val) => val).reduce((x: any,y:any) => x+y, 0);
             // Save in state
             setSubTotalPrice(subTotalVal)
         }
@@ -73,6 +74,28 @@ export default function ShoppingCartContextProvider({ children }: propTypes) {
         })
     }
 
+    const removeQuantity = (dataID: number) => {
+        setCartItemsQuantity((prevState: any) => {
+            return {
+                ...prevState,
+                [dataID]: prevState[dataID] - 1
+            }
+        });
+    
+        cartItems.forEach((item: any) => {
+            if(item._id === dataID) {
+                const price = item.discountPrice ? item.discountPrice : item.price;
+                console.log(cartItemsQuantity[dataID] + 1)
+                setCartItemsPrice((prevState: any) => {
+                    return {
+                        ...prevState,
+                        [dataID]: price * (cartItemsQuantity[dataID] - 1)
+                    }
+                })
+            }
+        })
+    }
+
     const handleRemoveCartItem = (data: any) => {
         setCartItems((prevCartItems: any) => {
             const deletedItems = prevCartItems.filter((item: any) => item._id !== data._id)
@@ -82,7 +105,7 @@ export default function ShoppingCartContextProvider({ children }: propTypes) {
     }
 
     return (
-        <shoppingCartContext.Provider value={{cartItems, setCartItems, handleRemoveCartItem, cartItemsQuantity, addQuantity, subTotalPrice }}>
+        <shoppingCartContext.Provider value={{cartItems, setCartItems, handleRemoveCartItem, cartItemsQuantity, addQuantity, removeQuantity, subTotalPrice }}>
             {children}
         </shoppingCartContext.Provider>
     )
