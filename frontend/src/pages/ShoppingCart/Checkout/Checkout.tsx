@@ -3,12 +3,14 @@ import { useShoppingCartContext } from '../../../context/ShoppingCartContext';
 import styles from './Checkout.module.scss';
 
 export default function Checkout() {
+    const { subTotalPrice } = useShoppingCartContext();
+
     return (
         <div className={styles.checkout}>
             <h2>Order Summary</h2>
             <div className={styles.col}>
                 <span className={styles.subtotal}>Subtotal</span>
-                <span className={styles.price}>$100</span>
+                <span className={styles.price}>${subTotalPrice}</span>
             </div>
             <div className={styles.col}>
                 <span className={styles.estimated_tax}>Estimated Tax</span>

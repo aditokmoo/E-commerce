@@ -4,8 +4,9 @@ type contextType = {
     cartItems: any,
     setCartItems: any,
     handleRemoveCartItem: any,
-    cartInitial: any,
-    setQuantity: any
+    cartItemsQuantity: any,
+    addQuantity: any,
+    subTotalPrice: number,
 }
 
 type propTypes = {
@@ -18,31 +19,60 @@ export default function ShoppingCartContextProvider({ children }: propTypes) {
     const dataFromLS = localStorage.getItem('cart');
     const cartData = dataFromLS ? JSON.parse(dataFromLS) : [];  
     const [ cartItems, setCartItems ] = useState(cartData)
-    const [ cartInitial, setCartInitial ] = useState();
-    const [ quantity, setQuantity ] = useState(1);
-    
-    useEffect(() => {
-        function getInitialState() {
-            let obj: any = {};
-            for(let i = 0; i < cartData.length; i++) {
-                obj[cartData[i]._id] = quantity;
-            }
-    
-            setCartInitial(obj)
+    const [ cartItemsQuantity, setCartItemsQuantity ] = useState(getInitialQuantity());
+    const [ cartItemsPrice, setCartItemsPrice ] = useState(getInitialPrice());
+    const [ subTotalPrice, setSubTotalPrice ] = useState(0);
+
+    function getInitialQuantity() {
+        let obj: any = {};
+        for(let i = 0; i < cartData.length; i++) {
+            obj[cartData[i]._id] = 1;
         }
-        getInitialState();
-    }, []);
-    
+        return obj
+    }
+
+    function getInitialPrice() {
+        let obj: any = {};
+        for(let i = 0; i < cartData.length; i++) {
+            const { discountPrice, price } = cartData[i]
+            obj[cartData[i]._id] = discountPrice ? discountPrice: price;
+        }
+        return obj;
+    }
+
+    useEffect(() => {
+        function getSubTotalPrice() {
+            // Get total from cartItemsPrice
+            const subTotalVal = Object.values(cartItemsPrice).map((val) => val).reduce((x: any,y:any) => x+y, 0);
+            // Save in state
+            setSubTotalPrice(subTotalVal)
+        }
+
+        getSubTotalPrice();
+    }, [cartItemsQuantity, cartItemsPrice])
+
     const addQuantity = (dataID: any) => {
-        setCartInitial((prevState: any) => {
+        setCartItemsQuantity((prevState: any) => {
             return {
                 ...prevState,
-                [dataID]: 
+                [dataID]: prevState[dataID] + 1
+            }
+        });
+    
+        cartItems.forEach((item: any) => {
+            if(item._id === dataID) {
+                const price = item.discountPrice ? item.discountPrice : item.price;
+                console.log(cartItemsQuantity[dataID] + 1)
+                setCartItemsPrice((prevState: any) => {
+                    return {
+                        ...prevState,
+                        [dataID]: price * (cartItemsQuantity[dataID] + 1)
+                    }
+                })
             }
         })
     }
-    
- 
+
     const handleRemoveCartItem = (data: any) => {
         setCartItems((prevCartItems: any) => {
             const deletedItems = prevCartItems.filter((item: any) => item._id !== data._id)
@@ -52,7 +82,7 @@ export default function ShoppingCartContextProvider({ children }: propTypes) {
     }
 
     return (
-        <shoppingCartContext.Provider value={{cartItems, setCartItems, handleRemoveCartItem, cartInitial, setQuantity }}>
+        <shoppingCartContext.Provider value={{cartItems, setCartItems, handleRemoveCartItem, cartItemsQuantity, addQuantity, subTotalPrice }}>
             {children}
         </shoppingCartContext.Provider>
     )
