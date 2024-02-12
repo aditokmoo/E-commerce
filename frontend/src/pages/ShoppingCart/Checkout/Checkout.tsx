@@ -10,7 +10,7 @@ export default function Checkout() {
             <h2>Order Summary</h2>
             <div className={styles.col}>
                 <span className={styles.subtotal}>Subtotal</span>
-                <span className={styles.price}>${subTotalPrice}</span>
+                <span className={styles.price}>${subTotalPrice.toLocaleString('en-US', { minimumFractionDigits: 3 }).replace(/\.?0*$/, '').replace(',', '.')}</span>
             </div>
             <div className={styles.col}>
                 <span className={styles.estimated_tax}>Estimated Tax</span>

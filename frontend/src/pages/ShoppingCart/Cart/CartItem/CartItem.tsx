@@ -12,6 +12,7 @@ type propTypes = {
 
 export default function CartItem({ data }: propTypes) {
     const { handleRemoveCartItem, addQuantity, cartItemsQuantity } = useShoppingCartContext();
+    const price = data.discountPrice ? data.discountPrice * cartItemsQuantity[data._id] : data.price * cartItemsQuantity[data._id]
 
     return (
         <div className={styles.cartItem}>
@@ -37,7 +38,7 @@ export default function CartItem({ data }: propTypes) {
                     <FaPlus />
                 </button>
             </div>
-            <span className={styles.price}>$ {data.discountPrice ? data.discountPrice * cartItemsQuantity[data._id] : data.price * cartItemsQuantity[data._id]}</span>
+            <span className={styles.price}>$ {price.toLocaleString('en-US', { minimumFractionDigits: 3 }).replace(/\.?0*$/, '').replace(',', '.')}</span>
             <span className={styles.removeBtn} onClick={() => handleRemoveCartItem(data)}><FaTimes /></span>
         </div>
     )
