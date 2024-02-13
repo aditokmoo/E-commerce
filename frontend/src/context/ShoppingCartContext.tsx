@@ -63,7 +63,6 @@ export default function ShoppingCartContextProvider({ children }: propTypes) {
         cartItems.forEach((item: any) => {
             if(item._id === dataID) {
                 const price = item.discountPrice ? item.discountPrice : item.price;
-                console.log(cartItemsQuantity[dataID] + 1)
                 setCartItemsPrice((prevState: any) => {
                     return {
                         ...prevState,
@@ -75,6 +74,8 @@ export default function ShoppingCartContextProvider({ children }: propTypes) {
     }
 
     const removeQuantity = (dataID: number) => {
+        if(cartItemsQuantity[dataID] === 1) return;
+
         setCartItemsQuantity((prevState: any) => {
             return {
                 ...prevState,
@@ -102,6 +103,8 @@ export default function ShoppingCartContextProvider({ children }: propTypes) {
             localStorage.setItem('cart', JSON.stringify(deletedItems));
             return deletedItems;
         });
+        setCartItemsQuantity((prevState: any) => ({...prevState, [data._id]: 0}))
+        setCartItemsPrice((prevState: any) => ({...prevState, [data._id]: 0}))
     }
 
     return (
