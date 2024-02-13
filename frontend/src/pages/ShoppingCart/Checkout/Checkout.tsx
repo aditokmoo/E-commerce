@@ -3,7 +3,7 @@ import { useShoppingCartContext } from '../../../context/ShoppingCartContext';
 import styles from './Checkout.module.scss';
 
 export default function Checkout() {
-    const { subTotalPrice } = useShoppingCartContext();
+    const { subTotalPrice, taxPrice, totalPrice, shippingPrice } = useShoppingCartContext();
 
     return (
         <div className={styles.checkout}>
@@ -14,15 +14,15 @@ export default function Checkout() {
             </div>
             <div className={styles.col}>
                 <span className={styles.estimated_tax}>Estimated Tax</span>
-                <span className={styles.price}>$100</span>
+                <span className={styles.price}>${taxPrice.toLocaleString('en-US', { minimumFractionDigits: 3 }).replace(/\.?0*$/, '').replace(',', '.')}</span>
             </div>
             <div className={styles.col}>
                 <span className={styles.estimated_shipping}>Estimated shipping & Handling</span>
-                <span className={styles.price}>$100</span>
+                <span className={styles.price}>${shippingPrice.toLocaleString('en-US', { minimumFractionDigits: 3 }).replace(/\.?0*$/, '').replace(',', '.')}</span>
             </div>
             <div className={styles.col}>
                 <span className={styles.total}>Total</span>
-                <span className={styles.price}>$100</span>
+                <span className={styles.price}>${totalPrice.toLocaleString('en-US', { minimumFractionDigits: 3 }).replace(/\.?0*$/, '').replace(',', '.')}</span>
             </div>
             <button className={styles.checkoutBtn}>Checkout</button>
         </div>
