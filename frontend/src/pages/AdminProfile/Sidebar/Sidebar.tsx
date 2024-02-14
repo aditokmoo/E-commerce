@@ -7,7 +7,7 @@ import { MoonLoader } from 'react-spinners';
 
 export default function SideBar() {
 	const { mutate, isPending } = useLogout();
-	const { setCurrentUser, setUserRole, setPersist } = useAuthContext();
+	const { dispatch } = useAuthContext();
 	const navigate = useNavigate();
 	const location = useLocation();
 	const pathname = location.pathname.split('/')[2];
@@ -23,9 +23,7 @@ export default function SideBar() {
 				<li><Link to='/admin/details' className={pathname === 'details' ? styles.active : undefined}>Account details</Link></li>
 				<li onClick={() => {
 					mutate();
-					setCurrentUser(null);
-					setUserRole(null);
-					setPersist(false);
+					dispatch({ type: 'RESET_AUTH' })
 					navigate('/')
 				}}>Logout</li>
 			</ul>

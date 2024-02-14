@@ -13,7 +13,7 @@ import { MoonLoader } from "react-spinners";
 export default function UserDashboard() {
   const { data, isLoading } = useGetUser()
   const { mutate, isPending } = useLogout();
-  const { setCurrentUser, setUserRole, setPersist } = useAuthContext();
+  const { dispatch } = useAuthContext();
   const navigate = useNavigate();
 
   if (isLoading || isPending) return <MoonLoader color="#171717" className="loader" />
@@ -45,9 +45,7 @@ export default function UserDashboard() {
         </Link>
         <div className={styles.option} onClick={() => {
           mutate();
-          setCurrentUser(null);
-          setUserRole(null);
-          setPersist(false);
+          dispatch({ type: 'RESET_AUTH' })
           navigate('/')
         }}>
           <CiLogout className={styles.icon} />

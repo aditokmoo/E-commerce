@@ -30,6 +30,7 @@ export default function ShoppingCartContextProvider({ children }: propTypes) {
     const [ shippingPrice, setShippingPrice ] = useState(0);
     const [ totalPrice, setTotalPrice ] = useState(getInitialTotalPrice());
 
+    // INITIAL FUNCTION FOR CART ITEM QUNATITY
     function getInitialQuantity() {
         let obj: any = {};
         for(let i = 0; i < cartData.length; i++) {
@@ -38,6 +39,7 @@ export default function ShoppingCartContextProvider({ children }: propTypes) {
         return obj
     }
 
+    // INITIAL FUNCTION FOR CART ITEM PRICE
     function getInitialPrice() {
         let obj: any = {};
         for(let i = 0; i < cartData.length; i++) {
@@ -47,43 +49,19 @@ export default function ShoppingCartContextProvider({ children }: propTypes) {
         return obj;
     }
 
+    // INITIAL FUNCTION FOR CART ITEM TAX
     function getInitalTax() {
         const initialTaxPrice = subTotalPrice * 0.10;
         return initialTaxPrice;
     }
-
+    
+    // INITIAL FUNCTION FOR CART ITEMS TOTAL PRICE
     function getInitialTotalPrice() {
         const totalPrice = subTotalPrice + taxPrice + shippingPrice;
         return totalPrice
     }
 
-    useEffect(() => {
-        function getSubTotalPrice() {
-            const subTotalVal: any = Object.values(cartItemsPrice).map((val) => val).reduce((x: any,y:any) => x+y, 0);
-            setSubTotalPrice(subTotalVal)
-        }
-
-        function getTaxPrice() {
-            const taxPrice: any = subTotalPrice * 0.10;
-            setTaxPrice(taxPrice)
-        }
-
-        function getTotalPrice() {
-            const totalPrice: any = subTotalPrice + taxPrice + shippingPrice;
-            setTotalPrice(totalPrice);
-        }
-
-        function getShippingPrice() {
-            const shippingPrice = cartItems.length === 0 ? 0 : 25;
-            setShippingPrice(shippingPrice)
-        }
- 
-        getSubTotalPrice();
-        getTaxPrice();
-        getTotalPrice();
-        getShippingPrice();
-    }, [cartItemsQuantity, cartItemsPrice, subTotalPrice, taxPrice, totalPrice, shippingPrice])
-
+    // INCREASE THE AMOUNT OF CART ITEMS - FUNCTION
     const addQuantity = (dataID: any) => {
         setCartItemsQuantity((prevState: any) => {
             return {
@@ -105,6 +83,7 @@ export default function ShoppingCartContextProvider({ children }: propTypes) {
         })
     }
 
+    // REDUCE AMOUNT OF CART ITEMS - FUNCTION
     const removeQuantity = (dataID: number) => {
         if(cartItemsQuantity[dataID] === 1) return;
 
@@ -128,6 +107,7 @@ export default function ShoppingCartContextProvider({ children }: propTypes) {
         })
     }
 
+    // REMOVE CART ITEM - FUNCTION
     const handleRemoveCartItem = (data: any) => {
         setCartItems((prevCartItems: any) => {
             const deletedItems = prevCartItems.filter((item: any) => item._id !== data._id)
@@ -137,6 +117,37 @@ export default function ShoppingCartContextProvider({ children }: propTypes) {
         setCartItemsQuantity((prevState: any) => ({...prevState, [data._id]: 0}))
         setCartItemsPrice((prevState: any) => ({...prevState, [data._id]: 0}))
     }
+
+    useEffect(() => {
+        // GET SUBTOTAL PRICE
+        function getSubTotalPrice() {
+            const subTotalVal: any = Object.values(cartItemsPrice).map((val) => val).reduce((x: any,y:any) => x+y, 0);
+            setSubTotalPrice(subTotalVal)
+        }
+        
+        // GET TAX PRICE
+        function getTaxPrice() {
+            const taxPrice: any = subTotalPrice * 0.10;
+            setTaxPrice(taxPrice)
+        }
+        
+        // GET TOTAL PRICE
+        function getTotalPrice() {
+            const totalPrice: any = subTotalPrice + taxPrice + shippingPrice;
+            setTotalPrice(totalPrice);
+        }
+        
+        // GET SHIPPING PRICE
+        function getShippingPrice() {
+            const shippingPrice = cartItems.length === 0 ? 0 : 25;
+            setShippingPrice(shippingPrice)
+        }
+ 
+        getSubTotalPrice();
+        getTaxPrice();
+        getTotalPrice();
+        getShippingPrice();
+    }, [cartItemsQuantity, cartItemsPrice, subTotalPrice, taxPrice, totalPrice, shippingPrice])
 
     return (
         <shoppingCartContext.Provider value={{cartItems, setCartItems, handleRemoveCartItem, totalPrice, shippingPrice, taxPrice, cartItemsQuantity, addQuantity, removeQuantity, subTotalPrice }}>

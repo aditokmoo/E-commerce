@@ -23,7 +23,7 @@ export function useSignup() {
 }
 
 export function useLogin() {
-    const { setCurrentUser, setUserRole } = useAuthContext();
+    const { dispatch } = useAuthContext();
     const navigate = useNavigate();
     const location = useLocation();
     // Last location before coming to login
@@ -33,8 +33,8 @@ export function useLogin() {
         onSuccess: (res) => {
             if(res.response?.data?.status === 'fail' || res.response?.data?.status === 'error') return toast.error(res.response.data.message)
             // If its okey save token in state
-            setCurrentUser(res?.accessToken)
-            setUserRole(res?.role)
+            dispatch({ type: "SET_CURRENT_USER", payload: res?.accessToken });
+            dispatch({ type: "SET_USER_ROLE", payload: res?.role });
             // Navigate to last location that he came from
             navigate(from, { replace: true })
         },

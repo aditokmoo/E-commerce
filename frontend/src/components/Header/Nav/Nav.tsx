@@ -11,7 +11,7 @@ import styles from './Nav.module.scss';
 import { useAuthContext } from "../../../context/authContext";
 
 export default function Nav() {
-    const { currentUser, userRole } = useAuthContext();
+    const { state } = useAuthContext();
 
     return (
         <div className={styles.nav}>
@@ -31,9 +31,9 @@ export default function Nav() {
                     <div className={styles.options}>
                         <span className={styles.icon}><RiHeartLine /></span>
                         <Link to='/user/cart' className={styles.icon}><BsCart2 /></Link>
-                        {!currentUser ? (
+                        {!state.currentUser ? (
                             <Link to='/user/login' className={styles.icon}><AiOutlineUser /></Link>
-                        ): userRole === 'user' ? (
+                        ): state.userRole === 'user' ? (
                             <Link to='/user/profile/dashboard' className={styles.icon}><AiOutlineUser /></Link>
                         ) : (
                             <Link to='/admin/dashboard' className={styles.icon}><AiOutlineUser /></Link>

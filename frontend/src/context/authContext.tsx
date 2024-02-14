@@ -1,32 +1,64 @@
-import { createContext, useContext, useState } from 'react';
+import { Dispatch, createContext, useContext, useReducer } from 'react';
 
-type AuthContextType = {
+type reducerStateType = {
     currentUser: string | null,
     userRole: string | null,
-    persist: boolean,
-    setCurrentUser: React.Dispatch<React.SetStateAction<string | null>>
-    setUserRole: React.Dispatch<React.SetStateAction<string | null>>
-    setPersist: React.Dispatch<React.SetStateAction<boolean>>
+    persist: boolean;
 }
 
-const authContext = createContext<AuthContextType | null>(null);
+type reducerActionType = { type: "SET_CURRENT_USER"; payload: string } | { type: 'SET_USER_ROLE'; payload: string } | { type: "SET_PERSIST"; payload: boolean } | { type: 'RESET_AUTH' };
+
+type AuthContextType = {
+    state: reducerStateType,
+    dispatch: Dispatch<reducerActionType>
+}
 
 type ContextPropsType = {
     children: React.ReactNode
 }
 
-export function AuthContextProvider({ children } : ContextPropsType) {
-    const [ currentUser, setCurrentUser ] = useState<string | null>(null);
-    const [ userRole, setUserRole ] = useState<string | null>(null);
-    const [ persist, setPersist ] = useState<boolean>(JSON.parse(localStorage.getItem('persist')) || false);
+const authContext = createContext<AuthContextType | null>(null);
+const persistData = localStorage.getItem('persist')
+const initialState = {
+    currentUser: null,
+    userRole: null,
+    persist: persistData ? JSON.parse(persistData) : false
+}
 
-    return <authContext.Provider value={{currentUser, setCurrentUser, userRole, setUserRole, persist, setPersist}}>
+function reducer(state: reducerStateType, action: reducerActionType) {
+    switch (action.type) {
+        case 'SET_CURRENT_USER':
+            return {
+                ...state,
+                currentUser: action.payload,
+            };
+        case 'SET_USER_ROLE':
+            return {
+                ...state,
+                userRole: action.payload
+            };
+        case 'SET_PERSIST':
+            return {
+                ...state,
+                persist: action.payload
+            };
+        case 'RESET_AUTH':
+            return initialState;
+        default:
+            return state;
+    }
+}
+
+export function AuthContextProvider({ children }: ContextPropsType) {
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    return <authContext.Provider value={{ state, dispatch }}>
         {children}
     </authContext.Provider>
 }
 
 export function useAuthContext() {
     const context = useContext(authContext)
-    if(!context) throw Error('Cant use context here!')
+    if (!context) throw Error('Cant use context here!')
     return context;
 }

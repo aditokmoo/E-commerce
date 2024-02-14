@@ -5,14 +5,14 @@ import { useAuthContext } from "../context/authContext";
 import { useEffect } from "react";
 
 export default function useAxiosPrivate() {
-    const { currentUser, setCurrentUser, setUserRole } = useAuthContext();
+    const { state, dispatch } = useAuthContext();
     const navigate = useNavigate();
     const location = useLocation();
 
     useEffect(() => {
         const requestIntercept = axiosPrivate.interceptors.request.use(config => {
             if(!config.headers['Authorization']) {
-                config.headers['Authorization'] = `Barear ${currentUser}`;
+                config.headers['Authorization'] = `Barear ${state.currentUser}`;
             }
             return config;
         }, (error) => Promise.reject(error))
@@ -23,8 +23,8 @@ export default function useAxiosPrivate() {
                 prevReq.sent = true;
                 const newUserAccess = await refreshToken();
                 prevReq.headers['Authorization'] = `Barear ${newUserAccess.accessToken}`;
-                setCurrentUser(newUserAccess.accessToken)
-                setUserRole(newUserAccess.role)
+                dispatch({ type: "SET_CURRENT_USER", payload: newUserAccess.accessToken })
+                dispatch({ type: "SET_USER_ROLE", payload: newUserAccess.role })
                 return axiosPrivate(prevReq)
             }
             navigate('/user/login', { state: { from: location }, replace: true })
@@ -35,7 +35,7 @@ export default function useAxiosPrivate() {
             axiosPrivate.interceptors.request.eject(requestIntercept);
             axiosPrivate.interceptors.response.eject(responseIntercept);
         }
-    }, [currentUser, refreshToken])
+    }, [state.currentUser, refreshToken])
 
     return axiosPrivate;
 }

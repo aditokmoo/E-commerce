@@ -6,8 +6,8 @@ type RequireAuthType = {
 }
 
 export default function RequireAuth({ allowedRole }: RequireAuthType) {
-    const { currentUser, userRole } = useAuthContext();
+    const { state } = useAuthContext();
     const location = useLocation();
 
-    return userRole === allowedRole ? <Outlet /> : currentUser ? <Navigate to='/' state={{ from: location }} replace /> : <Navigate to='/user/login' state={{ from: location }} replace />
+    return state.userRole === allowedRole ? <Outlet /> : state.currentUser ? <Navigate to='/' state={{ from: location }} replace /> : <Navigate to='/user/login' state={{ from: location }} replace />
 }
