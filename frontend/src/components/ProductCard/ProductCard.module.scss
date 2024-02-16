@@ -9,46 +9,4 @@
     text-align: center;
     border-radius: 6px;
     position: relative;
-
-    .addFavorites {
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
-        border: 0;
-        background-color: inherit;
-        font-size: 2rem;
-        color: #909090C4;
-        cursor: pointer;
-
-        &:hover {
-            opacity: .7;
-        }
-    }
-
-    .body {
-        height: 33rem;
-
-        img {
-            width: 15rem;
-            height: 15rem;
-            object-fit: contain;
-        }
-
-        h4 {
-            margin-top: 2rem;
-            font-size: 1.4rem;
-            padding: 0 2rem;
-            line-height: 1.6;
-            font-weight: 200;
-        }
-    
-        h3 {
-            margin: 2rem 0 1rem 0;
-        }
-
-        span {
-            color: #888;
-            text-decoration: line-through;
-        }
-    }
 }

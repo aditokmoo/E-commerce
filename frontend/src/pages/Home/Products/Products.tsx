@@ -1,10 +1,10 @@
 import { useGetAllProducts } from '../../../hooks/useProduct';
 import { useActiveCatalogFilterContext } from '../../../context/ActiveCatalogFilterContext';
+import { MoonLoader } from 'react-spinners';
 // Components
 import ProductCard from '../../../components/ProductCard/ProductCard';
 // SCSS
 import styles from './Products.module.scss';
-import { MoonLoader } from 'react-spinners';
 
 type dataTypes = {
     name: string,
@@ -34,7 +34,16 @@ export default function Products() {
                 </ul>
                 <div className={styles.products}>
                     {products.filter(({ type }: string & object) => type === activeProduct).reverse().slice(0, 8).map((data: dataTypes, index: number) => (
-                        <ProductCard productData={data} key={index} />
+                        <ProductCard key={index}>
+                            <ProductCard.AddFavorites />
+                            <div className={styles.body}>
+                                <ProductCard.Image image={data?.images[0]} />
+                                <ProductCard.Name>{data.name}</ProductCard.Name>
+                                <ProductCard.DiscountPrice>{data?.discountPrice}</ProductCard.DiscountPrice>
+                                <ProductCard.Price>{data?.price}</ProductCard.Price>
+                            </div>
+                            <ProductCard.Button productId={data._id} productCategory={data.category} children='Buy' />
+                        </ProductCard>
                     ))}
                 </div>
             </div>

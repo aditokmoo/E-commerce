@@ -1,32 +1,28 @@
 // Components
+import ProductCardImage from './components/ProductCardImage';
+import ProductCardAddFavorites from './components/ProductCardAddFavorites';
+import ProductCardName from './components/ProductCardName';
+import ProductCardDiscountPrice from './components/ProductCardDiscountPrice';
+import ProductCardPrice from './components/ProductCardPrice';
 import DarkButton from '../DarkButton/DarkButton';
-// React icons
-import { FaRegHeart } from "react-icons/fa";
 // SCSS
 import styles from './ProductCard.module.scss';
 
 type propTypes = {
-    productData: {
-        name: string,
-        price: number,
-        discountPrice: number,
-        images: string
-        _id: string,
-        category: string,
-    }
+    children: React.ReactNode
 }
 
-export default function ProductCard({ productData } : propTypes) {
+export default function ProductCard({ children } : propTypes) {
     return (
         <div className={styles.productCard}>
-            <button className={styles.addFavorites}><FaRegHeart /></button>
-            <div className={styles.body}>
-                <img src={`http://localhost:8000/${productData?.images[0]}`} alt="" />
-                <h4>{productData?.name}</h4>
-                <h3>${productData?.discountPrice}</h3>
-                <span>{productData?.price}</span>
-            </div>
-            <DarkButton productId={productData._id} productCategory={productData.category}>Buy Now</DarkButton>
+            {children}
         </div>
     )
 }
+
+ProductCard.AddFavorites = ProductCardAddFavorites;
+ProductCard.Image = ProductCardImage;
+ProductCard.Name = ProductCardName;
+ProductCard.DiscountPrice = ProductCardDiscountPrice;
+ProductCard.Price = ProductCardPrice;
+ProductCard.Button = DarkButton;
