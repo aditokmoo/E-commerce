@@ -10,19 +10,19 @@ export default function Checkout() {
             <h2>Order Summary</h2>
             <div className={styles.col}>
                 <span className={styles.subtotal}>Subtotal</span>
-                <span className={styles.price}>${subTotalPrice.toLocaleString('en-US', { minimumFractionDigits: 3 }).replace(/\.?0*$/, '').replace(',', '.')}</span>
+                <span className={styles.price}>${subTotalPrice.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
             </div>
             <div className={styles.col}>
                 <span className={styles.estimated_tax}>Estimated Tax</span>
-                <span className={styles.price}>${taxPrice.toLocaleString('en-US', { minimumFractionDigits: 3 }).replace(/\.?0*$/, '').replace(',', '.')}</span>
+                <span className={styles.price}>${taxPrice.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
             </div>
             <div className={styles.col}>
                 <span className={styles.estimated_shipping}>Estimated shipping & Handling</span>
-                <span className={styles.price}>${shippingPrice.toLocaleString('en-US', { minimumFractionDigits: 3 }).replace(/\.?0*$/, '').replace(',', '.')}</span>
+                <span className={styles.price}>${shippingPrice.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
             </div>
             <div className={styles.col}>
                 <span className={styles.total}>Total</span>
-                <span className={styles.price}>${totalPrice.toLocaleString('en-US', { minimumFractionDigits: 3 }).replace(/\.?0*$/, '').replace(',', '.')}</span>
+                <span className={styles.price}>${totalPrice.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
             </div>
             <button className={styles.checkoutBtn}>Checkout</button>
         </div>

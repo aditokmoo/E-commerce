@@ -3,6 +3,6 @@ export default function ProductCardPrice({ children }: { children: number }) {
         <span style={{
             color: '#888',
             textDecoration: 'line-through'
-        }}>${children}</span>
+        }}>${children.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
     )
 }

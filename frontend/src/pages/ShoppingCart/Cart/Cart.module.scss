@@ -1,3 +1,10 @@
 .cart {
     width: 60%;
+
+    .counter {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        width: 13rem;
+    }
 }
