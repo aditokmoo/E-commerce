@@ -48,53 +48,68 @@ exports.createNewProduct = asyncHandler(async (req, res, next) => {
 	res.status(200).json({ status: 'success', message: 'Product created successfully', product });
 });
 
-exports.getAllProducts = asyncHandler(async (req, res, next) => {
-	// Get category and type
-	const productCategory = req.query.category;
-	const productType = req.query.type;
-	const productDiscount = req.query.discount
-	// Check if product category exist
-	if(productCategory) {
-		// Get products
-		const products = await Product.find({ category: productCategory });
-		// Check if products exist
-		if (products.length === 0) return next(new AppError("No products found for specified category."));
-		// Send response
-		return res.status(200).json({ status: 'success', products })
+exports.getFilterdProducts = asyncHandler(async (query) => {
+	let match = {};
+
+	const queryObj = { ...query };
+	const excludedFields = ['sort', 'page', 'limit', 'discount', 'type'];
+	excludedFields.forEach((field) => delete queryObj[field])
+
+	if(
+		query.discount === undefined ||
+		query.discount === 'null' ||
+		query.type === undefined ||
+		query.type === 'null' ||
+		query.category === undefined ||
+		query.category === 'null' ||
+		query.search === undefined ||
+		query.search === 'null'
+	) {
+		match;
 	}
 
-	// Check if product type exist
-	if (productType || productDiscount >= 50) {
-		const query = {};
-	
-		if (productType) {
-			query.$or = [{ type: productType }];
+	// Return products by type and discount
+	if (query.type || (query.discount && query.discount >= 50)) {	
+		match = {};
+
+		if (query.type) {
+			match.$or = [{ type: query.type }];
 		}
 	
-		if (productDiscount >= 50) {
-			query.$or = query.$or || [];
-			query.$or.push({ discount: { $gte: 50 } });
+		if (query.discount >= 50) {
+			match.$or = match.$or || [];
+			match.$or.push({ discount: { $gte: 50 } });
 		}
-	
-		// Get products based on query
-		const products = await Product.find(query);
-	
-		// Check if products exist
-		if (products.length === 0) {
-			// No products found, send an error response
-			return next(new AppError("No products found for specified criteria"));
-		}
-	
-		// Send success response with the found products
-		return res.status(200).json({ status: 'success', products });
 	}
 
-	// Get all products
-	const allProducts = await Product.find();
-	// Check if all products dosn't exist
-	if(allProducts.length === 0) return next(new AppError('No products found'))
-	// Send response
-	res.status(200).json({ status: 'success', products: allProducts })
+	// Return products by category
+	if(queryObj.category === 'smartphone' || queryObj.category === 'computer' ) {
+		match = {};
+		match.category = queryObj.category
+	}
+
+	// Return products by search
+	if(queryObj.search) {
+		match = {};
+		match = {
+			$or: [
+			  { model: new RegExp(queryObj.search, "i") },
+			  { name: new RegExp(queryObj.search, "i") },
+			],
+		  };
+	}
+
+	console.log(match)
+
+	const filteredProducts = await Product.find(match)
+
+	return filteredProducts
+})
+
+exports.getAllProducts = asyncHandler(async (req, res, next) => {	
+	const products = await this.getFilterdProducts(req.query)
+
+	return res.status(200).json({ status: 'success', products })
 });
 
 
