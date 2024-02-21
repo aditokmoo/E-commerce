@@ -22,7 +22,7 @@ export function useGetAllProducts() {
 
 export function useGetSearchedProducts() {
     const { searchText } = useProductFilterContext();
-    const debounceSearchValue = useDebounceValue(searchText, 200);
+    const debounceSearchValue = useDebounceValue(searchText, 500);
     const { data, isLoading } = useQuery({
         queryKey: ["searchedProducts", debounceSearchValue],
         queryFn: () => getSearchedProducts(searchText),
