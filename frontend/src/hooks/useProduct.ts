@@ -1,8 +1,10 @@
 import { InvalidateQueryFilters, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { createProduct, getAllProducts, getSingleProduct } from "../api/services/productServices";
+import { createProduct, getAllProducts, getSearchedProducts, getSingleProduct } from "../api/services/productServices";
 import { useLocation, useParams } from "react-router";
 import { useActiveCatalogFilterContext } from "../context/ActiveCatalogFilterContext";
 import { createProductType } from "../shared/Types/types";
+import { useProductFilterContext } from "../context/ProductFilterContext";
+import useDebounceValue from "./useDebounceValue";
 
 export function useGetAllProducts() {
     const location = useLocation();
@@ -13,6 +15,18 @@ export function useGetAllProducts() {
     const { data, isLoading } = useQuery({
         queryKey: ["products", category, admin, activeProduct],
         queryFn: () => getAllProducts(category, admin, activeProduct)
+    });
+
+    return { data, isLoading }
+}
+
+export function useGetSearchedProducts() {
+    const { searchText } = useProductFilterContext();
+    const debounceSearchValue = useDebounceValue(searchText, 200);
+    const { data, isLoading } = useQuery({
+        queryKey: ["searchedProducts", debounceSearchValue],
+        queryFn: () => getSearchedProducts(searchText),
+        staleTime: 30000
     });
 
     return { data, isLoading }

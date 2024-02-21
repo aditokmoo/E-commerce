@@ -1,12 +1,15 @@
+import ProductFilterContextProvider from "../../context/ProductFilterContext";
 // Components
-import Nav from "./Nav/Nav";
 import SubNav from "./SubNav/SubNav";
+import Nav from "./Nav/Nav";
 
 export default function Header() {
     return (
-        <header>
-            <Nav />
-            <SubNav />
-        </header>
+        <ProductFilterContextProvider>
+            <header>
+                <Nav />
+                <SubNav />
+            </header>
+        </ProductFilterContextProvider>
     )
 }

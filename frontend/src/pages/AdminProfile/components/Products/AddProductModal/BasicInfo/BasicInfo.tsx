@@ -28,6 +28,7 @@ export default function BasicInfo({ register }: propTypes) {
                     <option value="Iphone 14 Pro Max">Iphone 14 Pro Max</option>
                     <option value="Iphone 14 Pro">Iphone 14 Pro</option>
                     <option value="Iphone 14">Iphone 14</option>
+                    <option value="Iphone 13 Pro Max">Iphone 13 Pro Max</option>
                     <option value="Samsung Galaxy S23 Ultra">Samsung Galaxy S23 Ultra</option>
                     <option value="Xiaomi MI 11 Ultra">Xiaomi MI 11 Ultra</option>
                     <option value="Macbook Pro M3">Macbook Pro M3</option>

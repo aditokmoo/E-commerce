@@ -1,6 +1,7 @@
+import { useAuthContext } from "../../../context/authContext";
 import { Link } from "react-router-dom";
+import Search from "./Search/Search";
 // React icons
-import { GrFormSearch } from "react-icons/gr";
 import { RiHeartLine } from "react-icons/ri";
 import { BsCart2 } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
@@ -8,7 +9,6 @@ import { AiOutlineUser } from "react-icons/ai";
 import Logo from '../../../assets/logo.png';
 // SCSS
 import styles from './Nav.module.scss';
-import { useAuthContext } from "../../../context/authContext";
 
 export default function Nav() {
     const { state } = useAuthContext();
@@ -18,10 +18,7 @@ export default function Nav() {
             <div className="container">
                 <div className={styles.navSection}>
                     <img src={Logo} alt="Logo" />
-                    <form className={styles.navForm}>
-                        <GrFormSearch className={styles.navFormIcon} />
-                        <input type="text" placeholder='Search' id='searchInput' className={styles.searchInput} />
-                    </form>
+                    <Search />
                     <ul className={styles.links}>
                         <li><Link to='/' className={styles.active}>Home</Link></li>
                         <li><Link to='/about'>About</Link></li>
