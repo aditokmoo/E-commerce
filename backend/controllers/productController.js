@@ -16,7 +16,7 @@ exports.createNewProduct = asyncHandler(async (req, res, next) => {
 	// Generate unique random image name
 	const imagesName = req.files.map(() => uuidv4())
 	// Check price so it dosnt be zero
-	if (price === 0) return next(new AppError("Price can't be 0"));
+	if (price === 0) return next(new AppError("Price can't be 0", 400));
 	// Calculate price and discount to get new price
 	const priceDiscount = price * discount / 100;
 	const newPrice = price - priceDiscount;
@@ -48,68 +48,45 @@ exports.createNewProduct = asyncHandler(async (req, res, next) => {
 	res.status(200).json({ status: 'success', message: 'Product created successfully', product });
 });
 
-exports.getFilterdProducts = asyncHandler(async (query) => {
-	let match = {};
+exports.getAllProducts = asyncHandler(async (req, res, next) => {
+    let match = {};
 
-	const queryObj = { ...query };
-	const excludedFields = ['sort', 'page', 'limit', 'discount', 'type'];
-	excludedFields.forEach((field) => delete queryObj[field])
+    // Filter products by type and discount
+    if (req.query.type || (req.query.discount && req.query.discount >= 50)) {
+        match.$or = [];
 
-	if(
-		query.discount === undefined ||
-		query.discount === 'null' ||
-		query.type === undefined ||
-		query.type === 'null' ||
-		query.category === undefined ||
-		query.category === 'null' ||
-		query.search === undefined ||
-		query.search === 'null'
-	) {
-		match;
-	}
+		// Check if type exist
+        if (req.query.type) {
+            match.$or.push({ type: req.query.type });
+        }
 
-	// Return products by type and discount
-	if (query.type || (query.discount && query.discount >= 50)) {	
-		match = {};
+		// check if discount exist and if it's greater or equal to 50
+        if (req.query.discount && req.query.discount >= 50) {
+            match.$or.push({ discount: { $gte: 50 } });
+        }
+    }
 
-		if (query.type) {
-			match.$or = [{ type: query.type }];
-		}
-	
-		if (query.discount >= 50) {
-			match.$or = match.$or || [];
-			match.$or.push({ discount: { $gte: 50 } });
-		}
-	}
+    // Filter products by category
+    if (req.query.category === 'smartphone' || req.query.category === 'computer') {
+        match.category = req.query.category;
+    }
 
-	// Return products by category
-	if(queryObj.category === 'smartphone' || queryObj.category === 'computer' ) {
-		match = {};
-		match.category = queryObj.category
-	}
+    // Filter products by search
+    if (req.query.search) {
+        match.$or = [
+            { model: new RegExp(req.query.search, "i") },
+            { name: new RegExp(req.query.search, "i") },
+        ];
+    }
 
-	// Return products by search
-	if(queryObj.search) {
-		match = {};
-		match = {
-			$or: [
-			  { model: new RegExp(queryObj.search, "i") },
-			  { name: new RegExp(queryObj.search, "i") },
-			],
-		  };
-	}
+	// Find products by there match
+    const products = await Product.find(match);
 
-	console.log(match)
+	// Check if products exist
+	if(products.length === 0) return next(new AppError("Product's not found", 400));
 
-	const filteredProducts = await Product.find(match)
-
-	return filteredProducts
-})
-
-exports.getAllProducts = asyncHandler(async (req, res, next) => {	
-	const products = await this.getFilterdProducts(req.query)
-
-	return res.status(200).json({ status: 'success', products })
+	// Send response
+    res.status(200).json({ status: 'success', products });
 });
 
 
