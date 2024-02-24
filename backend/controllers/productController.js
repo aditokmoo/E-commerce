@@ -68,7 +68,7 @@ exports.getAllProducts = asyncHandler(async (req, res, next) => {
 
     // Filter products by category
     if (req.query.category === 'smartphone' || req.query.category === 'computer') {
-        match.category = req.query.category;
+		match.category = req.query.category;
     }
 
     // Filter products by search
@@ -82,11 +82,27 @@ exports.getAllProducts = asyncHandler(async (req, res, next) => {
 	// Find products by there match
     const products = await Product.find(match);
 
+	// Sorting
+	const sortBy = req.query.sortBy;
+	if(sortBy) {
+		switch(sortBy) {
+			case 'lowest':
+				products.sort((a,b) => a.discountPrice - b.discountPrice);
+				break;
+			case 'highest':
+				products.sort((a,b) => a.discountPrice + b.discountPrice);
+				break;
+			default:
+				products
+				break;
+		}
+	}
+
 	// Check if products exist
 	if(products.length === 0) return next(new AppError("Product's not found", 400));
 
 	// Send response
-    res.status(200).json({ status: 'success', products });
+    res.status(200).json({ status: 'success', products: products });
 });
 
 
