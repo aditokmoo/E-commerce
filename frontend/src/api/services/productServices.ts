@@ -2,9 +2,9 @@ import { createProductType } from '../../shared/Types/types';
 import FormatUtils from '../../utils/formatUtils';
 import axios from '../http';
 
-export async function getAllProducts(category: string, adminUrl: string, productType: string) {
+export async function getAllProducts(category: string, sortBy: string, adminUrl: string, productType: string) {
 	try {
-		const url = FormatUtils.formatUrlProducts(category, adminUrl, productType)
+		const url = FormatUtils.formatUrlProducts(category, sortBy, adminUrl, productType)
 		const response = await axios.get(url);
 		const data = await response.data;
 		return data.products;

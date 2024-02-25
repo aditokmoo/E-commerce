@@ -30,6 +30,7 @@ import { AddProductModalContextProvider } from './context/AddProductModalContext
 import ProductDetails from './pages/ProductDetails/ProductDetails'
 import ShoppingCart from './pages/ShoppingCart/ShoppingCart'
 import ShoppingCartContextProvider from './context/ShoppingCartContext'
+import ProductFilterContextProvider from './context/ProductFilterContext'
 
 function App() {
   return (
@@ -37,25 +38,31 @@ function App() {
       <Route element={<PersistLogin />}>
         <Route path='/' element={
           <ActiveCatalogFilterContextProvider>
-            <Header />
-              <Home />
-            <Footer />
+            <ProductFilterContextProvider>
+              <Header />
+                <Home />
+              <Footer />
+            </ProductFilterContextProvider>
           </ActiveCatalogFilterContextProvider>
         } />
 
         <Route path='/catalog/smartphone' element={
           <ActiveCatalogFilterContextProvider>
-            <Header />
-              <Smartphones />
-            <Footer />
+            <ProductFilterContextProvider>
+              <Header />
+                <Smartphones />
+              <Footer />
+            </ProductFilterContextProvider>
           </ActiveCatalogFilterContextProvider>
         } />
 
         <Route path='/catalog/computer' element={
           <ActiveCatalogFilterContextProvider>
-            <Header />
-              <Computers />
-            <Footer />
+            <ProductFilterContextProvider>
+              <Header />
+                <Computers />
+              <Footer />
+            </ProductFilterContextProvider>
           </ActiveCatalogFilterContextProvider>
         } />
 
@@ -75,7 +82,7 @@ function App() {
         <Route path='/user/cart' element={
           <ShoppingCartContextProvider>
             <Header />
-            <ShoppingCart />
+              <ShoppingCart />
             <Footer />
           </ShoppingCartContextProvider>
         } />

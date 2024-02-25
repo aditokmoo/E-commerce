@@ -10,11 +10,13 @@ export function useGetAllProducts() {
     const location = useLocation();
     const category = location.pathname.split('/')[2];
     const admin = location.pathname;
+
     const { activeProduct } = useActiveCatalogFilterContext();
+    const { sortBy } = useProductFilterContext();
 
     const { data, isLoading } = useQuery({
-        queryKey: ["products", category, admin, activeProduct],
-        queryFn: () => getAllProducts(category, admin, activeProduct)
+        queryKey: ["products", category, sortBy, admin, activeProduct],
+        queryFn: () => getAllProducts(category, sortBy, admin, activeProduct)
     });
 
     return { data, isLoading }

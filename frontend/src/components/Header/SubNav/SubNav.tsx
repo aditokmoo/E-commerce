@@ -16,7 +16,7 @@ export default function SubNav() {
                     <ul className={styles.subNavLinks}>
                         <li>
                             <IoIosPhonePortrait />
-                            <Link to='/catalog/smartphone'>Phones</Link>
+                            <Link to={'/catalog/smartphone'}>Phones</Link>
                         </li>
                         <li>
                             <HiOutlineComputerDesktop />
