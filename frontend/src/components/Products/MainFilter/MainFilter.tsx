@@ -12,7 +12,7 @@ type MainFilterType = {
 }
 
 export default function MainFilter({ products }: MainFilterType) {
-    const { setSortBy } = useProductFilterContext();
+    const { setSortBy, sortBy } = useProductFilterContext();
     const location = useLocation();
     const currentPath = location.pathname;
     const navigate = useNavigate();
@@ -31,7 +31,7 @@ export default function MainFilter({ products }: MainFilterType) {
     return (
         <div className={styles.mainFilter}>
             <p>Products: <span>{products ? products.length : 0}</span></p>
-            <select onChange={(e) => handleChange(e)}>
+            <select value={sortBy} onChange={(e) => handleChange(e)}>
                 <option value="">Filter</option>
                 <option value="lowest">Lowest price</option>
                 <option value="highest">Highest price</option>

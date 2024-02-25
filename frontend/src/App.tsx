@@ -118,7 +118,9 @@ function App() {
             <Route path='/admin/products' element={
               <ActiveCatalogFilterContextProvider>
                 <AddProductModalContextProvider>
-                  <Products />
+                  <ProductFilterContextProvider>
+                    <Products />
+                  </ProductFilterContextProvider>
                 </AddProductModalContextProvider>
             </ActiveCatalogFilterContextProvider>} /> 
           </Route>
