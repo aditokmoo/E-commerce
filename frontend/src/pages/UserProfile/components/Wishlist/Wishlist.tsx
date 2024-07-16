@@ -1,8 +1,11 @@
+import ProductItem from '../../../../components/ProductItem/ProductItem';
 // SCSS
 import styles from './Wishlist.module.scss';
 
 export default function Wishlist() {
     return (
-        <h2>Wishlist</h2>
+        <div className={styles.wishlist}>
+        
+        </div>
     )
 }

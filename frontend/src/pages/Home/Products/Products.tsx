@@ -35,7 +35,7 @@ export default function Products() {
                 <div className={styles.products}>
                     {products.filter(({ type }: string & object) => type === activeProduct).reverse().slice(0, 8).map((data: dataTypes, index: number) => (
                         <ProductCard key={index}>
-                            <ProductCard.AddFavorites />
+                            <ProductCard.AddFavorites id={data._id} />
                             <div className={styles.body}>
                                 <ProductCard.Image image={data?.images[0]} />
                                 <ProductCard.Name>{data.name}</ProductCard.Name>

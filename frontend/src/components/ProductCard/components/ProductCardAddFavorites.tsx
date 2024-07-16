@@ -1,7 +1,11 @@
 import { useState } from "react";
-import { FaRegHeart } from "react-icons/fa";
+import { useWishlistContext } from "../../../context/WishlistContext";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { useHandleAddToWishlist } from "../../../hooks/useHandleAddToWishlist";
 
-export default function ProductCardAddFavorites() {
+export default function ProductCardAddFavorites({data}: any) {
+    const { favorite, setFavorite } = useWishlistContext();
+    const { handleAddToWishlist } = useHandleAddToWishlist();
     const [ isHovered, setIsHovered ] = useState(false);
 
     return (
@@ -17,6 +21,8 @@ export default function ProductCardAddFavorites() {
             opacity: isHovered ? 0.7 : 1,
         }}
         onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}><FaRegHeart /></button>
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={() => handleAddToWishlist(data)}
+        ></button>
     )
 }

@@ -1,4 +1,4 @@
-import { useHandleAddToCart } from './hooks/useHandleAddToCart';
+import { useHandleAddToCart } from '../../../../../hooks/useHandleAddToCart';
 // SCSS
 import styles from './Buttons.module.scss';
 

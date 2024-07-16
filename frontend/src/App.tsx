@@ -31,6 +31,7 @@ import ProductDetails from './pages/ProductDetails/ProductDetails'
 import ShoppingCart from './pages/ShoppingCart/ShoppingCart'
 import ShoppingCartContextProvider from './context/ShoppingCartContext'
 import ProductFilterContextProvider from './context/ProductFilterContext'
+import WishlistContextProvider from './context/WishlistContext'
 
 function App() {
   return (
@@ -39,9 +40,11 @@ function App() {
         <Route path='/' element={
           <ActiveCatalogFilterContextProvider>
             <ProductFilterContextProvider>
-              <Header />
-                <Home />
-              <Footer />
+              <WishlistContextProvider>
+                <Header />
+                  <Home />
+                <Footer />
+              </WishlistContextProvider>
             </ProductFilterContextProvider>
           </ActiveCatalogFilterContextProvider>
         } />
@@ -49,9 +52,11 @@ function App() {
         <Route path='/catalog/smartphone' element={
           <ActiveCatalogFilterContextProvider>
             <ProductFilterContextProvider>
-              <Header />
-                <Smartphones />
-              <Footer />
+              <WishlistContextProvider>
+                <Header />
+                  <Smartphones />
+                <Footer />
+              </WishlistContextProvider>
             </ProductFilterContextProvider>
           </ActiveCatalogFilterContextProvider>
         } />
@@ -59,9 +64,11 @@ function App() {
         <Route path='/catalog/computer' element={
           <ActiveCatalogFilterContextProvider>
             <ProductFilterContextProvider>
-              <Header />
-                <Computers />
-              <Footer />
+              <WishlistContextProvider>
+                <Header />
+                  <Computers />
+                <Footer />
+              </WishlistContextProvider>
             </ProductFilterContextProvider>
           </ActiveCatalogFilterContextProvider>
         } />
