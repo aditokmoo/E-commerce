@@ -49,18 +49,21 @@ The frontend and backend should now be running locally.
 ## Screenshots
 Here are some images to showcase the project
 
-1. Login
+1. Home
 ![Login](public/images/Login.png)
 
-2. Register
+2. Catalog
 ![Register](public/images/auth.png)
 
-3. Home and details page
+3. Product
+![Home](public/images/app.png)
+
+3. Admin
 ![Home](public/images/app.png)
 
 note: project is in progress...
 
 ## Technologies Used
 
-- **Frontend**: React, Typescript, Axios, React Form Hook, Tanstack React Query, Tanstack React Table, SCSS.
-- **Backend**: Node.js, Express, MongoDB, Typescript.
+- **Frontend**: React, Typescript, Axios, React Form Hook, Tanstack React Query, SCSS.
+- **Backend**: Node.js, Express, MongoDB.
