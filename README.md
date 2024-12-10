@@ -12,8 +12,8 @@ Make sure you have the following installed on your system:
 
 ### Clone the repository
 
-Clone the project repository using the following command:
-```bash
+1. Clone the project repository using the following command:
+    ```bash
     https://github.com/aditokmoo/MERN-E-commerce
 
 2. **Navigate to the project folder**:
@@ -24,7 +24,7 @@ Clone the project repository using the following command:
 3. **Navigate to the client folder and install the dependencies**:
 
    ```bash
-   cd client
+   cd frontend
    npm install
 
 4. **Do the same for the backend folder**:
@@ -36,7 +36,7 @@ Clone the project repository using the following command:
 5. **Running the project**:
 - Start the client:
    ```bash
-   cd client
+   cd frontend
    npm run dev
 
 - Start the backend:
@@ -44,7 +44,7 @@ Clone the project repository using the following command:
    cd backend
    npm run dev
 
-The client and backend should now be running locally.
+The frontend and backend should now be running locally.
 
 ## Screenshots
 Here are some images to showcase the project
