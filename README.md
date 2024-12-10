@@ -5,7 +5,9 @@ Welcome to the Cyber | E-commerce repository! This guide will help you get start
 ## Getting Started
 
 ### Prerequisites
+
 Make sure you have the following installed on your system:
+
 - **Git**
 - **Node.js**
 - **npm**
@@ -13,13 +15,18 @@ Make sure you have the following installed on your system:
 ### Clone the repository
 
 1. Clone the project repository using the following command:
-    ```bash
-    https://github.com/aditokmoo/MERN-E-commerce
+
+   ```bash
+   https://github.com/aditokmoo/MERN-E-commerce
+
+   ```
 
 2. **Navigate to the project folder**:
-   
+
    ```bash
    cd repo-name
+
+   ```
 
 3. **Navigate to the client folder and install the dependencies**:
 
@@ -27,39 +34,49 @@ Make sure you have the following installed on your system:
    cd frontend
    npm install
 
+   ```
+
 4. **Do the same for the backend folder**:
 
    ```bash
    cd backend
    npm install
 
+   ```
+
 5. **Running the project**:
+
 - Start the client:
-   ```bash
-   cd frontend
-   npm run dev
+
+  ```bash
+  cd frontend
+  npm run dev
+
+  ```
 
 - Start the backend:
-   ```bash
-   cd backend
-   npm run dev
+  ```bash
+  cd backend
+  npm run dev
+  ```
 
 The frontend and backend should now be running locally.
 
 ## Screenshots
+
 Here are some images to showcase the project
 
 1. Home
-![Login](public/images/Login.png)
+   ![Home](public/images/Home.png)
 
 2. Catalog
-![Register](public/images/auth.png)
+   ![Catalog](public/images/Catalog.png)
 
 3. Product
-![Home](public/images/app.png)
+   ![Product](public/images/Product.png)
 
-3. Admin
-![Home](public/images/app.png)
+4. Admin
+   ![Admin](public/images/Admin.png)
 
 note: project is in progress...
 
