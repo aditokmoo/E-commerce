@@ -3,7 +3,7 @@ import ProductCard from '../../ProductCard/ProductCard';
 // SCSS
 import styles from './MainSection.module.scss';
 
-type MainSectionType = {
+interface MainSectionType {
     products: {
         productImage: string,
         productName: string,
@@ -12,7 +12,7 @@ type MainSectionType = {
 }
 
 
-export default function MainSection({ products } : MainSectionType) {
+export default function MainSection({ products }: MainSectionType) {
     return (
         <div className={styles.mainSection}>
             <div className={styles.products}>

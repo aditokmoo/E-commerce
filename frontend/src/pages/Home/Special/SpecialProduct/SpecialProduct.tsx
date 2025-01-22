@@ -2,13 +2,13 @@
 import ShopNowButton from '../../../../components/ShopNowButton/ShopNowButton';
 import styles from './SpecialProduct.module.scss';
 
-type specialProductType = {
+interface specialProductType {
     image: string,
     title: string,
     text: string
 }
 
-export default function SpecialProduct({ image, title, text } : specialProductType) {
+export default function SpecialProduct({ image, title, text }: specialProductType) {
     return (
         <div className={styles.specialProduct}>
             <div className={styles.image}>

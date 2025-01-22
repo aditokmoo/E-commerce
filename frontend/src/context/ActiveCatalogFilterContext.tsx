@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 
-type ActiveCatalogFilterContextType = {
+interface ActiveCatalogFilterContextType {
     activeFilter: {
         [key: string]: string;
     },
@@ -19,12 +19,12 @@ type ActiveCatalogFilterContextType = {
 
 const activeCatalogFilterContext = createContext<ActiveCatalogFilterContextType | null>(null);
 
-type ContextPropsType = {
+interface ContextPropsType {
     children: React.ReactNode
 }
 
-export function ActiveCatalogFilterContextProvider({ children } : ContextPropsType) {
-    const [ activeFilter, setActiveFilter ] = useState({
+export function ActiveCatalogFilterContextProvider({ children }: ContextPropsType) {
+    const [activeFilter, setActiveFilter] = useState({
         price: '',
         type: '',
         brand: '',
@@ -33,15 +33,15 @@ export function ActiveCatalogFilterContextProvider({ children } : ContextPropsTy
         cpu: '',
         gpu: '',
     });
-    const [ activeProduct, setActiveProduct ] = useState('new');
+    const [activeProduct, setActiveProduct] = useState('new');
 
-    return <activeCatalogFilterContext.Provider value={{activeFilter, setActiveFilter, activeProduct, setActiveProduct}}>
+    return <activeCatalogFilterContext.Provider value={{ activeFilter, setActiveFilter, activeProduct, setActiveProduct }}>
         {children}
     </activeCatalogFilterContext.Provider>
 }
 
 export function useActiveCatalogFilterContext() {
     const context = useContext(activeCatalogFilterContext)
-    if(!context) throw Error('Cant use context here!')
+    if (!context) throw Error('Cant use context here!')
     return context;
 }

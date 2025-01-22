@@ -3,7 +3,7 @@ import { useProductFilterContext } from '../../../context/ProductFilterContext';
 // SCSS
 import styles from './MainFilter.module.scss';
 
-type MainFilterType = {
+interface MainFilterType {
     products: {
         productImage: string,
         productName: string,

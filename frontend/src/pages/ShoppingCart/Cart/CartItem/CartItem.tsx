@@ -6,7 +6,7 @@ import { FaPlus } from "react-icons/fa6";
 // SCSS
 import styles from './CartItem.module.scss';
 
-type propTypes = {
+interface propTypes {
     data: any,
 }
 
@@ -25,15 +25,15 @@ export default function CartItem({ data }: propTypes) {
                 >
                     <TiMinus />
                 </button>
-                <input 
-                    type="text" 
+                <input
+                    type="text"
                     name='quantity'
                     value={cartItemsQuantity[data._id]}
-                    id='quantity' 
+                    id='quantity'
                     readOnly
                 />
-                <button 
-                    className={styles.btnUp} 
+                <button
+                    className={styles.btnUp}
                     onClick={() => addQuantity(data._id)}
                 >
                     <FaPlus />

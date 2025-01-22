@@ -1,7 +1,7 @@
 import { useLocation, Navigate, Outlet } from "react-router";
 import { useAuthContext } from "../context/authContext";
 
-type RequireAuthType = {
+interface RequireAuthType {
     allowedRole: string
 }
 

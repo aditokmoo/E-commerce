@@ -1,15 +1,15 @@
 import { createContext, useContext, useReducer } from "react";
 // Types
-type contextType = {
+interface contextType {
     state: State;
     dispatch: React.Dispatch<Action>;
 }
-type State = {
+interface State {
     pageCount: number,
     pageName: string
 }
 type Action = { type: 'next' } | { type: 'prev' } | { type: 'default' };
-type propTypes = { children: React.ReactNode }
+interface propTypes { children: React.ReactNode }
 
 // Context
 const addProductModalContext = createContext<contextType | null>(null);
@@ -22,7 +22,7 @@ const initialState = {
 
 // Reducer
 function reducer(state: State, action: Action) {
-    switch(action.type) {
+    switch (action.type) {
         case 'next':
             return {
                 ...state,
@@ -35,7 +35,7 @@ function reducer(state: State, action: Action) {
                 pageCount: state.pageCount - 1,
                 pageName: modalPages[state.pageCount - 1]
             };
-        case 'default':   
+        case 'default':
             return {
                 ...state,
                 pageCount: 0,
@@ -47,15 +47,15 @@ function reducer(state: State, action: Action) {
 }
 
 export function AddProductModalContextProvider({ children }: propTypes) {
-    const [ state, dispatch ] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
-    return <addProductModalContext.Provider value={{state, dispatch}}>
+    return <addProductModalContext.Provider value={{ state, dispatch }}>
         {children}
     </addProductModalContext.Provider>
 }
 
 export function useAddProductContext() {
     const context = useContext(addProductModalContext)
-    if(!context) throw Error('Cant use context here!')
+    if (!context) throw Error('Cant use context here!')
     return context;
 }

@@ -7,7 +7,7 @@ import Price from './Price/Price';
 import styles from './Details.module.scss';
 import Buttons from './Buttons/Buttons';
 
-type propTypes = {
+interface propTypes {
     data: {
         name: string,
         discountPrice: number,

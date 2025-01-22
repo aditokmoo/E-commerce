@@ -1,4 +1,4 @@
-type dataType = {
+interface dataType {
     name: string,
     discountPrice: number,
     price: number,
@@ -12,11 +12,11 @@ export function useHandleAddToCart() {
         const dataFromLS = localStorage.getItem('cart');
         // If data from LS exist parse it if not return empty array
         const cartData = dataFromLS ? JSON.parse(dataFromLS) : [];
-    
+
         // Check if data exist in LS
         const dataExist = cartData.some((item: dataType) => item._id === data._id)
 
-        if(!dataExist) {
+        if (!dataExist) {
             // Push to array
             cartData.push(data);
             // Store in LS

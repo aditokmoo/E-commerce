@@ -3,7 +3,7 @@ import Details from './Details/Details';
 // SCSS
 import styles from './MainDetails.module.scss';
 
-type propTypes = {
+interface propTypes {
     data: {
         images: [string],
         name: string,

@@ -6,7 +6,7 @@ import ProductCard from '../../../components/ProductCard/ProductCard';
 // SCSS
 import styles from './Products.module.scss';
 
-type dataTypes = {
+interface dataTypes {
     name: string,
     price: number,
     discountPrice: number,
@@ -18,8 +18,8 @@ type dataTypes = {
 export default function Products() {
     const { data: products, isLoading } = useGetAllProducts();
     const { activeProduct, setActiveProduct } = useActiveCatalogFilterContext();
-    
-    if(isLoading) return <MoonLoader color="#171717" size={20} className={styles.loader} />
+
+    if (isLoading) return <MoonLoader color="#171717" size={20} className={styles.loader} />
 
     return (
         <section className={styles.productsSection}>

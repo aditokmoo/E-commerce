@@ -8,11 +8,11 @@ import DarkButton from '../DarkButton/DarkButton';
 // SCSS
 import styles from './ProductCard.module.scss';
 
-type propTypes = {
+interface propTypes {
     children: React.ReactNode
 }
 
-export default function ProductCard({ children } : propTypes) {
+export default function ProductCard({ children }: propTypes) {
     return (
         <div className={styles.productCard}>
             {children}

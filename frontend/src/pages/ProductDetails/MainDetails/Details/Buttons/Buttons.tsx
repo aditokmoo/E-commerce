@@ -2,7 +2,7 @@ import { useHandleAddToCart } from '../../../../../hooks/useHandleAddToCart';
 // SCSS
 import styles from './Buttons.module.scss';
 
-type propTypes = {
+interface propTypes {
     data: {
         name: string,
         discountPrice: number,
@@ -18,11 +18,11 @@ export default function Buttons({ data }: propTypes) {
     return (
         <div className={styles.btns}>
             <button className={styles.wishlist}>Add to Wishlist</button>
-            <button 
+            <button
                 className={styles.buy}
                 onClick={() => handleAddToCart(data)}
             >
-                    Add to Cart
+                Add to Cart
             </button>
         </div>
     )

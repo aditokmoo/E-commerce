@@ -4,7 +4,7 @@ import MainSection from './MainSection/MainSection';
 // SCSS
 import styles from './Products.module.scss';
 
-type ProductsType = {
+interface ProductsType {
     products: {
         productImage: string;
         productName: string;
@@ -12,7 +12,7 @@ type ProductsType = {
     }[]
 }
 
-export default function Products({ products } : ProductsType) {
+export default function Products({ products }: ProductsType) {
     return (
         <section className={styles.main}>
             <MainFilter products={products} />

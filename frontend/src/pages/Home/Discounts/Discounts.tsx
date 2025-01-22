@@ -5,7 +5,7 @@ import ProductCard from '../../../components/ProductCard/ProductCard';
 import styles from './Discounts.module.scss';
 import { MoonLoader } from 'react-spinners';
 
-type dataTypes = {
+interface dataTypes {
     name: string,
     price: number,
     discountPrice: number,
@@ -17,7 +17,7 @@ type dataTypes = {
 export default function Discounts() {
     const { data: products, isLoading } = useGetAllProducts();
 
-    if(isLoading) return <MoonLoader color="#171717" className="loader" />
+    if (isLoading) return <MoonLoader color="#171717" className="loader" />
 
     return (
         <section className={styles.discountSection}>

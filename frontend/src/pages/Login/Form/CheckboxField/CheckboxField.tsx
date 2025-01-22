@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 // SCSS
 import styles from './CheckboxField.module.scss';
 
-type propTypes = { 
-    register: Function, 
-    rememberMe: boolean | undefined 
+interface propTypes {
+    register: Function,
+    rememberMe: boolean | undefined
 }
 
 export default function CheckboxField({ register, rememberMe }: propTypes) {

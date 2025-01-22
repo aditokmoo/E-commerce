@@ -4,21 +4,21 @@ import { FaChevronDown } from 'react-icons/fa';
 import styles from './FilterName.module.scss';
 import { useActiveCatalogFilterContext } from '../../../context/ActiveCatalogFilterContext';
 
-type filterNameType = {
+interface filterNameType {
     filterName: string,
     filterKey: string,
 }
 
-export default function FilterName({ filterName, filterKey } : filterNameType) {
+export default function FilterName({ filterName, filterKey }: filterNameType) {
     const { setActiveFilter, activeFilter } = useActiveCatalogFilterContext();
 
     return (
         <div className={styles.filterName} onClick={() => setActiveFilter(prevState => {
             const newFilterValue = activeFilter[filterKey] === filterKey ? '' : filterKey;
-            return {...prevState, [filterKey]: newFilterValue}
+            return { ...prevState, [filterKey]: newFilterValue }
         })}>
             <span>{filterName}</span>
-            <FaChevronDown className={activeFilter[filterKey] ? styles.active : null} />
+            <FaChevronDown className={activeFilter[filterKey] ? styles.active : undefined} />
         </div>
     )
 }

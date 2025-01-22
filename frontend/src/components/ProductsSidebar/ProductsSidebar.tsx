@@ -1,11 +1,11 @@
 // SCSS
 import styles from './ProductsSidebar.module.scss';
 
-type ProductsSidebarType = {
+interface ProductsSidebarType {
     children: React.ReactNode
 }
 
-export default function ProductsSidebar({ children } : ProductsSidebarType) {
+export default function ProductsSidebar({ children }: ProductsSidebarType) {
     return (
         <aside className={styles.sidebar}>
             <div className={styles.filters}>

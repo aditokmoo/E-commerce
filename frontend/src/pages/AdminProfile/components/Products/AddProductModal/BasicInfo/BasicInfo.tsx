@@ -2,7 +2,7 @@ import { UseFormRegister } from 'react-hook-form';
 // SCSS
 import styles from './BasicInfo.module.scss';
 
-type propTypes = {
+interface propTypes {
     register: UseFormRegister<Record<string, number>>
 }
 

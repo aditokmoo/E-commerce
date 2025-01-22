@@ -2,21 +2,21 @@ import { useState } from 'react';
 // SCSS
 import styles from './Slider.module.scss';
 
-type propTypes = {
+interface propTypes {
     images: [string]
 }
 
-export default function Slider({ images } : propTypes) {
-    const [ activeImage, setActiveImage ] = useState(0);
+export default function Slider({ images }: propTypes) {
+    const [activeImage, setActiveImage] = useState(0);
 
     return (
         <div className={styles.slider}>
             <div className={styles.sliderImages}>
                 {images.map((image: string, index: number) => (
-                    <img 
-                        src={`http://localhost:8000/${image}`} 
-                        className={activeImage === index ? `${styles.image} ${styles.active}` : styles.image} 
-                        alt="" 
+                    <img
+                        src={`http://localhost:8000/${image}`}
+                        className={activeImage === index ? `${styles.image} ${styles.active}` : styles.image}
+                        alt=""
                         key={index}
                         onClick={() => setActiveImage(index)}
                     />

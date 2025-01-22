@@ -1,7 +1,7 @@
 // SCSS
 import styles from './Description.module.scss';
 
-type propTypes = {
+interface propTypes {
     desc: string
 }
 

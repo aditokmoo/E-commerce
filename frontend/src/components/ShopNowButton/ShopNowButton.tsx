@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 // SCSS
 import styles from './ShopNowButton.module.scss';
 
-type ShopNowButtonType = {
+interface ShopNowButtonType {
     to: string,
     color: string,
     children: string,

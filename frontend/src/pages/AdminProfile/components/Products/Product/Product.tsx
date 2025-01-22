@@ -4,7 +4,7 @@ import { FaRegTrashAlt, FaStar, FaRegEdit } from "react-icons/fa";
 // SCSS
 import styles from './Product.module.scss';
 
-type propsType = {
+interface propsType {
     data: {
         discount: number,
         images: string,

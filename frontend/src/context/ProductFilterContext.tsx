@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-type contextType = {
+interface contextType {
     searchText: string,
     setSearchText: any,
     sortBy: string,
@@ -9,21 +9,21 @@ type contextType = {
 
 const productFilterContext = createContext<contextType | null>(null);
 
-type childrenType = {
+interface childrenType {
     children: React.ReactNode
 }
 
 export default function ProductFilterContextProvider({ children }: childrenType) {
-    const [ searchText, setSearchText ] = useState('');
-    const [ sortBy, setSortBy ] = useState('');
+    const [searchText, setSearchText] = useState('');
+    const [sortBy, setSortBy] = useState('');
 
-    return <productFilterContext.Provider value={{searchText, setSearchText, sortBy, setSortBy}}>
-        { children }
+    return <productFilterContext.Provider value={{ searchText, setSearchText, sortBy, setSortBy }}>
+        {children}
     </productFilterContext.Provider>
 }
 
 export function useProductFilterContext() {
     const context = useContext(productFilterContext);
-    if(!context) throw new Error("CAN'T USE CONTEXT HERE!")
+    if (!context) throw new Error("CAN'T USE CONTEXT HERE!")
     return context;
 }

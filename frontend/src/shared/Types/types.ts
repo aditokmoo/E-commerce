@@ -1,4 +1,4 @@
-export type createUserType = {
+export interface createUserType {
     username: string,
     firstName: string,
     lastName: string,
@@ -11,13 +11,13 @@ export type createUserType = {
     postalCode: string
 }
 
-export type loginUserType = {
+export interface loginUserType {
     email: string,
     password: string,
     remember_me?: boolean
 }
 
-export type inputFieldDataTypes = {
+export interface inputFieldDataTypes {
     type: string,
     id: string,
     name: string,
@@ -25,7 +25,7 @@ export type inputFieldDataTypes = {
 }
 
 // products && createProduct && useCreateProduct types
-export type createProductType = {
+export interface createProductType {
     discount: number,
     images: string,
     name: string,
