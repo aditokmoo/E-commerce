@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router';
-import SideBar from './Sidebar/Sidebar';
+import Sidebar from './Sidebar/Sidebar';
 // SCSS
 import styles from './AdminProfile.module.scss'
 
@@ -8,7 +8,7 @@ export default function AdminProfile() {
     <section className={styles.adminSection}>
       <div className={styles.container}>
         <div className={styles.profile}>
-          <SideBar />
+          <Sidebar />
           <Outlet />
         </div>
       </div>

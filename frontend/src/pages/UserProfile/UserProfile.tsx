@@ -1,14 +1,14 @@
 import { Outlet } from 'react-router';
-import SideBar from './SideBar/SideBar';
 // SCSS
 import styles from './UserProfile.module.scss'
+import Sidebar from '../AdminProfile/Sidebar/Sidebar';
 
 export default function UserProfile() {
   return (
     <section className={styles.userSection}>
       <div className={styles.container}>
         <div className={styles.profile}>
-          <SideBar />
+          <Sidebar />
           <Outlet />
         </div>
       </div>
