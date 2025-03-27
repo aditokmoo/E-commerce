@@ -6,7 +6,6 @@ import { MdOutlineArrowBack } from 'react-icons/md';
 // SCSS
 import styles from './Register.module.scss';
 import Form from './Form/Form';
-import { useForm } from 'react-hook-form';
 import { MoonLoader } from 'react-spinners';
 
 export default function Register() {
