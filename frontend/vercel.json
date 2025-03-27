@@ -15,7 +15,7 @@
                 },
                 {
                     "key": "Access-Control-Allow-Origin",
-                    "value": "https://e-commerce.vercel.app"
+                    "value": "https://e-cyber.vercel.app"
                 },
                 {
                     "key": "Access-Control-Allow-Methods",
